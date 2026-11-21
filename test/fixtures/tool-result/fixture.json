@@ -1,0 +1,32 @@
+{
+  "title": "工具结果 · 真实输入输出卡片",
+  "group": "代码与交付",
+  "pluginCss": ["@deepseek-ai/dsh-client-ui-tool"],
+  "variants": [
+    {
+      "id": "light",
+      "mode": "light",
+      "window": "900,600"
+    },
+    {
+      "id": "dark",
+      "mode": "dark",
+      "window": "900,600"
+    },
+    {
+      "id": "mobile",
+      "mode": "light",
+      "window": "390,600"
+    }
+  ],
+  "assertions": [
+    {
+      "message": "工具输出文本与其实际承载面达到4.5:1对比度",
+      "expression": "(()=>{const nodes=[...document.querySelectorAll(\"[data-tool] span\")].filter(e=>e.textContent.trim());const rgba=v=>{const n=v.match(/[\\d.]+/g);return[+n[0],+n[1],+n[2],n[3]===undefined?1:+n[3]]};const lum=c=>c.map(v=>(v/=255)<=.04045?v/12.92:((v+.055)/1.055)**2.4).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);return nodes.length>0&&nodes.every(e=>{let bg=[255,255,255],parents=[];for(let p=e;p;p=p.parentElement)parents.unshift(p);for(const p of parents){const c=rgba(getComputedStyle(p).backgroundColor);bg=bg.map((v,i)=>c[i]*c[3]+v*(1-c[3]))}const a=lum(rgba(getComputedStyle(e).color).slice(0,3)),z=lum(bg);return(Math.max(a,z)+.05)/(Math.min(a,z)+.05)>=4.5})})()"
+    },
+    {
+      "message": "原始载荷可独立滚动，卡片不撑宽视口",
+      "expression": "(()=>{const e=document.querySelector('[data-tool]'),r=e.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth&&document.body.scrollWidth<=innerWidth&&e.textContent.includes('45 | synthetic acceptance')})()"
+    }
+  ]
+}

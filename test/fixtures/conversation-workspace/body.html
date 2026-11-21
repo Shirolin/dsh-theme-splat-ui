@@ -1,0 +1,315 @@
+<!DOCTYPE html><!--
+  Main conversation workspace fixture: reproduces Layout's centerCol (consuming
+  --dsw-alias-bg-base), Conversation header crumbs + corner slot (triggering the
+  wooden header ribbon), the Hero scenery slot, a markdown prose + code island
+  bubble, and the Composer speech bubble with Model Selection.
+--><html lang="zh-CN" data-dsh-splat-ui-skin="active"><head>
+<meta charset="utf-8">
+<title>主工作区 · 会话界面</title>
+<!--{{DSH_CSS}}-->
+<!--{{THEME_BASE_CSS}}-->
+<!--{{PLUGIN_CSS}}-->
+<!--{{SKIN_CSS}}-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  .workspace-frame {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .workspace-frame .mP3x-q_centerCol {
+    grid-area: 1 / 1;
+    height: 100%;
+    border-radius: 0 !important;
+  }
+  .an3WzG_root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+  .an3WzG_scrollBody {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 8px 28px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .demo-thread {
+    width: min(740px, 100%);
+    margin: 0 auto;
+    display: grid;
+    gap: 10px;
+  }
+  .demo-user-msg {
+    justify-self: end;
+    max-width: 80%;
+    padding: 10px 16px;
+    border-radius: 18px;
+    background: var(--dsw-specific-bubble);
+    color: var(--dsw-alias-label-primary);
+    font-size: 14px;
+  }
+  .demo-assistant-msg {
+    color: var(--dsw-alias-label-primary);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .demo-assistant-msg p { margin: 0 0 10px; }
+  .demo-code-card {
+    border-radius: var(--dsl-code-block-radius, 14px);
+    background: var(--dsw-alias-markdown-code-block, #101010);
+    color: var(--shiki-foreground, #f4f4ec);
+    border: 2px solid var(--dsw-alias-border-l4, #121212);
+    overflow: hidden;
+  }
+  .demo-code-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 14px;
+    background: var(--dsw-alias-markdown-code-block-banner, #1e1e1d);
+    color: var(--shiki-foreground, #f4f4ec);
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .demo-code-banner button {
+    padding: 2px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(244, 244, 236, 0.28);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--shiki-foreground, #f4f4ec);
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .demo-code-card pre {
+    margin: 0;
+    padding: 14px 16px;
+    overflow-x: auto;
+    color: var(--shiki-foreground, #f4f4ec);
+    font-family: var(--ds-font-family-code, monospace);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .an3WzG_composerSeat {
+    flex: none;
+    padding: 4px 28px 14px;
+  }
+  .GRgSLq_root {
+    width: min(740px, 100%);
+    margin: 0 auto;
+  }
+  .GRgSLq_card {
+    padding: 14px 16px 10px;
+  }
+  .GRgSLq_input {
+    min-height: 36px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--dsw-alias-label-primary);
+    outline: none;
+  }
+  .GRgSLq_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .GRgSLq_tools,
+  .GRgSLq_trailing,
+  .GRgSLq_standardControls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .GRgSLq_add {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--dsw-alias-label-secondary);
+    cursor: pointer;
+  }
+  .GRgSLq_primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body {{BODY_ATTRIBUTES}} style="{{TOKENS}} {{BODY_STYLE}}">
+<div class="mP3x-q_frame workspace-frame">
+  <div class="mP3x-q_centerCol">
+    <div class="mP3x-q_mainPanel">
+      <div class="an3WzG_root">
+        <header class="an3WzG_header" data-window-drag="true">
+          <div class="an3WzG_headerLeading" data-conversation-header-leading=""></div>
+          <div class="an3WzG_titleRow">
+            <div class="an3WzG_titleCluster">
+              <nav class="an3WzG_crumbs" aria-label="会话层级">
+                <span class="an3WzG_crumb an3WzG_crumbCurrent">主题安装与验收</span>
+              </nav>
+            </div>
+            <div class="an3WzG_headerUtilities"></div>
+          </div>
+          <div class="an3WzG_headerCorner" data-conversation-header-corner=""></div>
+        </header>
+
+        <div class="an3WzG_scrollBody" data-conversation-scroll="true">
+          <div class="WOwLGG_root">
+            <div class="WOwLGG_headline">
+              <span class="WOwLGG_fishHitbox">
+                <div data-slot="" style="display: contents;">
+                  <span class="splat-ui-hero__brand">
+                    <svg aria-hidden="true" class="splat-ui-hero__scene" viewBox="0 0 960 390" preserveAspectRatio="xMidYMin meet" fill="none">
+                      <defs>
+                        <pattern id="splat-scene-dots-pink" width="9" height="9" patternUnits="userSpaceOnUse">
+                          <circle cx="2.2" cy="2.2" r="1.5" fill="#ff2d8a" />
+                        </pattern>
+                        <pattern id="splat-scene-dots-purple" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(-12)">
+                          <circle cx="8" cy="8" r="2.2" fill="#a24b97" />
+                        </pattern>
+                        <linearGradient id="splat-city-edge" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0" stop-color="#ffffff" />
+                          <stop offset=".85" stop-color="#ffffff" />
+                          <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+                        </linearGradient>
+                        <linearGradient id="splat-city-rail-edge" gradientUnits="userSpaceOnUse" x1="190" y1="110" x2="290" y2="30">
+                          <stop offset="0" stop-color="#ffffff" />
+                          <stop offset=".3" stop-color="#ffffff" />
+                          <stop offset=".7" stop-color="#777777" />
+                          <stop offset="1" stop-color="#000000" />
+                        </linearGradient>
+                        <mask id="splat-city-mask">
+                          <rect x="30" width="900" height="300" fill="url(#splat-city-edge)" />
+                          <path d="M30 0h440L338 82 236 166H30Z" fill="url(#splat-city-rail-edge)" />
+                        </mask>
+                      </defs>
+
+                      <g class="splat-ui-hero__left-patch">
+                        <path d="m108 260 140-23-36 113-154 20Z" fill="#be63b6" opacity="0.2" />
+                        <path d="m108 260 140-23-36 113-154 20Z" fill="url(#splat-scene-dots-purple)" opacity="0.48" />
+                        <g fill="#a24b97" opacity="0.55">
+                          <path d="m102 324 5 10 11-1-8 8 3 11-10-5-9 6 1-11-9-6 11-2Z" />
+                          <path d="m145 280 4 8 9-1-6 7 2 8-8-3-7 5 1-9-7-5 8-2Z" />
+                        </g>
+                      </g>
+
+                      <g fill="var(--splat-lime-solid, #1edc00)">
+                        <path d="M64 238c-10-1-19-8-17-14 2-7 10-5 17 0 7 5 12 4 11-3-2-10-10-22-3-25 8-4 13 12 19 18 7 7 13 4 15-5 2-8 7-12 12-8 5 5-1 14 4 19 8 8 29 1 48-1 40-5 79-2 116 5-38 0-72 3-105 11 33-5 62-5 87-3-41 6-79 17-116 27-22 6-34 5-46 4-8 0-8 5-7 11 2 9-7 12-12 4-3-5-2-13-7-16-5-3-13 6-20 3-6-3-2-9 4-13 6-4 5-7 0-8-8-2-18 1-19-5-1-5 9-6 17-5 5 1 6-3 2-5Z" />
+                        <path d="M48 207c-7-1-15-7-13-12 3-7 13-1 17 5 3 4 1 8-4 7ZM34 244c-4 3-12 3-13-2-1-5 6-7 11-5 4 1 5 4 2 7Z" />
+                        <ellipse cx="56" cy="279" rx="4" ry="2.8" transform="rotate(-28 56 279)" />
+                      </g>
+
+                      <image class="splat-ui-hero__city" href="{{HERO_CITY_IMAGE}}" x="30" y="0" width="900" height="300" mask="url(#splat-city-mask)" />
+
+                      <g fill="#ff2d8a">
+                        <path d="M520 286C580 270 641 258 700 254c34-3 57-13 82-14 15-1 24-5 20-14-4-8-14-14-9-19 6-6 17 7 23 12 8 7 17 6 29-3 20-15 50-34 58-26 9 10-22 29-36 43-9 9-5 14 7 11 14-3 31-14 38-8 10 10-12 19-29 22-12 2-17 7-8 13 9 7 25 8 23 16-3 11-24-3-35-3-12-1-14 7-11 16 3 9-5 11-10 2-6-10-10-16-23-16-19 1-35 7-53 4-19-3-29-7-52-2-52 11-108 15-163 15-20 0-40 1-55-2 14-5 30-8 47-10-11 1-21 1-33 1Z" />
+                        <path d="M920 177c2-8 11-17 16-13 6 5-4 15-10 17-5 1-7-1-6-4ZM926 230c6-4 16-5 17 1 1 6-10 9-15 7-5-1-6-5-2-8ZM909 282c7 1 17 8 13 13-4 6-13-2-16-7-2-4-1-6 3-6Z" />
+                        <ellipse cx="947" cy="154" rx="3.5" ry="2.3" transform="rotate(-42 947 154)" />
+                        <circle cx="939" cy="265" r="2.3" />
+                      </g>
+
+                      <g>
+                        <path d="m458 202 96-2 5 49-107 2Z" fill="#ff2d8a" />
+                        <text x="506" y="239" text-anchor="middle" class="splat-ui-hero__billboard-text">2</text>
+                      </g>
+
+                      <g transform="translate(-16 46) rotate(-6 175 28)">
+                        <path d="m94 2 238 2-3 43-239 5Z" fill="var(--splat-lime-solid, #1edc00)" />
+                        <path d="M89 8h238l-3 15 3 5-3 6 1 20H89l2-18-3-6 3-6Z" class="splat-ui-hero__tape" />
+                        <path d="M89 8h14l1 46H89l2-18-3-6 3-6Z" fill="#ff2d8a" />
+                        <text x="216" y="39" text-anchor="middle" class="splat-ui-hero__tape-text">SPLAT-<tspan class="splat-ui-hero__tape-accent">STREET</tspan></text>
+                      </g>
+
+                      <g class="splat-ui-hero__stickers" transform="translate(0 145)">
+                        <rect x="768" y="98" width="86" height="86" fill="url(#splat-scene-dots-pink)" opacity="0.8" transform="rotate(-8 811 141)" />
+                        <path d="m814 96 8 24 25 2-19 17 6 25-22-13-23 13 7-25-20-17 25-2Z" fill="currentColor" />
+                      </g>
+
+                      <g fill="#ff2d8a">
+                        <path d="M137 120c-6-4-11-14-6-18 6-5 16 4 16 11 0 7-5 10-10 7ZM885 78c-8-3-11-10-7-17 5-10 24-17 28-11 4 7-5 23-12 27-3 2-6 2-9 1Z" />
+                        <ellipse cx="916" cy="44" rx="4.5" ry="2.8" transform="rotate(-40 916 44)" />
+                        <circle cx="873" cy="90" r="2.8" />
+                      </g>
+                      <g fill="var(--splat-lime-solid, #1edc00)">
+                        <path d="M897 303c-4-4-2-11 4-18 6-7 15-13 19-9 5 5-1 20-8 26-5 5-11 5-15 1Z" />
+                        <ellipse cx="924" cy="266" rx="4.5" ry="2.8" transform="rotate(-48 924 266)" />
+                      </g>
+                    </svg>
+                  </span>
+                </div>
+              </span>
+              <span class="WOwLGG_titleGroup">
+                <span>探索未至之境</span>
+                <span class="WOwLGG_previewBadge">预览版</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="demo-thread">
+            <div class="demo-user-msg" data-message-bubble="">帮我检查 <code>--splat-canvas-veil</code> 在日间与夜间画布上的层次效果。</div>
+            <div class="demo-assistant-msg">
+              <p>主内容纸面读取 <code>--dsw-alias-bg-base</code>，下方可透过底层的三色条纹与墨街网点装饰；代码块则保留独立的深色代码岛容器：</p>
+              <div class="demo-code-card">
+                <div class="demo-code-banner" data-code-block-banner="true">
+                  <span>typescript</span>
+                  <button type="button" aria-label="复制">复制</button>
+                </div>
+                <div data-code-block-content="true">
+                  <pre><code><span style="color:var(--shiki-token-keyword,#ff4fa3)">export const</span> <span style="color:var(--shiki-token-constant,#ffd23f)">SPLAT_CANVAS_VEIL</span> = <span style="color:var(--shiki-token-constant,#ffd23f)">0.12</span>; <span style="color:var(--shiki-token-comment,#8b8b83)">// 纸白 0.50 · 均衡 0.12 · 涂地 0.00</span></code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="an3WzG_composerSeat" data-composer-seat="true">
+          <div class="GRgSLq_root">
+            <div class="GRgSLq_card" data-composer-card="true" tabindex="-1">
+              <div class="GRgSLq_input" contenteditable="true" role="textbox" aria-label="给 DeepSeek 发送消息">描述你想要构建的内容，/ 调用指令，@ 文件或对话</div>
+              <div class="GRgSLq_row">
+                <div class="GRgSLq_tools">
+                  <button type="button" class="GRgSLq_add" aria-label="命令">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3.5v9M3.5 8h9" stroke-linecap="round"></path></svg>
+                  </button>
+                  <button type="button">思考</button>
+                </div>
+                <div class="GRgSLq_trailing">
+                  <div class="GRgSLq_standardControls">
+                    <button type="button" class="_9r0rkG_trigger" aria-haspopup="listbox" aria-expanded="false">
+                      <span class="_9r0rkG_triggerLabel">DeepSeek V3.2</span>
+                      <span class="_9r0rkG_triggerEffort">Medium</span>
+                      <svg class="_9r0rkG_chevron" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m4 6 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </button>
+                  </div>
+                  <button type="button" class="GRgSLq_primary" aria-label="发送">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12.5V3.5M4 7.5l4-4 4 4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</body></html>

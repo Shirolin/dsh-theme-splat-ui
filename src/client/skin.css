@@ -1,0 +1,4618 @@
+/* SPLAT-STREET DSH skin. Production selectors are either plugin-owned classes,
+   semantic elements/roles, or a small reviewed DSH data-hook allowlist. */
+
+html[data-dsh-splat-ui-skin] {
+  --splat-ink: #121212;
+  --splat-body: #242420;
+  --splat-muted: #5c5c54;
+  --splat-paper: #ffffff;
+  --splat-paper-warm: #fbfbf4;
+  --splat-cream: #e6f7e4;
+  --splat-cream-deep: #d0eec9;
+  --splat-lime: #1edc00;
+  --splat-lime-hot: #47ee2b;
+  --splat-lime-solid: #1edc00;
+  --splat-lime-dark: #44f028;
+  --splat-lime-rgb: 30, 220, 0;
+  --splat-lime-dark-rgb: 68, 240, 40;
+  --splat-grain-lime-rgb: 28, 212, 0;
+  --splat-preset-sub: #0d3607;
+  --splat-diff-string: #146600;
+  --splat-header-tabs-light: #c4edb9;
+  --splat-header-tab-ink-light: #192b19;
+  --splat-header-tabs-dark: #162a17;
+  --splat-header-tab-ink-dark: #b8dfb8;
+  --splat-header-border-dark: #264527;
+  --splat-boot-ring-light: #bfe0bd;
+  --splat-pink: #ff2d8a;
+  --splat-pink-deep: #ad006c;
+  --splat-border: #121212;
+  --splat-border-strong: #121212;
+  --splat-control-border: #121212;
+  --splat-slider-track: #d2ebd0;
+  --splat-shadow-button: #121212;
+  --splat-shadow-input: #b0d4b0;
+  --splat-shadow-soft: rgba(18, 18, 18, 0.12);
+  --splat-shadow-card: rgba(18, 18, 18, 0.22);
+  --splat-focus: #121212;
+  --splat-canvas-veil: 0.12;
+  --splat-canvas-paper-alpha: clamp(0, calc(var(--splat-canvas-veil, 0.12) * 2), 0.84);
+  --splat-font-family: Nunito, "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --splat-code-family: "SFMono-Regular", "Cascadia Code", "Fira Code", Consolas, "Liberation Mono", monospace;
+  --splat-system-font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  /* Canvas illustration layers are variables so the appearance panel can remove
+     them without rewriting the background stacks (a `none` layer keeps every
+     position/size slot aligned). The boot screen keeps its own direct URLs. */
+  --splat-decor-squids: url("__SPLAT_SQUIDS__");
+  --splat-decor-squids-soft: url("__SPLAT_SQUIDS_SOFT__");
+  --splat-decor-squids-ink: url("__SPLAT_SQUIDS_INK__");
+  --splat-decor-squids-ink-soft: url("__SPLAT_SQUIDS_INK_SOFT__");
+  --splat-decor-squids-faint: url("__SPLAT_SQUIDS_FAINT__");
+  --splat-decor-squids-ink-faint: url("__SPLAT_SQUIDS_INK_FAINT__");
+  --splat-decor-squid-watermark: url("__SPLAT_SQUID_WATERMARK__");
+  --splat-decor-splash-pink: url("__SPLAT_SPLASH_PINK__");
+  --splat-decor-pour: url("__SPLAT_POUR__");
+  --splat-decor-corner-left: url("__SPLAT_CORNER_LEFT__");
+  --splat-decor-splash-lime: url("__SPLAT_SPLASH_LIME__");
+  --splat-decor-halftone: url("__SPLAT_HALFTONE__");
+  --splat-decor-halftone-ink: url("__SPLAT_HALFTONE_INK__");
+  --splat-decor-barcode: url("__SPLAT_BARCODE__");
+  --splat-decor-sticker: url("__SPLAT_STICKER__");
+  --splat-decor-arena: url("__SPLAT_ARENA__");
+  --splat-decor-settings-selected-ink: url("__SPLAT_SETTINGS_SELECTED_INK__");
+  --splat-boot-squid: url("__SPLAT_BOOT_SQUID__");
+  --splat-boot-gauge: url("__SPLAT_BOOT_GAUGE__");
+  --splat-paper-tone: url("__SPLAT_TONE__");
+  --splat-ink-drip: url("__SPLAT_DRIP__");
+  --splat-brush-pink: url("__SPLAT_BRUSH_PINK__");
+  --splat-brush-lime: url("__SPLAT_BRUSH_LIME__");
+  --splat-night-grain-white: radial-gradient(circle, rgba(255, 255, 255, 0.14) 1.1px, transparent 1.4px);
+  --splat-night-grain-lime: radial-gradient(circle, rgba(var(--splat-grain-lime-rgb), 0.16) 1.2px, transparent 1.5px);
+  --splat-band-lime: #a9ee9b;
+  --splat-band-pink: #fabbd6;
+  --splat-band-cream: #f7f6ec;
+  --splat-preview-lime: linear-gradient(171deg, var(--splat-band-lime) 0 30%, transparent 30.3%);
+  --splat-preview-pink: linear-gradient(166deg, transparent 0 67%, var(--splat-band-pink) 67.3% 100%);
+  --splat-sidebar-fill: rgba(36, 36, 36, 0.98);
+  --splat-corner-left-inset: 260px;
+  --splat-corner-grain-inset: 280px;
+  /* Shared corner geometry keeps both palettes in register. */
+  --splat-corner-images:
+    var(--splat-decor-sticker, none), var(--splat-decor-pour, none), var(--splat-decor-corner-left, none), var(--splat-decor-halftone-ink, none),
+    var(--splat-decor-halftone-ink, none), var(--splat-decor-halftone-ink, none);
+  --splat-corner-position:
+    right -12px bottom 14px,
+    right -12px top -18px,
+    left var(--splat-corner-left-inset) bottom -20px,
+    left var(--splat-corner-grain-inset) top -40px,
+    right -35px top 35px,
+    left var(--splat-corner-left-inset) bottom -36px;
+  --splat-corner-size: clamp(210px, 18vw, 290px) auto, clamp(280px, 27vw, 430px) auto, clamp(300px, 25vw, 410px) auto, 220px 220px, 260px 260px, 300px 300px;
+  --splat-corner-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  /* The day canvas is a three-band turf field: pale lime at the top, cream in
+     the middle, pink at the bottom, all carrying the same squid/sparkle screen.
+     The bands live in one SVG so their diagonal edges and per-band ink tint stay
+     in register at every size. Splashes, halftone and the sticker sit above it. */
+  --splat-canvas-image: var(--splat-corner-images), var(--splat-decor-arena, none), linear-gradient(180deg, #fbfbf4 0%, #f3f4e9 100%);
+  --splat-canvas-position: var(--splat-corner-position), center, 0 0;
+  --splat-canvas-size: var(--splat-corner-size), cover, auto;
+  --splat-canvas-repeat: var(--splat-corner-repeat), no-repeat, no-repeat;
+  background-color: var(--splat-band-cream);
+  background-image: var(--splat-canvas-image);
+  background-position: var(--splat-canvas-position);
+  background-size: var(--splat-canvas-size);
+  background-repeat: var(--splat-canvas-repeat);
+  background-attachment: fixed;
+}
+
+/* The collapsed sidebar keeps its mark and removes its name slot. */
+html[data-dsh-splat-ui-skin]:has(.splat-ui-brand__mark):not(:has(.splat-ui-brand__name)) {
+  --splat-corner-left-inset: 18px;
+  --splat-corner-grain-inset: 36px;
+}
+
+html[data-dsh-splat-ui-skin] body {
+  --dsw-alias-bg-base: rgba(251, 251, 244, var(--splat-canvas-paper-alpha, 0.24)) !important;
+  --dsw-specific-sidebar-fill: var(--splat-sidebar-fill) !important;
+  isolation: isolate;
+  color: var(--splat-body);
+  background-color: var(--splat-band-cream);
+  background-image: var(--splat-canvas-image);
+  background-position: var(--splat-canvas-position);
+  background-size: var(--splat-canvas-size);
+  background-repeat: var(--splat-canvas-repeat);
+  background-attachment: fixed;
+  font-family: var(--splat-font-family);
+  font-weight: 500;
+}
+
+/* Windows parity block — the only platform branch in the theme. DSH's Windows
+   shell paints the outer AppFrame with --dsw-specific-sidebar-fill and gives the
+   content column a 16px top-left radius; macOS/web do neither. Clear the shell
+   back to the canvas and flatten that shell-only corner so the themed surface is
+   continuous. DSH declares the token on .frame itself
+   ([data-windows-titlebar] .frame { --dsh-windows-content-radius: 16px }), so a
+   value on <html> is shadowed; it has to be set on the frame element.
+   Workaround for deepseek-harness discussion #9490.
+   The 40px caption strip is a native titleBarOverlay: the Desktop host reads its
+   background from --dsw-specific-sidebar-fill and its symbols from
+   --dsw-alias-label-primary, both on <body>. The light palette keeps an ink-dark
+   caption, so the ink label would hide the window buttons; feed the body the
+   light ink and restore the day palette for #root and body-portaled dialogs. */
+html[data-windows-titlebar] #root > div > div {
+  --dsh-windows-content-radius: 0px;
+  background: transparent !important;
+}
+
+html[data-windows-titlebar] body:not([data-ds-dark-theme]) {
+  --dsw-alias-label-primary: #f7f7ef !important;
+  --dsw-alias-label-secondary: #e7e7de !important;
+}
+
+/* Dialogs and menus portal into <body>; only the caption probe and the Windows
+   menubar live directly there and need the light labels. */
+html[data-windows-titlebar] body:not([data-ds-dark-theme]) #root,
+html[data-windows-titlebar] body:not([data-ds-dark-theme]) > div:not([data-windows-menu]) {
+  --dsw-alias-label-primary: var(--splat-ink) !important;
+  --dsw-alias-label-secondary: var(--splat-body) !important;
+}
+
+html[data-windows-titlebar] body:not([data-ds-dark-theme]) > div[data-windows-menu] {
+  --dsw-alias-interactive-bg-hover: rgba(255, 255, 255, 0.12) !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] {
+  --splat-ink: #f7f7ef;
+  --splat-body: #e7e7de;
+  --splat-muted: #b6b6ab;
+  --splat-paper: #232321;
+  --splat-paper-warm: #191917;
+  --splat-cream: #292927;
+  --splat-cream-deep: #141413;
+  --splat-lime: #44f028;
+  --splat-lime-hot: #6ef757;
+  --splat-pink: #ff2d8a;
+  --splat-pink-deep: #ff6bb0;
+  --splat-border: rgba(242, 242, 232, 0.16);
+  --splat-border-strong: rgba(242, 242, 232, 0.3);
+  --splat-control-border: rgba(242, 242, 232, 0.24);
+  --splat-slider-track: #3a3a36;
+  --splat-shadow-button: #050505;
+  --splat-shadow-input: #050505;
+  --splat-shadow-soft: rgba(0, 0, 0, 0.4);
+  --splat-shadow-card: rgba(0, 0, 0, 0.6);
+  --splat-focus: #44f028;
+  --splat-paper-tone: url("__SPLAT_TONE_NIGHT__");
+  /* Dark paper follows the slider; 0.12 lands on the shipped look, while "turf"
+     lets more of the night plaza show through. */
+  --dsw-alias-bg-base: rgba(27, 27, 25, clamp(0.4, calc(0.5 + (var(--splat-canvas-veil, 0.12) - 0.12) * 0.6), 0.86)) !important;
+  --splat-sidebar-fill: rgba(13, 14, 13, 0.98);
+  --dsw-specific-sidebar-fill: var(--splat-sidebar-fill) !important;
+  --splat-canvas-image:
+    var(--splat-corner-images), var(--splat-decor-squids-faint, none), var(--splat-night-grain-white, none), var(--splat-night-grain-lime, none),
+    linear-gradient(180deg, #232321 0%, #1b1b19 54%, #201a1e 100%);
+  --splat-canvas-position: var(--splat-corner-position), 0 0, 0 0, 14px 14px, 0 0;
+  --splat-canvas-size: var(--splat-corner-size), 600px 600px, 22px 22px, 44px 44px, auto;
+  --splat-canvas-repeat: var(--splat-corner-repeat), repeat, repeat, repeat, no-repeat;
+  color: var(--splat-body);
+  background-color: #1b1b19;
+  background-image: var(--splat-canvas-image);
+  background-position: var(--splat-canvas-position);
+  background-size: var(--splat-canvas-size);
+  background-repeat: var(--splat-canvas-repeat);
+  background-attachment: fixed;
+}
+
+/* Ink green preset overrides (`joycon` uses the root defaults above).
+   Placed before `[data-splat-decor="off"]` so disabling decor keeps `none`. */
+html[data-dsh-splat-ui-skin][data-splat-green="neon"] {
+  --splat-cream: #eef7e2;
+  --splat-cream-deep: #ddefc7;
+  --splat-lime: #9ae528;
+  --splat-lime-hot: #b1f24b;
+  --splat-lime-solid: #9ae528;
+  --splat-lime-dark: #a8f03a;
+  --splat-lime-rgb: 154, 229, 40;
+  --splat-lime-dark-rgb: 168, 240, 58;
+  --splat-grain-lime-rgb: 146, 224, 34;
+  --splat-preset-sub: #1f3808;
+  --splat-diff-string: #2d6900;
+  --splat-header-tabs-light: #d8f0b4;
+  --splat-header-tab-ink-light: #212d1d;
+  --splat-header-tabs-dark: #1e2b19;
+  --splat-header-tab-ink-dark: #c6dfb9;
+  --splat-header-border-dark: #31462b;
+  --splat-boot-ring-light: #cce0be;
+  --splat-slider-track: #dcecd0;
+  --splat-shadow-input: #bed6b2;
+  --splat-band-lime: #cdeea0;
+  --splat-decor-pour: url("__SPLAT_POUR_NEON__");
+  --splat-decor-corner-left: url("__SPLAT_CORNER_LEFT_NEON__");
+  --splat-decor-splash-lime: url("__SPLAT_SPLASH_LIME_NEON__");
+  --splat-decor-splash-pink: url("__SPLAT_SPLASH_PINK_NEON__");
+  --splat-decor-barcode: url("__SPLAT_BARCODE_NEON__");
+  --splat-decor-sticker: url("__SPLAT_STICKER_NEON__");
+  --splat-decor-arena: url("__SPLAT_ARENA_NEON__");
+  --splat-decor-settings-selected-ink: url("__SPLAT_SETTINGS_SELECTED_INK_NEON__");
+  --splat-boot-squid: url("__SPLAT_BOOT_SQUID_NEON__");
+  --splat-boot-gauge: url("__SPLAT_BOOT_GAUGE_NEON__");
+  --splat-brush-lime: url("__SPLAT_BRUSH_LIME_NEON__");
+}
+
+html[data-dsh-splat-ui-skin][data-splat-green="neon"] body[data-ds-dark-theme] {
+  --splat-lime: #a8f03a;
+  --splat-lime-hot: #bef763;
+  --splat-focus: #a8f03a;
+}
+
+html[data-dsh-splat-ui-skin][data-splat-green="lime"] {
+  --splat-cream: #f4f7e2;
+  --splat-cream-deep: #e8eecd;
+  --splat-lime: #d3f510;
+  --splat-lime-hot: #e2ff3d;
+  --splat-lime-solid: #d3f510;
+  --splat-lime-dark: #d7ff3a;
+  --splat-lime-rgb: 211, 245, 16;
+  --splat-lime-dark-rgb: 215, 255, 58;
+  --splat-grain-lime-rgb: 201, 242, 39;
+  --splat-preset-sub: #2f3a0a;
+  --splat-diff-string: #3f6b00;
+  --splat-header-tabs-light: #e8f3b6;
+  --splat-header-tab-ink-light: #292d20;
+  --splat-header-tabs-dark: #252b1a;
+  --splat-header-tab-ink-dark: #d5dfb9;
+  --splat-header-border-dark: #3e462d;
+  --splat-boot-ring-light: #d9dfc0;
+  --splat-slider-track: #e7ecd2;
+  --splat-shadow-input: #cfd6b4;
+  --splat-band-lime: #e0f583;
+  --splat-decor-pour: url("__SPLAT_POUR_LIME__");
+  --splat-decor-corner-left: url("__SPLAT_CORNER_LEFT_LIME__");
+  --splat-decor-splash-lime: url("__SPLAT_SPLASH_LIME_LIME__");
+  --splat-decor-splash-pink: url("__SPLAT_SPLASH_PINK_LIME__");
+  --splat-decor-barcode: url("__SPLAT_BARCODE_LIME__");
+  --splat-decor-sticker: url("__SPLAT_STICKER_LIME__");
+  --splat-decor-arena: url("__SPLAT_ARENA_LIME__");
+  --splat-decor-settings-selected-ink: url("__SPLAT_SETTINGS_SELECTED_INK_LIME__");
+  --splat-boot-squid: url("__SPLAT_BOOT_SQUID_LIME__");
+  --splat-boot-gauge: url("__SPLAT_BOOT_GAUGE_LIME__");
+  --splat-brush-lime: url("__SPLAT_BRUSH_LIME_LIME__");
+}
+
+html[data-dsh-splat-ui-skin][data-splat-green="lime"] body[data-ds-dark-theme] {
+  --splat-lime: #d7ff3a;
+  --splat-lime-hot: #e8ff72;
+  --splat-focus: #d7ff3a;
+}
+
+/* Appearance preferences owned by the skin. These are plugin-owned root
+   attributes, not DSH seams, and each rule only removes a decorative layer or
+   swaps a font stack — never geometry, spacing or DSH-owned state. */
+html[data-dsh-splat-ui-skin][data-splat-decor="off"] {
+  --splat-decor-squids: none;
+  --splat-decor-squids-soft: none;
+  --splat-decor-squids-ink: none;
+  --splat-decor-squids-ink-soft: none;
+  --splat-decor-squids-faint: none;
+  --splat-decor-squids-ink-faint: none;
+  --splat-decor-squid-watermark: none;
+  --splat-decor-splash-pink: none;
+  --splat-decor-pour: none;
+  --splat-decor-corner-left: none;
+  --splat-decor-splash-lime: none;
+  --splat-decor-barcode: none;
+  --splat-decor-sticker: none;
+  --splat-decor-arena: none;
+  --splat-preview-lime: none;
+  --splat-preview-pink: none;
+}
+
+html[data-dsh-splat-ui-skin][data-splat-grain="off"] {
+  --splat-paper-tone: none;
+  --splat-decor-halftone: none;
+  --splat-decor-halftone-ink: none;
+  --splat-night-grain-white: none;
+  --splat-night-grain-lime: none;
+}
+
+@media (max-width: 1100px) {
+  html[data-dsh-splat-ui-skin],
+  html[data-dsh-splat-ui-skin] body {
+    --splat-decor-sticker: none;
+  }
+}
+
+@media (max-width: 720px) {
+  html[data-dsh-splat-ui-skin],
+  html[data-dsh-splat-ui-skin] body {
+    --splat-corner-position:
+      right -12px bottom 14px, right -40px top -24px, left -38px bottom -30px, left -70px top -70px, right -65px top -5px, left -55px bottom -45px;
+    --splat-corner-size: 210px auto, 230px auto, 240px auto, 160px 160px, 180px 180px, 210px 210px;
+  }
+}
+
+html[data-dsh-splat-ui-skin][data-splat-font="system"] {
+  --splat-font-family: var(--splat-system-font-family);
+}
+
+/* Windows caption and sidebar share --dsw-specific-sidebar-fill; both are the
+   same near-black ink slab, so the native strip stays continuous. */
+html[data-windows-titlebar] #root {
+  --dsw-specific-sidebar-fill: var(--splat-sidebar-fill) !important;
+}
+
+html[data-windows-titlebar] div:has(> nav[aria-label]) {
+  --dsw-specific-sidebar-fill: var(--splat-sidebar-fill) !important;
+  background-color: var(--splat-sidebar-fill) !important;
+}
+
+/* The split open-target control uses DSH's faint border-l4 for both its outer
+   boundary and the clickable split. On the neon plaza that border disappears, so
+   strengthen only this functional boundary. */
+html[data-dsh-splat-ui-skin] body:not([data-ds-dark-theme]) [data-open-target] {
+  border-color: var(--splat-control-border) !important;
+}
+
+html[data-dsh-splat-ui-skin] body:not([data-ds-dark-theme]) [data-open-target] > button[aria-haspopup="menu"] {
+  border-left-color: var(--splat-control-border) !important;
+}
+
+/* The plugin manager uses DSH's standard switch role. Paint the track lime when
+   on and keep the ink rim so the control survives the bright plaza. */
+html[data-dsh-splat-ui-skin] button[role="switch"] {
+  background-color: #e9e6d4;
+  box-shadow:
+    inset 0 0 0 1.5px var(--splat-control-border),
+    0 1px 2px rgba(18, 18, 18, 0.18);
+}
+
+html[data-dsh-splat-ui-skin] button[role="switch"][aria-checked="true"] {
+  background-color: var(--splat-lime);
+  box-shadow:
+    inset 0 0 0 1.5px var(--splat-control-border),
+    0 1px 2px rgba(18, 18, 18, 0.22);
+}
+
+html[data-dsh-splat-ui-skin] button[role="switch"] > span {
+  background-color: #ffffff;
+  box-shadow:
+    inset 0 0 0 1px var(--splat-control-border),
+    0 1px 2px rgba(18, 18, 18, 0.24);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] button[role="switch"] {
+  background-color: #3a3a36;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(242, 242, 232, 0.18),
+    0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] button[role="switch"][aria-checked="true"] {
+  background-color: var(--splat-lime);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(18, 18, 18, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] button[role="switch"] > span {
+  background-color: #f4f4ec;
+  box-shadow:
+    inset 0 0 0 1px rgba(18, 18, 18, 0.24),
+    0 1px 2px rgba(0, 0, 0, 0.42);
+}
+
+/* Switches ship with a fixed track fill, so they need their own hover lift. */
+html[data-dsh-splat-ui-skin] body:not([data-ds-dark-theme]) button[role="switch"]:not([aria-checked="true"]):hover:not(:disabled) {
+  background-color: #f3f0e0;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(18, 18, 18, 0.52),
+    0 1px 2px rgba(18, 18, 18, 0.18);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] button[role="switch"]:not([aria-checked="true"]):hover:not(:disabled) {
+  background-color: #45453f;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(242, 242, 232, 0.32),
+    0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+html[data-dsh-splat-ui-skin] button[role="switch"][aria-checked="true"]:hover:not(:disabled) {
+  background-color: var(--splat-lime-hot);
+}
+
+/* DSH renders the boot screen before the app shell. The two data attributes are
+   written by that renderer; styling only its root, card, wordmark, status and
+   progress seal leaves failure markup and the live --dsh-boot-arc untouched. */
+html[data-dsh-splat-ui-skin] [data-dsh-boot] {
+  --splat-boot-paper: #fdfdf6;
+  --splat-boot-ink: #121212;
+  --splat-boot-muted: #5c5c54;
+  --splat-boot-border: #121212;
+  --splat-boot-ring: var(--splat-boot-ring-light);
+  --splat-boot-accent: var(--splat-lime);
+  --splat-boot-shadow: #121212;
+  --splat-boot-scrim: rgba(253, 253, 246, 0.92);
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 22px;
+  overflow-x: auto;
+  overflow-y: auto;
+  place-items: safe center;
+  color: var(--splat-boot-muted);
+  background-color: #f6f7ee;
+  background-image:
+    var(--splat-decor-splash-pink, none), var(--splat-decor-splash-pink, none), var(--splat-decor-splash-lime, none), var(--splat-decor-halftone, none),
+    var(--splat-decor-squids-ink-faint, none), radial-gradient(circle, rgba(18, 18, 18, 0.08) 1.1px, transparent 1.4px),
+    linear-gradient(180deg, #fbfbf4 0%, #f3f4e9 100%);
+  background-position:
+    right top,
+    left bottom,
+    right bottom,
+    left top,
+    0 0,
+    0 0,
+    0 0;
+  background-size:
+    min(720px, 82vw) auto,
+    min(560px, 70vw) auto,
+    min(430px, 56vw) auto,
+    240px 240px,
+    600px 600px,
+    26px 26px,
+    auto;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat, no-repeat;
+  font-family: var(--splat-font-family);
+}
+
+/* The failure page keeps its neutral paper surface; the loading branch below
+   overrides it only while the public spinner hook is present. */
+html[data-dsh-splat-ui-skin] [data-dsh-boot] > * {
+  position: relative;
+  box-sizing: border-box;
+  width: min(calc(100vw - 44px), 980px);
+  margin: 24px 0;
+  padding: clamp(20px, 4vw, 36px);
+  border: 2px solid var(--splat-boot-border);
+  border-radius: 24px;
+  background-color: var(--splat-boot-scrim);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.6),
+    0 8px 0 rgba(18, 18, 18, 0.18);
+}
+
+/* DSH's spinner is the stable public loading marker. Set the style container
+   once here instead of repeating :has() on every card, wordmark and pseudo
+   rule; streaming text then invalidates one ancestor check instead of ten. */
+html[data-dsh-splat-ui-skin] [data-dsh-boot]:has([data-dsh-boot-spinner]) {
+  --splat-boot-loading: 1;
+  container-name: splat-boot;
+  container-type: style;
+}
+
+@container splat-boot style(--splat-boot-loading: 1) {
+  html[data-dsh-splat-ui-skin] [data-dsh-boot] > * {
+    position: relative;
+    box-sizing: border-box;
+    width: min(calc(100vw - 44px), 352px);
+    max-width: 352px;
+    overflow: visible;
+    gap: 18px;
+    margin: 0;
+    padding: 46px 30px 40px;
+    border: 3px solid var(--splat-boot-border);
+    border-radius: 20px;
+    color: var(--splat-boot-muted);
+    background-color: var(--splat-boot-paper);
+    background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.5), transparent 48%), url("__SPLAT_TONE__");
+    background-size:
+      auto,
+      160px 160px;
+    box-shadow:
+      inset 0 2px rgba(255, 255, 255, 0.8),
+      0 8px 0 var(--splat-boot-shadow),
+      0 20px 44px rgba(18, 18, 18, 0.22);
+    transform: rotate(-0.8deg);
+    animation: splat-ui-boot-card-in 420ms cubic-bezier(0.22, 0.82, 0.3, 1) both;
+  }
+
+  html[data-dsh-splat-ui-skin] [data-dsh-boot] > *::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: -34px;
+    left: 50%;
+    box-sizing: border-box;
+    width: 68px;
+    height: 68px;
+    border: 3px solid var(--splat-boot-border);
+    border-radius: 50%;
+    background-color: var(--splat-boot-paper);
+    background-image: var(--splat-boot-squid);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 54px 54px;
+    box-shadow: 0 4px 0 rgba(18, 18, 18, 0.85);
+    transform: translateX(-50%) rotate(4deg);
+  }
+
+  html[data-dsh-splat-ui-skin] [data-dsh-boot] > *::after {
+    content: "SPLAT-STREET / TURF WAR SYSTEM";
+    position: absolute;
+    right: 22px;
+    bottom: 12px;
+    left: 22px;
+    padding-top: 8px;
+    border-top: 2px dashed rgba(18, 18, 18, 0.28);
+    color: rgba(18, 18, 18, 0.56);
+    font-size: 8px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-align: center;
+  }
+
+  html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-dsh-boot] > * {
+    background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 52%), url("__SPLAT_TONE__");
+    box-shadow:
+      inset 0 2px rgba(255, 255, 255, 0.06),
+      0 8px 0 #000000,
+      0 22px 56px rgba(0, 0, 0, 0.55);
+  }
+
+  /* The loading card has one non-spinner label before the seal and one hint
+     after it. Keep the original text hidden and its pseudo-content decorated
+     without asking the engine to re-evaluate previous-sibling :has(). */
+  html[data-dsh-splat-ui-skin] [data-dsh-boot] > * > :not([data-dsh-boot-spinner]):not([data-dsh-boot-spinner] + *) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    font-size: 0;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  html[data-dsh-splat-ui-skin] [data-dsh-boot] > * > :not([data-dsh-boot-spinner]):not([data-dsh-boot-spinner] + *)::before {
+    content: "TURF WAR / DSH";
+    color: rgba(18, 18, 18, 0.6);
+    font-size: 8px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.24em;
+  }
+
+  html[data-dsh-splat-ui-skin] [data-dsh-boot] > * > :not([data-dsh-boot-spinner]):not([data-dsh-boot-spinner] + *)::after {
+    content: "SPLAT-STREET";
+    color: var(--splat-boot-ink);
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-shadow:
+      2px 2px 0 var(--splat-lime),
+      4px 4px 0 rgba(18, 18, 18, 0.14);
+  }
+
+  html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-dsh-boot] > * > :not([data-dsh-boot-spinner]):not([data-dsh-boot-spinner] + *)::before {
+    color: rgba(242, 242, 232, 0.62);
+  }
+
+  html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-dsh-boot] > *::after {
+    border-top-color: rgba(242, 242, 232, 0.24);
+    color: rgba(242, 242, 232, 0.55);
+  }
+}
+
+html[data-dsh-splat-ui-skin] [data-dsh-boot-spinner] {
+  position: relative;
+  box-sizing: border-box;
+  width: 94px;
+  height: 94px;
+  margin: 6px 0 4px;
+  border: 2.5px solid var(--splat-boot-border);
+  border-radius: 50%;
+  clip-path: circle(50%);
+  background-color: #141413;
+  background-image: conic-gradient(from 0deg, var(--splat-boot-accent) 0 var(--dsh-boot-arc, 72deg), #2e302c var(--dsh-boot-arc, 72deg) 360deg);
+  box-shadow: 0 4px 0 var(--splat-boot-shadow);
+  animation: none;
+  transform: none;
+}
+
+html[data-dsh-splat-ui-skin] [data-dsh-boot-spinner]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 0;
+  border-radius: 50%;
+  clip-path: circle(50%);
+  background-color: transparent;
+  background-image: var(--splat-boot-gauge);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+html[data-dsh-splat-ui-skin] [data-dsh-boot-spinner] + * {
+  margin-top: -2px;
+  font-size: 0;
+  line-height: 1;
+  text-align: center;
+}
+
+html[data-dsh-splat-ui-skin] [data-dsh-boot-spinner] + *::after {
+  content: "正在涂满战场…";
+  color: var(--splat-boot-muted);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-dsh-boot] {
+  --splat-boot-paper: #1d1d1b;
+  --splat-boot-ink: #f7f7ef;
+  --splat-boot-muted: #b6b6ab;
+  --splat-boot-border: #f2f2e8;
+  --splat-boot-ring: #3a3a34;
+  --splat-boot-accent: var(--splat-lime);
+  --splat-boot-shadow: #000000;
+  --splat-boot-scrim: rgba(17, 17, 16, 0.92);
+  background-color: #101010;
+  background-image:
+    var(--splat-decor-splash-pink, none), var(--splat-decor-splash-pink, none), var(--splat-decor-splash-lime, none),
+    radial-gradient(circle, rgba(255, 255, 255, 0.14) 1.1px, transparent 1.4px),
+    radial-gradient(circle, rgba(var(--splat-grain-lime-rgb), 0.16) 1.2px, transparent 1.5px), var(--splat-decor-squids-faint, none),
+    linear-gradient(180deg, #171716 0%, #101010 54%, #181016 100%);
+  background-position:
+    right top,
+    left bottom,
+    right bottom,
+    0 0,
+    14px 14px,
+    0 0,
+    0 0;
+  background-size:
+    min(720px, 82vw) auto,
+    min(560px, 70vw) auto,
+    min(430px, 56vw) auto,
+    22px 22px,
+    44px 44px,
+    600px 600px,
+    auto;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat, repeat, no-repeat;
+}
+
+@keyframes splat-ui-boot-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) rotate(-0.8deg) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-0.8deg) scale(1);
+  }
+}
+
+html[data-dsh-splat-ui-skin] :where(button, input, textarea, select, [role="button"]),
+html[data-dsh-splat-ui-skin] :where(input, textarea, [contenteditable="true"], select) {
+  font-family: inherit;
+  transition:
+    color 160ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 160ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 160ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 160ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 160ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Popover rows (command palette, dropdowns, lists) take the lime interaction
+   tint. The generic --dsw-alias-interactive-bg-hover is the sidebar wash. */
+html[data-dsh-splat-ui-skin] :where([role="option"], [role="menuitem"], [role="menuitemradio"]):hover:not(:disabled) {
+  background: var(--dsw-alias-interactive-bg-hover-accent) !important;
+  color: var(--splat-ink) !important;
+}
+
+/* A selected menu row is a full turf slab, not the pale hover wash. */
+html[data-dsh-splat-ui-skin] :where([role="option"], [role="menuitem"], [role="menuitemradio"])[aria-selected="true"]:not(:disabled),
+html[data-dsh-splat-ui-skin] [data-menu-material] [role="menuitemradio"][aria-checked="true"] {
+  background: var(--splat-lime) !important;
+  color: #121212 !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-trigger-menu] [role="option"][aria-selected="true"] :where(span, svg) {
+  color: #121212 !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-menu-material] [role="menuitemradio"][aria-checked="true"] :where(span, svg) {
+  color: #121212 !important;
+}
+
+html[data-dsh-splat-ui-skin] [role="dialog"] button[aria-current="true"],
+html[data-dsh-splat-ui-skin] [role="dialog"] button[aria-current="true"] :where(span, svg) {
+  color: #121212 !important;
+}
+
+/* Only selected/current items take lime ink; hover stays a charcoal wash. */
+html[data-dsh-splat-ui-skin] :where([role="treeitem"][aria-selected="true"], [aria-current="page"]) {
+  background-color: var(--splat-lime) !important;
+  color: #121212 !important;
+  transform: rotate(-0.35deg);
+}
+
+/* The tail's 32px-high inlet matches DSH's session rows and overlaps the
+   flexible bar; only the bar grows with the sidebar width. */
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) [role="treeitem"][aria-selected="true"] {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  width: 100%;
+  padding-inline: 10px 44px;
+  border-radius: 19px 0 0 19px !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(to right, var(--splat-lime) calc(100% - 76px), transparent calc(100% - 76px));
+  transform: none;
+  box-shadow: none;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) [role="treeitem"][aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  right: 0;
+  width: 104px;
+  height: 58px;
+  transform: translateY(-50%);
+  background: var(--splat-lime);
+  mask: url("__SPLAT_SIDEBAR_SPLAT__") center / contain no-repeat;
+  pointer-events: none;
+}
+
+/* DSH paints selected-row metadata with label-tertiary, which the sidebar's
+   dark token scope would otherwise turn pale on the lime slab. */
+html[data-dsh-splat-ui-skin] :where([role="treeitem"][aria-selected="true"], [aria-current="page"]) :where(span, svg) {
+  color: #121212 !important;
+}
+
+/* The host marks clipped trigger lists. Fade only those lists, so a final
+   description stays legible when every result already fits. */
+html[data-dsh-splat-ui-skin] [data-trigger-menu][data-overflow-below]::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  height: 16px;
+  border-radius: 0 0 16px 16px;
+  background: linear-gradient(to bottom, transparent, var(--dsw-specific-menu, #ffffff) 80%);
+  pointer-events: none;
+}
+
+/* The trigger panel is anchored inside the composer. Its percentage ceiling
+   keeps the same edges on narrow screens; long descriptions never set width. */
+html[data-dsh-splat-ui-skin] [data-trigger-menu] {
+  box-sizing: border-box;
+  inline-size: min(560px, 100%) !important;
+  max-inline-size: calc(100vw - 24px) !important;
+  padding: 8px !important;
+  border-radius: 18px !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-trigger-menu] :where([role="option"], [role="menuitem"], [role="menuitemradio"]) {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  width: auto;
+  min-width: 0;
+  min-height: 42px;
+  border-radius: 12px;
+  padding: 7px 10px !important;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+html[data-dsh-splat-ui-skin] [data-trigger-menu] :where(h2, h3, [role="heading"]) {
+  margin: 0;
+  padding: 2px 10px 4px;
+  color: var(--splat-muted);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 18px;
+}
+
+html[data-dsh-splat-ui-skin] [data-trigger-menu] [role="group"] {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+html[data-dsh-splat-ui-skin] [data-trigger-menu] [role="group"] + [role="group"] {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid color-mix(in srgb, var(--splat-ink) 14%, transparent);
+}
+
+html[data-dsh-splat-ui-skin] [data-trigger-menu] [role="option"] > span {
+  min-width: 0;
+}
+
+/* Command rows carry an aria-hidden icon, name, alias, then an optional
+   description. Skill rows have only a name and description. */
+html[data-dsh-splat-ui-skin] [data-trigger-menu] [role="option"] > [aria-hidden="true"] + span + span + span,
+html[data-dsh-splat-ui-skin] [data-trigger-menu] [role="option"]:not(:has(> [aria-hidden="true"])) > span + span {
+  flex: 1 1 0;
+  margin-left: auto;
+  max-inline-size: none;
+  color: var(--splat-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+html[data-dsh-splat-ui-skin] [data-trigger-menu] [role="option"]:not(:has(> [aria-hidden="true"])) {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+}
+
+html[data-dsh-splat-ui-skin] [data-trigger-menu] [role="option"]:not(:has(> [aria-hidden="true"])) > span:has(+ span) {
+  max-width: none;
+  font-weight: 800;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+html[data-dsh-splat-ui-skin] [data-trigger-menu] [role="option"]:not(:has(> [aria-hidden="true"])) > span + span {
+  flex: none;
+  margin-left: 0;
+}
+
+html[data-dsh-splat-ui-skin]
+  :where([data-composer-card], [role="dialog"], [role="menu"])
+  :where(input:not([type="checkbox"]):not([type="radio"]), textarea, select, [contenteditable="true"]) {
+  border: 2px solid var(--splat-border-strong);
+  border-radius: 14px;
+  background: var(--splat-paper);
+  color: var(--splat-ink);
+  box-shadow: 0 3px 0 var(--splat-shadow-input);
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  :where(input, textarea, select, [contenteditable="true"]):not([role="menu"] *):not([role="listbox"] *):not([data-trigger-menu] *) {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* DSH composes most dialog fields as a shell that already draws the box:
+   span > icon + input. Painting the inner input as well produced a second box
+   inside the shell, so the shell carries the field look and the input inside it
+   stays transparent. */
+html[data-dsh-splat-ui-skin] :where([role="dialog"], [role="menu"]) span:has(> input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"])) {
+  box-sizing: border-box;
+  border: 2px solid var(--splat-border-strong);
+  border-radius: 14px;
+  background: var(--splat-paper);
+  box-shadow: 0 3px 0 var(--splat-shadow-input);
+}
+
+html[data-dsh-splat-ui-skin] :where([role="dialog"], [role="menu"]) span:has(> input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"])) > input {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  outline: none !important;
+}
+
+html[data-dsh-splat-ui-skin] :where([role="dialog"], [role="menu"]) span:has(> input:focus-visible) {
+  outline: none;
+  border-color: var(--splat-focus);
+  box-shadow:
+    0 0 0 2px rgba(var(--splat-lime-dark-rgb), 0.28),
+    0 2px 0 var(--splat-shadow-input) !important;
+}
+
+/* DSH's shortcut reference uses a standard role=search wrapper around the
+   input rather than the span>input shape handled above. Let the wrapper carry
+   the field surface so the global dialog input rule cannot paint a second box. */
+html[data-dsh-splat-ui-skin] :where([role="dialog"], [role="menu"]) [role="search"] {
+  box-sizing: border-box;
+  border: 2px solid var(--splat-border-strong) !important;
+  border-radius: 12px !important;
+  background: var(--splat-paper) !important;
+  box-shadow: 0 2px 0 var(--splat-shadow-input);
+}
+
+html[data-dsh-splat-ui-skin] :where([role="dialog"], [role="menu"]) [role="search"] > input[type="search"] {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  outline: none !important;
+}
+
+html[data-dsh-splat-ui-skin] :where([role="dialog"], [role="menu"]) [role="search"]:focus-within {
+  border-color: var(--splat-focus) !important;
+  outline: none;
+  box-shadow:
+    0 0 0 2px rgba(var(--splat-lime-dark-rgb), 0.28),
+    0 2px 0 var(--splat-shadow-input);
+}
+
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  :where([data-composer-card], [role="dialog"], [role="menu"])
+  :where(input:not([type="checkbox"]):not([type="radio"]), textarea, select, [contenteditable="true"]) {
+  border-width: 1px;
+  background: #282826;
+  color: var(--splat-ink);
+  box-shadow: 0 2px 0 #050505;
+}
+
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  :where([role="dialog"], [role="menu"])
+  span:has(> input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"])) {
+  border-width: 1px;
+  background: #282826;
+  box-shadow: 0 2px 0 #050505;
+}
+
+html[data-dsh-splat-ui-skin] :where(input, textarea, select, [contenteditable="true"])::placeholder {
+  color: var(--splat-muted);
+  opacity: 1;
+}
+
+/* DSH uses scroll containers and clipped rows throughout the sidebar, menus,
+   settings and right rail. An outward ring is therefore cut at row edges. Paint
+   one consistent keyboard ring inside the control instead. */
+html[data-dsh-splat-ui-skin]
+  :where(
+    button,
+    input,
+    textarea,
+    select,
+    [contenteditable="true"],
+    [role="button"],
+    [role="checkbox"],
+    [role="menuitem"],
+    [role="menuitemradio"],
+    [role="option"],
+    [role="radio"],
+    [role="switch"],
+    [role="treeitem"],
+    [tabindex]
+  ):focus-visible {
+  outline: 2px solid var(--splat-focus) !important;
+  outline-offset: -2px;
+  border-color: var(--splat-focus) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-composer-card] [contenteditable="true"]:focus-visible {
+  outline: none !important;
+}
+
+html[data-dsh-splat-ui-skin] [role="dialog"] nav :where(button, [role="button"]):focus-visible {
+  outline: 2px solid var(--splat-focus) !important;
+  outline-offset: -2px;
+}
+
+/* Menus and listboxes keep DSH's own popover chrome and take their surface from
+   --dsw-specific-menu; force the ink rim so they read as screen-printed cards. */
+html[data-dsh-splat-ui-skin] body {
+  --dsw-menu-surface-fill: var(--dsw-specific-menu) !important;
+}
+
+html[data-dsh-splat-ui-skin] [role="menu"],
+html[data-dsh-splat-ui-skin] [role="listbox"] {
+  border: 2px solid var(--splat-border) !important;
+  box-shadow: 0 5px 0 rgba(18, 18, 18, 0.82) !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [role="menu"],
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [role="listbox"] {
+  border-width: 1.5px !important;
+  border-color: rgba(242, 242, 232, 0.18) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 5px 0 rgba(0, 0, 0, 0.9) !important;
+}
+
+/* The trigger menu is one card. Put its ink rim on the outer surface and let
+   the nested listbox scroll without drawing a second, square frame. */
+html[data-dsh-splat-ui-skin] [data-trigger-menu] {
+  border: 2.5px solid var(--splat-border-strong) !important;
+  border-radius: 24px !important;
+  background: var(--splat-paper) !important;
+  box-shadow: 0 7px 0 rgba(18, 18, 18, 0.86) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-trigger-menu] :where([role="menu"], [role="listbox"]) {
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* The model picker replaces its outer menu with a group containing a menu.
+   The material surface owns the rim in both states, never the scrolling list. */
+html[data-dsh-splat-ui-skin] [data-menu-material][role="group"]:has(> [role="menu"]) {
+  box-sizing: border-box;
+  max-inline-size: min(440px, calc(100vw - 24px)) !important;
+  border: 2px solid var(--splat-border) !important;
+  background: var(--splat-paper) !important;
+  box-shadow: 0 5px 0 rgba(18, 18, 18, 0.82) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-menu-material][role="group"] > [role="menu"] {
+  border: 0 !important;
+  border-radius: inherit !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-menu-material][role="group"]:has(> [role="menu"]) {
+  border: 1.5px solid rgba(242, 242, 232, 0.18) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 5px 0 rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Search appears beside the model menu when the catalog has more than four
+   choices. Its material group owns one field shell, including keyboard focus. */
+html[data-dsh-splat-ui-skin] [data-menu-material][role="group"] span:has(> input[role="searchbox"]) {
+  box-sizing: border-box;
+  min-height: 36px;
+  border: 2px solid var(--splat-border-strong) !important;
+  border-radius: 12px !important;
+  padding: 6px 10px !important;
+  background: var(--splat-paper) !important;
+  box-shadow: 0 2px 0 var(--splat-shadow-input) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-menu-material][role="group"] div:has(> button) > span:has(> input[role="searchbox"]) {
+  padding-inline-end: 34px !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-menu-material][role="group"] span:has(> input[role="searchbox"]):focus-within {
+  border-color: var(--splat-focus) !important;
+  box-shadow:
+    0 0 0 2px rgba(var(--splat-lime-dark-rgb), 0.28),
+    0 2px 0 var(--splat-shadow-input) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-menu-material][role="group"] span > input[role="searchbox"] {
+  min-width: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  color: var(--splat-ink);
+  box-shadow: none !important;
+  outline: none !important;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+html[data-dsh-splat-ui-skin] [data-composer-card],
+html[data-dsh-splat-ui-skin] [role="dialog"]:not([data-shortcut-modal="settings"]):not(:has(> header[data-window-drag])) {
+  border: 2.5px solid var(--splat-border) !important;
+  border-radius: 22px !important;
+  background: var(--splat-paper) !important;
+  box-shadow: 0 7px 0 rgba(18, 18, 18, 0.86) !important;
+}
+
+/* The composer is a fresh ink card: heavy rim, screen tone and a magenta drip
+   on the top-right edge. DSH already spends the card's ::after on its
+   workspace-trigger dashed ring, so the drip lives on ::before. */
+html[data-dsh-splat-ui-skin] [data-composer-card] {
+  --dsh-composer-model-icon-display: inline-flex;
+  --splat-composer-rule: rgba(18, 18, 18, 0.75);
+  --splat-composer-shadow: #121212;
+  --splat-composer-divider: rgba(18, 18, 18, 0.3);
+  box-sizing: border-box;
+  border: 3px solid var(--splat-border-strong) !important;
+  border-radius: 28px !important;
+  padding-block: 12px 18px;
+  gap: 12px;
+  font-size: var(--dsh-content-font-size, 14px);
+  background-color: var(--splat-paper) !important;
+  background-image: var(--splat-paper-tone, none) !important;
+  background-size: 160px 160px !important;
+  background-repeat: repeat !important;
+  box-shadow:
+    inset 0 0 0 4px var(--splat-paper),
+    inset 0 0 0 6px var(--splat-composer-rule),
+    4px 7px 0 var(--splat-composer-shadow),
+    0 14px 24px rgba(18, 18, 18, 0.12) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-composer-card]::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: -2px;
+  right: -1px;
+  width: 116px;
+  height: 69px;
+  background: var(--splat-ink-drip, none) right top / contain no-repeat;
+  pointer-events: none;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-composer-card] {
+  --splat-composer-rule: rgba(242, 242, 232, 0.34);
+  --splat-composer-shadow: #050505;
+  --splat-composer-divider: rgba(242, 242, 232, 0.18);
+  background-color: #272725 !important;
+  border-color: rgba(242, 242, 232, 0.22) !important;
+  box-shadow:
+    inset 0 0 0 4px #272725,
+    inset 0 0 0 6px var(--splat-composer-rule),
+    4px 7px 0 var(--splat-composer-shadow),
+    0 14px 28px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Typing lifts the card: lime owns focus with a pale gap and an ink shadow. */
+html[data-dsh-splat-ui-skin] [data-composer-card]:focus-within {
+  border-color: var(--splat-border-strong) !important;
+  box-shadow:
+    inset 0 0 0 4px var(--splat-paper),
+    inset 0 0 0 6px var(--splat-composer-rule),
+    0 0 0 3px var(--splat-lime),
+    4px 7px 0 var(--splat-composer-shadow),
+    0 14px 24px rgba(18, 18, 18, 0.12) !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-composer-card]:focus-within {
+  box-shadow:
+    inset 0 0 0 4px #272725,
+    inset 0 0 0 6px var(--splat-composer-rule),
+    0 0 0 3px var(--splat-lime),
+    4px 7px 0 var(--splat-composer-shadow),
+    0 14px 24px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Scope geometry to InputBar's public scroll hook and its adjacent toolbar.
+   Slot content, attachment actions and command-menu rows keep their geometry. */
+html[data-dsh-splat-ui-skin] [data-composer-card] [data-composer-input] {
+  padding-inline: 22px 18px;
+}
+
+/* Reserve only the first two text lines for the corner ink. A float leaves
+   later lines at full width and does not add nodes to the Lexical document. */
+html[data-dsh-splat-ui-skin] [data-composer-card] [data-composer-input]::before {
+  content: "";
+  float: right;
+  width: 88px;
+  height: 48px;
+  pointer-events: none;
+}
+
+html[data-dsh-splat-ui-skin] [data-composer-card] [data-composer-placeholder] {
+  left: 22px;
+  right: 106px;
+}
+
+html[data-dsh-splat-ui-skin] [data-phase="hero"] [data-composer-card] [data-composer-input] {
+  min-height: 72px;
+}
+
+html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div {
+  padding: 0 18px;
+  gap: 12px;
+}
+
+html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div > div {
+  gap: 10px;
+}
+
+/* The leading tools and permission modes share one group; the first primary
+   action owns the trailing divider even when stop and send are both present. */
+html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div > div:has(> input[type="file"]) > div:has(> button) {
+  padding-inline-start: 12px;
+  border-inline-start: 1px solid var(--splat-composer-divider);
+}
+
+html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div > div + div {
+  gap: 16px;
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  > [data-input-scroll]
+  + div
+  > div
+  button:has(span):not([role]):not([role="menu"] *):not([role="listbox"] *):not([data-trigger-menu] *) {
+  height: 32px;
+  color: var(--splat-ink);
+  font-size: calc(14px + var(--dsh-content-font-delta, 0px));
+  font-weight: 700;
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  > [data-input-scroll]
+  + div
+  button:not([role]):not([role="menu"] *):not([role="listbox"] *):not([data-trigger-menu] *)
+  > span:has(+ span + span)
+  > svg,
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  > [data-input-scroll]
+  + div
+  > div
+  + div
+  button[aria-haspopup="menu"]:not([role]):not([role="menu"] *):not([data-trigger-menu] *)
+  > svg:has(+ span) {
+  width: 20px;
+  height: 20px;
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  > [data-input-scroll]
+  + div
+  > div
+  + div
+  > button[aria-label]:not([aria-haspopup]):not(:has(span)):has(svg):not(button + button)::before {
+  content: "";
+  position: absolute;
+  left: -11px;
+  top: 50%;
+  width: 1px;
+  height: 22px;
+  background: var(--splat-composer-divider);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+@container (width <= 460px) {
+  html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div > div + div button[aria-haspopup="menu"] {
+    --dsh-composer-model-text-display: none;
+  }
+
+  html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div > div {
+    gap: 6px;
+  }
+
+  html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div > div + div {
+    gap: 12px;
+  }
+
+  html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div > div:has(> input[type="file"]) > div:has(> button) {
+    padding-inline-start: 8px;
+  }
+}
+
+html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div > div :is(button, select):disabled {
+  color: var(--dsw-alias-label-dimmed);
+}
+
+/* Keep eight pixels between the 44px action disc's shadow and the inner rim,
+   including on narrow screens where the text area's chrome is trimmed. */
+@media (max-width: 720px) {
+  html[data-dsh-splat-ui-skin] [data-composer-card] {
+    gap: 8px;
+    padding-block: 8px 18px;
+    border-radius: 22px !important;
+  }
+
+  html[data-dsh-splat-ui-skin] [data-composer-card]::before {
+    width: 82px;
+    height: 48px;
+  }
+
+  html[data-dsh-splat-ui-skin] [data-composer-card] [data-composer-input]::before {
+    width: 58px;
+    height: 30px;
+  }
+
+  html[data-dsh-splat-ui-skin] [data-composer-card] [data-composer-placeholder] {
+    right: 76px;
+  }
+
+  html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div {
+    gap: 8px;
+    padding-inline: 12px;
+  }
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  > [data-input-scroll]
+  + div
+  > div
+  button:has(span):not([role]):not([role="menu"] *):not([role="listbox"] *):not([data-trigger-menu] *):hover:not(:disabled) {
+  background-color: var(--splat-cream);
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  > [data-input-scroll]
+  + div
+  > div
+  button:has(span):not([role]):not([role="menu"] *):not([role="listbox"] *):not([data-trigger-menu] *)[aria-expanded="true"] {
+  background-color: var(--splat-cream);
+}
+
+/* The shortcut keycaps carry a milky glass fill over the patterned canvas.
+   The fill stays readable when the browser cannot blur the backdrop. */
+html[data-dsh-splat-ui-skin] .splat-ui-composer-hints kbd {
+  padding: 2px 7px;
+  border: 1px solid rgba(18, 18, 18, 0.6);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.76);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.06));
+  color: #242420;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 1px 2px rgba(18, 18, 18, 0.1);
+  -webkit-backdrop-filter: blur(8px) saturate(1.08);
+  backdrop-filter: blur(8px) saturate(1.08);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] .splat-ui-composer-hints kbd {
+  border-color: rgba(255, 255, 255, 0.48);
+  background-color: rgba(36, 36, 34, 0.76);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+  color: #efefe7;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* Workspace and preset entry points sit above the card, on the same baseline. */
+html[data-dsh-splat-ui-skin] [data-composer-seat] div:has(> button[aria-haspopup="menu"]):has(~ div > [data-composer-card]) > button {
+  height: 34px;
+  border: 0;
+  background: transparent;
+  color: var(--splat-ink);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+html[data-dsh-splat-ui-skin] [data-composer-seat] div:has(> button[aria-haspopup="menu"]):has(~ div > [data-composer-card]) > button > svg:has(+ span) {
+  width: 20px;
+  height: 20px;
+}
+
+/* Dialogs are screen-printed sheets: ink rim, hard offset shadow and tone. The
+   outline sits inside the card so it never changes geometry, and the
+   :not(:focus-visible) guard leaves the focus ring alone. */
+html[data-dsh-splat-ui-skin] [role="dialog"]:not([data-shortcut-modal="settings"]):not(:has(> header[data-window-drag])) {
+  background-image: var(--splat-paper-tone, none) !important;
+  background-size: 160px 160px !important;
+  background-repeat: repeat !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+    0 8px 0 rgba(18, 18, 18, 0.86),
+    0 22px 44px rgba(18, 18, 18, 0.24) !important;
+}
+
+html[data-dsh-splat-ui-skin] [role="dialog"]:not([data-shortcut-modal="settings"]):not(:has(> header[data-window-drag])):not(:focus-visible) {
+  outline: 2px dashed rgba(18, 18, 18, 0.24) !important;
+  outline-offset: -10px;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [role="dialog"]:not([data-shortcut-modal="settings"]):not(:has(> header[data-window-drag])),
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-composer-card] {
+  border-width: 2px !important;
+  border-color: rgba(242, 242, 232, 0.22) !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [role="dialog"]:not([data-shortcut-modal="settings"]):not(:has(> header[data-window-drag])) {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 8px 0 #000000,
+    0 22px 50px rgba(0, 0, 0, 0.6) !important;
+}
+
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  [role="dialog"]:not([data-shortcut-modal="settings"]):not(:has(> header[data-window-drag])):not(:focus-visible) {
+  outline-color: rgba(242, 242, 232, 0.16) !important;
+}
+
+/* The account Platform overlay owns a native WebContentsView below its header.
+   Keep its full-window geometry and the 40px Windows caption inset intact;
+   paper-dialog rims and settings-header padding would overlap the native view. */
+html[data-dsh-splat-ui-skin] [role="dialog"]:has(> header[data-window-drag]) {
+  --dsw-alias-label-primary: #f7f7ef !important;
+  --dsw-alias-label-secondary: #e7e7de !important;
+  --dsw-alias-label-tertiary: #b6b6ab;
+  --dsw-alias-border-l1: rgba(242, 242, 232, 0.16);
+  --dsw-alias-border-l2: rgba(242, 242, 232, 0.3);
+  background: #242424 !important;
+  color: #f7f7ef;
+}
+
+html[data-dsh-splat-ui-skin] [role="dialog"] > header[data-window-drag] {
+  background: #242424;
+  border-bottom-color: rgba(242, 242, 232, 0.16);
+}
+
+html[data-dsh-splat-ui-skin] [role="dialog"] > header[data-window-drag] button {
+  height: 32px;
+  padding-inline: 10px;
+  border-radius: 8px;
+  color: #f7f7ef;
+  font-weight: 700;
+}
+
+html[data-dsh-splat-ui-skin] [role="dialog"] > header[data-window-drag] button:hover:not(:disabled) {
+  background: rgba(242, 242, 232, 0.12);
+}
+
+html[data-dsh-splat-ui-skin] [role="dialog"] > header[data-window-drag] button:focus-visible {
+  outline: 2px solid var(--splat-lime) !important;
+  outline-offset: 2px;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] div:has(> [data-shortcut-modal]) > [aria-hidden="true"] {
+  background: rgba(0, 0, 0, 0.84) !important;
+}
+
+/* Nested dialogs stack their own masks; dimming twice turns the page black.
+   Each overlay is portaled to body, so the condition is "shortcuts is open
+   while settings is still behind it". */
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]:has([data-shortcut-modal="settings"])
+  div:has(> [data-shortcut-modal="shortcuts"])
+  > [aria-hidden="true"] {
+  background: rgba(0, 0, 0, 0.55) !important;
+}
+
+/* The lower dialog's mask multiplies with the upper one, so lift it too;
+   otherwise the product stays near black even after the inner mask drops. */
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]:has([data-shortcut-modal="shortcuts"])
+  div:has(> [data-shortcut-modal="settings"])
+  > [aria-hidden="true"] {
+  background: rgba(0, 0, 0, 0.55) !important;
+}
+
+/* Send and stop live in the trailing toolbar group. Attachment remove/retry
+   buttons and context-meter controls must not inherit the primary disc. */
+html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div > div + div > button[aria-label]:not([aria-haspopup]):not(:has(span)):has(svg) {
+  position: relative;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid var(--splat-border) !important;
+  border-radius: 50% !important;
+  background: var(--splat-composer-action, var(--splat-lime)) !important;
+  color: #121212 !important;
+  transform: none;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.55),
+    0 4px 0 var(--splat-shadow-button);
+  transition:
+    transform 150ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 150ms ease,
+    background-color 150ms ease;
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  > [data-input-scroll]
+  + div
+  > div
+  + div
+  > button[aria-label]:not([aria-haspopup]):not(:has(span)):has(svg):hover:not(:disabled) {
+  background: var(--splat-composer-action-hover, var(--splat-lime-hot)) !important;
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.55),
+    0 6px 0 var(--splat-shadow-button);
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  > [data-input-scroll]
+  + div
+  > div
+  + div
+  > button[aria-label]:not([aria-haspopup]):not(:has(span)):has(svg):active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 2px 0 var(--splat-shadow-button);
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  > [data-input-scroll]
+  + div
+  > div
+  + div
+  > button[aria-label]:not([aria-haspopup]):not(:has(span)):has(svg)::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 2px solid rgba(255, 45, 138, 0.75);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.82);
+  pointer-events: none;
+  transition:
+    opacity 120ms ease,
+    transform 180ms ease-out;
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  > [data-input-scroll]
+  + div
+  > div
+  + div
+  > button[aria-label]:not([aria-haspopup]):not(:has(span)):has(svg):active:not(:disabled)::after {
+  opacity: 1;
+  transform: scale(1.55);
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  > [data-input-scroll]
+  + div
+  > div
+  + div
+  > button[aria-label]:not([aria-haspopup]):not(:has(span)):has(svg rect) {
+  --splat-composer-action: var(--splat-pink);
+  --splat-composer-action-hover: #ff6bb0;
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-composer-card]
+  > [data-input-scroll]
+  + div
+  > div
+  + div
+  > button[aria-label]:not([aria-haspopup]):not(:has(span)):has(svg)
+  > svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Both command and attachment controls are paper discs in the leading group. */
+html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div > div:has(> input[type="file"]) > button[aria-label] {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--splat-ink) 20%, transparent) !important;
+  border-radius: 50% !important;
+  background: var(--splat-paper) !important;
+  color: var(--splat-ink) !important;
+  box-shadow: none;
+}
+
+html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div > div:has(> input[type="file"]) > button[aria-label] > svg {
+  width: 18px;
+  height: 18px;
+}
+
+html[data-dsh-splat-ui-skin] [data-composer-card] > [data-input-scroll] + div > div:has(> input[type="file"]) > button[aria-label]:hover:not(:disabled) {
+  background: var(--splat-cream) !important;
+  transform: none;
+  box-shadow: none;
+}
+
+/* The markdown code block is a dark ink island. Radius and background come from
+   DSH's --dsl-code-block-* variables and are not overwritten, because the
+   document preview deliberately sets 0px for its flat code view. */
+html[data-dsh-splat-ui-skin] [data-tool] {
+  --dsw-alias-markdown-code-block: var(--dsw-alias-bg-layer-1);
+}
+
+html[data-dsh-splat-ui-skin] div:has(> [data-code-block-banner]) {
+  --dsw-alias-markdown-code-block: var(--shiki-background, #101010);
+}
+
+html[data-dsh-splat-ui-skin] [data-code-block-banner],
+html[data-dsh-splat-ui-skin] [data-code-block-banner] :where(div, span, button, code) {
+  color: var(--shiki-foreground, #f4f4ec);
+}
+
+html[data-dsh-splat-ui-skin] [data-code-block-content] > pre:not([data-code-preview] *) {
+  padding: 20px 24px !important;
+  color: var(--shiki-foreground, #f4f4ec) !important;
+  font-family: var(--splat-code-family) !important;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.7;
+  tab-size: 4;
+}
+
+/* Plain document previews live on the permanently dark sidebar surface. */
+html[data-dsh-splat-ui-skin] [data-textpreview-plain] {
+  color: #f4f4ec;
+}
+
+/* Raw plugin payloads use the host's primary text, so their semantic code
+   surface must follow light/dark. Markdown blocks keep the dark Shiki island. */
+html[data-dsh-splat-ui-skin] pre:not([data-code-block-content] *):not([data-code-preview] *):not([data-textpreview-plain] *) {
+  --dsw-alias-markdown-code-block: var(--dsw-alias-bg-layer-1);
+}
+
+html[data-dsh-splat-ui-skin] [role="alert"] {
+  --dsw-alias-state-success-primary: var(--splat-lime-dark);
+}
+
+html[data-dsh-splat-ui-skin] [role="alert"] button {
+  color: var(--splat-lime-dark);
+}
+
+/* Inline code chips apply to plain prose code only. Components that bring their
+   own code styling keep it. */
+html[data-dsh-splat-ui-skin] :not(pre) > code:not([class]) {
+  border: 1.5px solid var(--splat-border);
+  border-radius: 7px;
+  background: var(--splat-cream);
+  color: var(--splat-ink);
+  padding: 0.1em 0.34em;
+  box-shadow: 0 1.5px 0 rgba(18, 18, 18, 0.24);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] :not(pre) > code:not([class]) {
+  border-color: #4a4a43;
+  background: #2a2a26;
+  color: var(--splat-body);
+  box-shadow: none;
+}
+
+/* User prompt bubbles sit directly over the three-band turf canvas; give them
+   a crisp sticker rim and hard offset shadow so pale green never melts into
+   the top arena band. */
+html[data-dsh-splat-ui-skin] [data-message-bubble] {
+  border: 2px solid var(--splat-border);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.72),
+    2px 3px 0 var(--splat-shadow-button);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-message-bubble] {
+  border-color: rgba(var(--splat-lime-dark-rgb), 0.36);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    2px 3px 0 #050505;
+}
+
+/* The deliverables review is a FLAT code comparison painted on the light
+   paper surface, not on the dark code island. Its global --shiki-* tokens are
+   the dark code palette, which washes out on paper; restore a light-surface
+   syntax palette inside the diff only. Colours only — the component owns its
+   line, gutter and column geometry. */
+html[data-dsh-splat-ui-skin] body:not([data-ds-dark-theme]) [data-review-view] {
+  --shiki-foreground: var(--dsw-alias-label-primary);
+  --shiki-token-comment: #6b6b5e;
+  --shiki-token-keyword: #ad006c;
+  --shiki-token-string: var(--splat-diff-string);
+  --shiki-token-string-expression: var(--splat-diff-string);
+  --shiki-token-constant: #8a5d00;
+  --shiki-token-function: #006c88;
+  --shiki-token-parameter: #a63c00;
+  --shiki-token-punctuation: #3a3a34;
+  --shiki-token-link: #006c88;
+}
+
+/* 「墨街外观」→ diff 语法配色 = DSH 原生：同一块浅色纸面 diff，换回 DSH 自带的
+   中性亮色语法色。只在亮色分支生效；暗色模式继续使用深色代码岛的荧光语法。 */
+html[data-dsh-splat-ui-skin][data-splat-diff-syntax="native"] body:not([data-ds-dark-theme]) [data-review-view] {
+  --shiki-foreground: var(--dsw-alias-label-primary);
+  --shiki-token-comment: #868e96;
+  --shiki-token-keyword: #d6336c;
+  --shiki-token-string: #2f9e44;
+  --shiki-token-string-expression: #2b8a3e;
+  --shiki-token-constant: #1c7ed6;
+  --shiki-token-function: #6741d9;
+  --shiki-token-parameter: #e8590c;
+  --shiki-token-punctuation: #495057;
+  --shiki-token-link: #1971c2;
+}
+
+/* The host's two header rows become a dark title rail and a pale turf tab rail.
+   Keep the canvas artwork behind an opaque surface so it cannot cross labels. */
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]):has(nav[aria-label]) {
+  --splat-header-fill: #242424;
+  --splat-header-tabs: var(--splat-header-tabs-light);
+  --splat-header-tab-ink: var(--splat-header-tab-ink-light);
+  --splat-focus: var(--splat-lime-solid);
+  --dsw-alias-label-primary: #f7f7ef;
+  --dsw-alias-label-secondary: #d3d5ca;
+  --dsw-alias-label-tertiary: #b9bcaf;
+  --dsw-alias-label-caption: #b9bcaf;
+  --dsw-alias-interactive-bg-hover: rgba(255, 255, 255, 0.09);
+  --dsw-alias-interactive-bg-active: rgba(255, 255, 255, 0.14);
+  position: relative;
+  min-height: 78px;
+  grid-template-rows: 44px auto;
+  padding-block: 0;
+  border-bottom: 1px solid rgba(18, 18, 18, 0.16) !important;
+  background: linear-gradient(to bottom, var(--splat-header-fill) 44px, var(--splat-header-tabs) 44px) !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] header:has([data-conversation-header-corner]) {
+  --splat-header-fill: #141415;
+  --splat-header-tabs: var(--splat-header-tabs-dark);
+  --splat-header-tab-ink: var(--splat-header-tab-ink-dark);
+  border-bottom-color: var(--splat-header-border-dark) !important;
+}
+
+/* Header menus mount inside the rail but keep the normal popover surface. */
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]):has(nav[aria-label]) [role="menu"] {
+  --dsw-alias-label-primary: var(--splat-ink);
+  --dsw-alias-label-secondary: var(--splat-body);
+  --dsw-alias-label-tertiary: var(--splat-muted);
+  --dsw-alias-label-caption: var(--splat-muted);
+  --dsw-alias-interactive-bg-hover: color-mix(in srgb, var(--splat-ink) 8%, transparent);
+  --dsw-alias-interactive-bg-active: color-mix(in srgb, var(--splat-ink) 12%, transparent);
+  --splat-focus: var(--splat-ink);
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) div:has(> nav[aria-label]) {
+  background-color: transparent !important;
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) nav {
+  margin-left: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent !important;
+  color: #f7f7ef !important;
+  box-shadow: none;
+  filter: none !important;
+  transform: none;
+  opacity: 1;
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) nav::before,
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) nav::after {
+  display: none;
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) nav button,
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) nav :where(span) {
+  color: #f7f7ef !important;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow: none !important;
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) nav + div {
+  color: #b9bcaf;
+  font-size: 12px;
+}
+
+/* Caption controls share a 28px seat. The open-target pair keeps a faint inset
+   frame so it reads as one control without a heavier outline than its peers. */
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]):has(nav[aria-label]) [data-open-target] {
+  height: 28px;
+  border: 0 !important;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+html[data-dsh-splat-ui-skin]
+  header:has([data-conversation-header-corner]):has(nav[aria-label])
+  :is([data-open-target] > button, div:has(> span > [data-open-target]) > span > button, [data-conversation-header-corner] button) {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  color: var(--dsw-alias-label-secondary);
+  background: transparent;
+  box-shadow: none;
+  line-height: 1;
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]):has(nav[aria-label]) [data-open-target] > button {
+  border-radius: 6px 0 0 6px;
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]):has(nav[aria-label]) [data-open-target] > button[aria-haspopup="menu"] {
+  width: 24px;
+  border-left: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 0 6px 6px 0;
+}
+
+html[data-dsh-splat-ui-skin]
+  header:has([data-conversation-header-corner]):has(nav[aria-label])
+  :is([data-open-target] > button, div:has(> span > [data-open-target]) > span > button, [data-conversation-header-corner] button):not(:disabled):is(
+    :hover,
+    :active,
+    [aria-expanded="true"]
+  ) {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+html[data-dsh-splat-ui-skin]
+  header:has([data-conversation-header-corner]):has(nav[aria-label])
+  :is([data-open-target] > button, div:has(> span > [data-open-target]) > span > button, [data-conversation-header-corner] button):not(:disabled):is(
+    :active,
+    [aria-expanded="true"]
+  ) {
+  color: var(--splat-lime-hot);
+  background: rgba(var(--splat-lime-rgb), 0.12);
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) div:has(> [role="tablist"]) {
+  --splat-focus: var(--splat-header-tab-ink);
+  --dsw-alias-label-secondary: var(--splat-header-tab-ink);
+  --dsw-alias-interactive-bg-hover: rgba(18, 18, 18, 0.08);
+  align-items: stretch;
+  gap: 8px;
+  margin-top: 0;
+  padding-block: 0;
+  padding-left: 8px;
+}
+
+/* Tabs sit on the rail's lower edge; the selected label belongs to that edge
+   rather than floating in the middle like an independent toolbar button. */
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) [role="tablist"] {
+  box-sizing: border-box;
+  min-height: 34px;
+  align-items: stretch;
+  gap: 4px;
+  padding-top: 4px;
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) [role="tab"] {
+  min-height: 30px;
+  margin: 0;
+  padding: 6px 14px;
+  border-radius: 6px 6px 0 0;
+  color: var(--splat-header-tab-ink);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) [role="tab"]::after {
+  display: none;
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) [role="tab"][aria-selected="true"] {
+  --splat-focus: #f7f7ef;
+  color: var(--splat-lime-hot);
+  background: #292d20;
+  font-weight: 700;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] header:has([data-conversation-header-corner]) [role="tab"][aria-selected="true"] {
+  --splat-focus: #242424;
+  color: #242424;
+  background: var(--splat-lime);
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) div:has(> [role="tablist"]) > span {
+  display: flex;
+  align-items: center;
+  padding-top: 4px;
+}
+
+html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) div:has(> [role="tablist"]) > span > button[aria-haspopup="menu"] {
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  border-radius: 6px;
+}
+
+@media (hover: hover) {
+  html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) [role="tab"]:not([aria-selected="true"]):hover {
+    background: rgba(18, 18, 18, 0.08);
+  }
+}
+
+/* The pale rail swallows a lime wash, so the dark rail gets the brand tint. */
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] header:has([data-conversation-header-corner]) div:has(> [role="tablist"]) {
+  --dsw-alias-interactive-bg-hover: rgba(var(--splat-lime-rgb), 0.14);
+}
+
+@media (hover: hover) {
+  html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] header:has([data-conversation-header-corner]) [role="tab"]:not([aria-selected="true"]):hover {
+    background: rgba(var(--splat-lime-rgb), 0.14);
+  }
+}
+
+@media (max-width: 767px) {
+  html[data-dsh-splat-ui-skin] header:has([data-conversation-header-corner]) nav + div {
+    display: none;
+  }
+}
+
+/* Sidebar: a near-black ink wall in both palettes. DSH reads label tokens inside
+   this subtree, so re-point them to the light-on-dark set; selected rows then
+   override their own spans back to ink black on the lime slab. */
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) {
+  position: relative;
+  --splat-focus: var(--splat-lime);
+  --dsw-alias-label-primary: #f4f4ec;
+  --dsw-alias-label-secondary: #d9d9d0;
+  --dsw-alias-label-tertiary: #a9a9a0;
+  --dsw-alias-label-caption: #9b9b92;
+  --dsw-alias-label-dimmed: #7d7d76;
+  --dsw-alias-label-primary-bluish: #f4f4ec;
+  --dsw-alias-label-primary-dimmed: #d9d9d0;
+  --dsw-alias-brand-text: #ffffff;
+  --dsw-alias-button-tool-bar-fill: rgba(255, 255, 255, 0.62);
+  --dsw-alias-button-tool-bar-fill-invisible: rgba(255, 255, 255, 0.42);
+  --dsw-alias-button-tool-bar-hover: rgba(255, 255, 255, 0.86);
+  --dsw-alias-interactive-bg-hover: rgba(255, 255, 255, 0.075);
+  --dsw-alias-interactive-bg-active: rgba(255, 255, 255, 0.12);
+  --dsw-specific-sidebar-nav-item-hover: rgba(255, 255, 255, 0.075);
+  color: #f4f4ec !important;
+  background-color: var(--splat-sidebar-fill) !important;
+  background-image:
+    var(--splat-decor-squid-watermark, none), linear-gradient(rgba(36, 36, 36, 0.4), rgba(36, 36, 36, 0.4)), var(--splat-decor-squids-faint, none),
+    var(--splat-decor-squids-faint, none), radial-gradient(circle at 88% 78%, rgba(var(--splat-grain-lime-rgb), 0.08), transparent 44%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.055) 1px, transparent 1.3px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0) 26%, rgba(0, 0, 0, 0.08) 100%);
+  background-position:
+    right -54px bottom 94px,
+    0 0,
+    right -30px top -18px,
+    left -16px bottom 46px,
+    center,
+    0 0,
+    0 0;
+  background-size:
+    360px 300px,
+    100% 100%,
+    260px 260px,
+    130px 130px,
+    100% 100%,
+    24px 24px,
+    100% 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
+  border-right: 3px solid #000000;
+  box-shadow: 5px 0 0 rgba(18, 18, 18, 0.18);
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) {
+  padding: 14px 16px 32px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *)::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  bottom: 6px;
+  left: auto;
+  right: 0;
+  width: 132px;
+  height: 24px;
+  background: repeating-linear-gradient(135deg, var(--splat-lime) 0 12px, #121212 12px 24px);
+  clip-path: polygon(24px 0, 100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) :where(svg) {
+  color: currentColor;
+}
+
+/* The design's sidebar icons are drawn with a heavier line than DSH's default
+   set. Presentation attributes lose to CSS, so one scoped rule thickens every
+   icon in the rail without touching the brand mark's tuned outline. */
+html[data-dsh-splat-ui-skin]
+  div:has(> div > button .splat-ui-brand__mark):not(header *)
+  svg:not(.splat-ui-brand__mark)
+  :where(path, circle, rect, ellipse, line, polyline, polygon) {
+  stroke-width: 1.9;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) :where(a, button):not([aria-current="page"]) {
+  color: var(--dsw-alias-label-secondary);
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) :where(a, button, [role="treeitem"]) {
+  transition:
+    background-color 140ms ease,
+    color 140ms ease;
+}
+
+html[data-dsh-splat-ui-skin]
+  div:has(> div > button .splat-ui-brand__mark):not(header *)
+  :where(a, button, [role="treeitem"]):where(:not(:disabled):not([aria-disabled="true"]):not([aria-selected="true"]):not([aria-current="page"]):hover) {
+  background-color: var(--dsw-alias-interactive-bg-hover);
+  color: #ffffff;
+}
+
+/* The panel list stays a quiet navigation group. The brand slot scopes these
+   rules to the sidebar even when no global panels are registered. */
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) > nav[aria-label] {
+  gap: 0;
+  margin-block: 10px 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) > nav[aria-label] > button {
+  min-height: 36px;
+  gap: 6px;
+  padding: 7px 9px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) > nav[aria-label] svg {
+  width: 16px;
+  height: 16px;
+}
+
+html[data-dsh-splat-ui-skin]
+  div:has(> div > button .splat-ui-brand__name):not(header *)
+  div:has(> span + :is(span, div) button[aria-label]):not([role])
+  > span:not(:has(button, svg)) {
+  color: #f4f4ec;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: normal;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) :where(div, button):has(> svg + span):where(:not([role])) {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) :where(div, button):has(> svg + span):where(:not([role])) > svg {
+  width: 16px;
+  height: 16px;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) > nav[aria-label] [aria-current="page"] {
+  background: var(--splat-lime) !important;
+  color: #121212 !important;
+  transform: none;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) [role="treeitem"] {
+  min-height: 32px;
+  gap: 6px;
+  padding-inline-start: calc(10px + var(--dsh-workspace-indent, 0px) * 1.5);
+  border-radius: 8px;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) [role="treeitem"][aria-expanded] {
+  color: #f4f4ec;
+  font-weight: 650;
+}
+
+html[data-dsh-splat-ui-skin]
+  div:has(> div > button .splat-ui-brand__name):not(header *)
+  div:has(> [role="treeitem"][aria-expanded])
+  [role="treeitem"][aria-selected] {
+  box-sizing: border-box;
+  width: calc(100% - 18px - var(--dsh-workspace-indent, 0px) * 1.5);
+  margin-inline-start: calc(18px + var(--dsh-workspace-indent, 0px) * 1.5);
+  padding-inline-start: 10px;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) [role="treeitem"][aria-selected="true"] {
+  font-weight: 700;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) [role="treeitem"] > span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) [role="treeitem"] > span:has(> svg) {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  overflow: visible;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) :is([role="treeitem"] > svg, [role="treeitem"] > span > svg) {
+  flex: none;
+  width: 22px;
+  height: 22px;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) [role="treeitem"] > span:not(:has(svg, button)):not([aria-hidden]),
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) [role="treeitem"] > span:not(:has(svg, button)) > span:only-child {
+  font-size: inherit;
+}
+
+/* Session titles already have host margins; adding the tree gap twice wastes
+   their width. Keep the title aligned with the workspace label and let resting
+   metadata and hover actions share the same trailing seat. */
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) [role="treeitem"][aria-selected] {
+  gap: 0;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) [role="treeitem"][aria-selected] > span:not(:has(*)) {
+  margin-inline: 16px 8px;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) [role="treeitem"][aria-selected] > span:has(+ span > button) > span {
+  font-size: 11px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) [role="treeitem"][aria-selected] > span:has(> button) {
+  gap: 8px;
+}
+
+/* A selected turf row needs a dark ring; all other sidebar controls use lime. */
+html[data-dsh-splat-ui-skin]
+  div:has(> div > button .splat-ui-brand__mark):not(header *)
+  :where([role="treeitem"][aria-selected="true"], [role="treeitem"][aria-selected="true"] button, [aria-current="page"]):focus-visible {
+  outline-color: #121212 !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] div:has(> div > button .splat-ui-brand__mark):not(header *) {
+  background-image:
+    var(--splat-decor-squid-watermark, none), linear-gradient(rgba(20, 20, 21, 0.4), rgba(20, 20, 21, 0.4)), var(--splat-decor-squids-faint, none),
+    var(--splat-decor-squids-faint, none), radial-gradient(circle at 88% 78%, rgba(var(--splat-grain-lime-rgb), 0.06), transparent 44%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1.3px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0) 26%, rgba(0, 0, 0, 0.1) 100%);
+  background-position:
+    right -54px bottom 94px,
+    0 0,
+    right -30px top -18px,
+    left -16px bottom 46px,
+    center,
+    0 0,
+    0 0;
+  background-size:
+    360px 300px,
+    100% 100%,
+    250px 250px,
+    125px 125px,
+    100% 100%,
+    24px 24px,
+    100% 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
+}
+
+/* Brand block: a transparent masthead (pink squid, white wordmark, lime hazard
+   stripes) with the collapse control beside it. The magenta new-session pill is
+   DSH's separate button below the logo row, not the logo itself. */
+html[data-dsh-splat-ui-skin] div[class]:has(> button .splat-ui-brand__name) {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 76px;
+  padding: 4px 2px 8px;
+  overflow: visible;
+}
+
+html[data-dsh-splat-ui-skin] :is(button, a):has(.splat-ui-brand__name) {
+  position: relative;
+  isolation: isolate;
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  height: 68px;
+  margin: 0;
+  padding: 0 4px !important;
+  justify-content: flex-start;
+  overflow: visible;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  box-shadow: none;
+  transition: background-color 150ms ease;
+}
+
+html[data-dsh-splat-ui-skin] :is(button, a):has(.splat-ui-brand__name)::after {
+  display: none;
+}
+
+html[data-dsh-splat-ui-skin] :is(button, a):has(.splat-ui-brand__name):not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: none;
+}
+
+html[data-dsh-splat-ui-skin] :is(button, a):has(.splat-ui-brand__name):not(:disabled):active {
+  background: rgba(255, 255, 255, 0.12);
+  transform: none;
+}
+
+html[data-dsh-splat-ui-skin] :is(button, a):has(.splat-ui-brand__name):focus-visible {
+  outline: 3px solid var(--splat-lime);
+  outline-offset: 2px;
+}
+
+html[data-dsh-splat-ui-skin] :is(button, a):has(.splat-ui-brand__name) > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: none !important;
+}
+
+html[data-dsh-splat-ui-skin] :is(button, a):has(.splat-ui-brand__name) > span > span:has(.splat-ui-brand__mark) {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 0 0 64px;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 58px;
+  min-width: 64px;
+  border: 0;
+  border-radius: 5px;
+  background: #393939;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  transform: none !important;
+}
+
+html[data-dsh-splat-ui-skin] :is(button, a):has(.splat-ui-brand__name) > span > span:has(.splat-ui-brand__mark) .splat-ui-brand__mark {
+  width: 64px;
+  height: 70px;
+  filter: drop-shadow(1px 0 0 #ffffff) drop-shadow(-1px 0 0 #ffffff) drop-shadow(0 1px 0 #ffffff) drop-shadow(0 -1px 0 #ffffff)
+    drop-shadow(3px 3px 1.5px rgba(0, 0, 0, 0.45));
+}
+
+html[data-dsh-splat-ui-skin] :is(button, a):has(.splat-ui-brand__name) > span > span:has(.splat-ui-brand__name) {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-width: 0;
+  height: auto;
+  padding: 0;
+  overflow: visible;
+  letter-spacing: normal;
+}
+
+html[data-dsh-splat-ui-skin] :where(span, div):has(> .splat-ui-brand__name),
+html[data-dsh-splat-ui-skin] :where(span, div):has(> :where(span, div) > .splat-ui-brand__name) {
+  height: auto;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+/* Collapse control that sits beside the masthead. */
+html[data-dsh-splat-ui-skin] div[class]:has(> button .splat-ui-brand__name) > button:not(:has(.splat-ui-brand__name)) {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #f4f4ec;
+  box-shadow: none;
+}
+
+html[data-dsh-splat-ui-skin] div[class]:has(> button .splat-ui-brand__name) > button:not(:has(.splat-ui-brand__name)):hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* New-session pill. DSH renders it as the sibling immediately after the logo
+   row; the demo fixture carries the same class for the same target. */
+html[data-dsh-splat-ui-skin] div:has(> button .splat-ui-brand__name) + button,
+html[data-dsh-splat-ui-skin] .splat-ui-new-session {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 38px;
+  margin: 0 0 4px;
+  padding: 0 14px;
+  border: 1.5px solid #121212;
+  border-radius: 999px;
+  background: #ff2d8a;
+  color: #ffffff !important;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    0 3px 0 rgba(18, 18, 18, 0.6);
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    background-color 140ms ease;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> button .splat-ui-brand__name) + button :where(span, svg),
+html[data-dsh-splat-ui-skin] .splat-ui-new-session :where(span, svg) {
+  color: #ffffff !important;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> button .splat-ui-brand__name) + button svg,
+html[data-dsh-splat-ui-skin] .splat-ui-new-session svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> button .splat-ui-brand__name) + button:not(:disabled):hover,
+html[data-dsh-splat-ui-skin] .splat-ui-new-session:not(:disabled):hover {
+  background: #ff4b9c;
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    0 4px 0 rgba(18, 18, 18, 0.6);
+}
+
+html[data-dsh-splat-ui-skin] div:has(> button .splat-ui-brand__name) + button:not(:disabled):active,
+html[data-dsh-splat-ui-skin] .splat-ui-new-session:not(:disabled):active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 2px 0 rgba(18, 18, 18, 0.6);
+}
+
+html[data-dsh-splat-ui-skin] div:has(> button .splat-ui-brand__name) + button:focus-visible,
+html[data-dsh-splat-ui-skin] .splat-ui-new-session:focus-visible {
+  outline: 3px solid var(--splat-lime);
+  outline-offset: 3px;
+}
+
+.splat-ui-brand__mark {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  overflow: visible;
+  background: url("__SPLAT_BRAND_SQUID__") center / contain no-repeat;
+  filter: drop-shadow(0 2px 0 rgba(18, 18, 18, 0.16));
+  transition: transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.splat-ui-brand__mark:hover {
+  transform: rotate(-6deg) scale(1.06);
+}
+
+.splat-ui-brand__name {
+  display: grid;
+  justify-items: start;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow: visible;
+  line-height: 1;
+  text-align: left;
+}
+
+.splat-ui-brand__name strong,
+.splat-ui-brand__name small {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.splat-ui-brand__name strong {
+  color: #ffffff;
+  font-size: 18px;
+  -webkit-text-stroke: 3px #121212;
+  paint-order: stroke fill;
+  transform: skew(-10deg) scaleX(0.94);
+  transform-origin: left center;
+  font-weight: 900;
+  letter-spacing: -0.35px;
+  line-height: 32px;
+  text-shadow: 3px 3px 0 #121212;
+}
+
+.splat-ui-brand__name small {
+  display: flex;
+  overflow: visible;
+  text-overflow: clip;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 14px;
+  text-shadow: none;
+}
+
+.splat-ui-brand__stripes {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  width: 44px;
+  height: 14px;
+  padding-inline: 5px;
+}
+
+.splat-ui-brand__stripes::before,
+.splat-ui-brand__stripes::after {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 14px;
+  background: var(--splat-lime);
+  transform: skewX(-35deg);
+}
+
+/* The square remains visible above the headline; the torn title paper hides
+   the lower facade crop. The city, screen number and paper stay separate. */
+html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  box-sizing: border-box;
+  width: min(100%, 980px);
+  max-width: 100%;
+  min-height: 0;
+  container-type: inline-size;
+  margin-inline: auto;
+  padding: 0 24px 20px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  overflow: hidden;
+  color: var(--splat-ink);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 390px;
+}
+
+html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand)::after {
+  content: none;
+}
+
+/* A feathered patch quiets the canvas only behind the scene. */
+html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand)::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(247, 246, 236, 0.88) 0%, rgba(247, 246, 236, 0.72) 45%, transparent 100%);
+  pointer-events: none;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] div[class]:has(> span > div > .splat-ui-hero__brand)::before {
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(17, 17, 16, 0.9) 0%, rgba(17, 17, 16, 0.74) 45%, transparent 100%);
+}
+
+.splat-ui-hero__brand {
+  position: static;
+  display: block;
+  flex: none;
+  width: 100%;
+  height: 0;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--splat-ink);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-hero__brand .splat-ui-hero__scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--splat-ink);
+  pointer-events: none;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-hero__city {
+  filter: brightness(0);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] .splat-ui-hero__city {
+  filter: brightness(0) invert(1);
+  opacity: 0.62;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-hero__tape {
+  fill: #121212;
+  stroke: #fbfbf4;
+  stroke-width: 1.5px;
+  stroke-linejoin: round;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-hero__tape-text {
+  fill: #ffffff;
+  font-family: var(--splat-font-family);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.7px;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-hero__tape-accent {
+  fill: var(--splat-lime-solid);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-hero__billboard-text {
+  fill: #ffffff;
+  font-family: var(--splat-font-family);
+  font-size: 38px;
+  font-weight: 900;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-hero__speed {
+  fill: var(--splat-ink);
+}
+
+/* The DSH headline. The first span is the title; the second span (English line
+   or model note, depending on build) becomes the taped subtitle. */
+html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) {
+  position: relative;
+  isolation: isolate;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  min-width: 0;
+  margin: 0;
+  padding-top: clamp(94px, calc(28cqw + 10px), 284px);
+  color: #121212;
+  font-size: clamp(23px, 7.2cqw, 68px);
+  font-weight: 900;
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  text-shadow: none;
+  transform: none;
+  animation: splat-ui-hero-title-in 460ms cubic-bezier(0.22, 0.82, 0.3, 1) both;
+}
+
+/* The lime sticker follows the title group, including shorter host titles. */
+html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span)::after {
+  content: "";
+  position: absolute;
+  left: calc(100% + 10px);
+  bottom: 18px;
+  z-index: 1;
+  display: block;
+  width: 56px;
+  height: 26px;
+  border-radius: 4px;
+  background:
+    var(--splat-lime-solid)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 39 14'%3E%3Cpath d='m2 2 5 5-5 5m13-10 5 5-5 5m13-10 5 5-5 5' fill='none' stroke='%23121212' stroke-width='3'/%3E%3C/svg%3E")
+    center / 39px 14px no-repeat;
+  box-shadow: 3px 3px 0 rgba(18, 18, 18, 0.2);
+  transform: rotate(-3deg);
+  pointer-events: none;
+}
+
+@container (max-width: 520px) {
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span)::after {
+    display: none;
+  }
+}
+
+html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) > span:first-of-type {
+  display: inline-block;
+  position: relative;
+  isolation: isolate;
+  padding: 8px 22px 12px;
+  color: #121212;
+  -webkit-text-stroke: 0;
+  font-style: italic;
+  text-shadow: none;
+  transform: rotate(-1.4deg);
+}
+
+html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) > span:first-of-type::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -5px -10px;
+  background: #fffdf7;
+  clip-path: polygon(
+    0 15%,
+    2% 8%,
+    8% 10%,
+    15% 3%,
+    24% 7%,
+    34% 1%,
+    45% 5%,
+    57% 0,
+    69% 6%,
+    80% 2%,
+    91% 7%,
+    98% 3%,
+    97% 18%,
+    100% 30%,
+    98% 43%,
+    100% 57%,
+    98% 70%,
+    100% 85%,
+    97% 96%,
+    88% 92%,
+    78% 100%,
+    68% 94%,
+    56% 99%,
+    45% 93%,
+    34% 100%,
+    22% 94%,
+    11% 98%,
+    2% 92%,
+    3% 78%,
+    0 66%,
+    2% 51%,
+    0 38%,
+    2% 25%
+  );
+}
+
+/* The underline belongs to the title paper, so short host titles keep short trails. */
+html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) > span:first-of-type::after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: auto -24px -20px;
+  height: 32px;
+  background-image: var(--splat-brush-pink), var(--splat-brush-lime);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) > span + span {
+  display: inline-block;
+  align-self: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: #1e1e1e;
+  font-family: var(--splat-font-family);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  white-space: normal;
+  text-align: center;
+  text-shadow: none;
+  box-shadow: none;
+  clip-path: none;
+  transform: none;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] div[class]:has(> span > div > .splat-ui-hero__brand) {
+  color: var(--splat-ink);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) > span:first-of-type {
+  color: #ffffff;
+}
+
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  div[class]:has(> span > div > .splat-ui-hero__brand)
+  > span:has(> span + span)
+  > span:first-of-type::before {
+  background: #121212;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) > span + span {
+  color: #e7e7de;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-hero__scene .splat-ui-hero__tape {
+  animation: splat-ui-tape-nudge 6s ease-in-out infinite;
+}
+
+@keyframes splat-ui-hero-title-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splat-ui-tape-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) {
+    animation: none;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-hero__scene .splat-ui-hero__tape {
+    animation: none;
+  }
+}
+
+@media (max-width: 720px) {
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) {
+    padding: 0 16px 16px;
+  }
+
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) {
+    gap: 24px;
+    margin-right: 0;
+    font-size: clamp(23px, 7.2cqw, 44px);
+  }
+
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) > span:first-of-type {
+    padding: 7px 10px 9px;
+  }
+
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) > span:first-of-type::after {
+    inset-inline: -12px;
+    bottom: -15px;
+    height: 22px;
+  }
+
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) > span + span {
+    font-size: 13px;
+  }
+
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span)::after {
+    left: calc(100% + 6px);
+    bottom: 16px;
+    width: 42px;
+    height: 22px;
+    background-size: 28px 11px;
+  }
+}
+
+@media (max-width: 420px) {
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) {
+    padding: 0 10px 14px;
+  }
+
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) {
+    margin-right: 0;
+    font-size: clamp(22px, 7.2cqw, 28px);
+  }
+
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) > span:first-of-type {
+    padding-inline: 6px;
+  }
+
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) > span + span {
+    font-size: 11px;
+    letter-spacing: 0.03em;
+  }
+}
+
+/* Keep settings surfaces calm without touching card/selectable geometry. */
+html[data-dsh-splat-ui-skin] [role="dialog"] :where(button:not([aria-pressed]), [role="button"]:not([aria-pressed])):not(:focus-visible) {
+  border-color: var(--splat-border) !important;
+}
+
+/* Dark settings: DSH ships near-black cards on a near-black sheet with white
+   borders, so every level collapses into one wireframe slab. Give each level
+   its own surface step and a hairline rim; selection alone carries lime. */
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"] button[aria-haspopup="menu"]:not([aria-pressed]) {
+  border: 1px solid rgba(242, 242, 232, 0.14) !important;
+  background-color: #2c2c29 !important;
+  color: var(--splat-ink) !important;
+}
+
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  [data-shortcut-modal="settings"]
+  button[aria-pressed]:not([role="switch"]):not(li[data-agent-preset-id] *):not(.splat-ui-appearance__preset) {
+  border-width: 1px !important;
+  border-color: rgba(242, 242, 232, 0.16) !important;
+  background-color: #262624 !important;
+}
+
+/* Theme cubes keep their own preview artwork; the rim marks the selection. */
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  [data-shortcut-modal="settings"]
+  button[aria-pressed="true"]:not([role="switch"]):not(li[data-agent-preset-id] *):not(.splat-ui-appearance__preset) {
+  border-color: var(--splat-lime) !important;
+  box-shadow:
+    0 0 0 2px rgba(var(--splat-lime-dark-rgb), 0.32),
+    0 3px 0 #050505 !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"] button[aria-haspopup="menu"]:not([aria-pressed]):hover {
+  border-color: rgba(242, 242, 232, 0.3) !important;
+  background-color: #34342f !important;
+}
+
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  [data-shortcut-modal="settings"]
+  button[aria-pressed="false"]:not([role="switch"]):not(li[data-agent-preset-id] *):not(.splat-ui-appearance__preset):hover {
+  border-color: rgba(242, 242, 232, 0.34) !important;
+  background-color: #2e2e2b !important;
+  box-shadow: 0 0 0 2px rgba(242, 242, 232, 0.1) !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"] li[data-agent-preset-id] {
+  border: 1px solid rgba(242, 242, 232, 0.16) !important;
+  background-color: #262624 !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"] li[data-agent-preset-id]:has(button[aria-pressed="true"]) {
+  border-color: var(--splat-lime) !important;
+  background-color: var(--splat-lime) !important;
+  color: #121212 !important;
+}
+
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  [data-shortcut-modal="settings"]
+  li[data-agent-preset-id]:has(button[aria-pressed="true"])
+  :where(h3, p, span, svg, button, code) {
+  color: #121212 !important;
+}
+
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  [data-shortcut-modal="settings"]
+  li[data-agent-preset-id]:has(button[aria-pressed="true"])
+  [data-tone="solid"] {
+  border-color: #121212 !important;
+  background-color: #121212 !important;
+  color: var(--splat-lime) !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"] [data-tone="solid"] {
+  border-color: var(--splat-lime) !important;
+  background-color: var(--splat-lime) !important;
+  color: #121212 !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"] [data-tone="outline"] {
+  border-color: rgba(242, 242, 232, 0.24) !important;
+  color: var(--splat-muted) !important;
+}
+
+/* A moving filled indicator belongs to segmented controls. Underline tabs
+   have no such surface and must keep light ink in the dark theme. */
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"] [role="tablist"]:has(> span[aria-hidden]) {
+  border: 1px solid rgba(242, 242, 232, 0.12) !important;
+  background-color: #242422 !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"] [role="tablist"] > span[aria-hidden] {
+  background-color: var(--splat-lime) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32) !important;
+}
+
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  [data-shortcut-modal="settings"]
+  [role="tablist"]:has(> span[aria-hidden])
+  > [role="tab"][aria-selected="true"],
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  [data-shortcut-modal="settings"]
+  [role="tablist"]:has(> span[aria-hidden])
+  > [role="tab"][aria-selected="true"]
+  :where(span, svg) {
+  color: #121212 !important;
+}
+
+/* Provider cards carry their own token surface but no rim, so stacked cards
+   merge into one slab; an inset hairline separates them without moving boxes.
+   The row's own delete action is the stable seam for "this is a provider card". */
+html[data-dsh-splat-ui-skin] body:not([data-ds-dark-theme]) [data-shortcut-modal="settings"] button[aria-label^="删除模型"] {
+  color: #b4233f !important;
+}
+
+html[data-dsh-splat-ui-skin] body:not([data-ds-dark-theme]) [data-shortcut-modal="settings"] button[aria-label^="删除模型"]:hover:not(:disabled) {
+  background-color: rgba(180, 35, 63, 0.12) !important;
+  color: #b4233f !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"] li:has(button[aria-label^="删除模型"]) {
+  box-shadow: inset 0 0 0 1px rgba(242, 242, 232, 0.14);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"] button[aria-label^="删除模型"] {
+  color: var(--dsw-alias-state-error-primary, #ff5f7d) !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"] button[aria-label^="删除模型"]:hover:not(:disabled) {
+  background-color: rgba(255, 95, 125, 0.14) !important;
+  color: var(--dsw-alias-state-error-primary, #ff5f7d) !important;
+}
+
+html[data-dsh-splat-ui-skin] [role="dialog"][aria-label="删除会话"] button[aria-label="删除"] {
+  border-color: #b4233f !important;
+  background-color: #b4233f !important;
+  color: #fff !important;
+}
+
+html[data-dsh-splat-ui-skin] [role="dialog"][aria-label="删除会话"] button[aria-label="删除"]:hover:not(:disabled) {
+  border-color: #8f1d35 !important;
+  background-color: #8f1d35 !important;
+}
+
+/* Shortcut keycaps are printed cream keys on the night sheet. */
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="shortcuts"] span:has(> kbd) {
+  border: 1px solid rgba(0, 0, 0, 0.55) !important;
+  background-color: #e6e8e1 !important;
+  color: #121212 !important;
+  box-shadow: 0 2px 0 #050505 !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="shortcuts"] kbd {
+  background: transparent !important;
+  color: #121212 !important;
+}
+
+html[data-dsh-splat-ui-skin] [role="dialog"] section[aria-label] {
+  min-width: 0;
+}
+
+html[data-dsh-splat-ui-skin] [role="dialog"] [role="group"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+
+html[data-dsh-splat-ui-skin] [role="dialog"] :where(code) {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+html[data-dsh-splat-ui-skin] ::selection {
+  background: rgba(var(--splat-grain-lime-rgb), 0.5);
+  color: #121212;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] ::selection {
+  background: rgba(255, 45, 138, 0.55);
+  color: #ffffff;
+}
+
+/* Settings → Plugins → 墨街外观. A public `settings.plugins.tab` entry; the card
+   only draws its own internals. Presets map to the same veil the CSS variable
+   already drives, so the control and the canvas can never disagree. */
+html[data-dsh-splat-ui-skin] .splat-ui-appearance {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(560px, 100%);
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 4px 2px 18px;
+  color: var(--splat-body);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance h3 {
+  margin: 0;
+  color: var(--splat-ink);
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance p {
+  margin: 0;
+  color: var(--splat-muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* A miniature of the real canvas: the lime/cream/pink arena, pink pour,
+   halftone and faint squid watermarks. Dragging paints only the panel-local
+   draft variable so the full app does not restyle on every pointer frame; the
+   released value is committed. */
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__preview {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  height: 128px;
+  border: 2.5px solid var(--splat-border);
+  border-radius: 10px;
+  background-color: var(--splat-band-cream);
+  background-image:
+    var(--splat-decor-pour, none), var(--splat-decor-halftone-ink, none), var(--splat-decor-squids-soft, none), var(--splat-decor-squids-ink-soft, none),
+    var(--splat-preview-lime, none), var(--splat-preview-pink, none), linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 100%);
+  background-position:
+    right -54px top -74px,
+    left -22px top -16px,
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+  background-size:
+    230px auto,
+    118px 118px,
+    160px 160px,
+    160px 160px,
+    100% 100%,
+    100% 100%,
+    auto;
+  background-repeat: no-repeat, no-repeat, repeat, repeat, no-repeat, no-repeat, no-repeat;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__preview-sheet {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 16px 20px;
+  /* The centre column stacks two bg-base layers. Match the stronger paper wash
+     used for long-form reading so the swatch stays faithful to the canvas. */
+  background-color: rgba(251, 251, 244, clamp(0, calc(var(--splat-appearance-draft, var(--splat-canvas-veil, 0.12)) * 2), 0.84));
+  background-image: linear-gradient(
+    rgba(251, 251, 244, clamp(0, calc(var(--splat-appearance-draft, var(--splat-canvas-veil, 0.12)) * 2), 0.84)),
+    rgba(251, 251, 244, clamp(0, calc(var(--splat-appearance-draft, var(--splat-canvas-veil, 0.12)) * 2), 0.84))
+  );
+  color: var(--splat-ink);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__preview-sheet strong {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__preview-sheet span {
+  color: var(--splat-body);
+  font-size: 13px;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__preview-tag {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  padding: 2px 8px;
+  border: 1.5px solid #121212;
+  border-radius: 4px;
+  background: var(--splat-lime);
+  color: #121212;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] .splat-ui-appearance__preview {
+  background-color: #0f0f0e;
+  background-image:
+    var(--splat-decor-splash-pink, none), var(--splat-decor-squids-faint, none), var(--splat-night-grain-white, none),
+    linear-gradient(180deg, #171716 0%, #101010 56%, #1c1420 100%);
+  background-position:
+    right top,
+    0 0,
+    0 0,
+    0 0;
+  background-size:
+    320px auto,
+    220px 220px,
+    18px 18px,
+    auto;
+  background-repeat: no-repeat, repeat, repeat, no-repeat;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] .splat-ui-appearance__preview-sheet {
+  background-color: rgba(17, 17, 16, clamp(0.4, calc(0.5 + (var(--splat-appearance-draft, var(--splat-canvas-veil, 0.12)) - 0.12) * 0.6), 0.86));
+  background-image: linear-gradient(
+    rgba(17, 17, 16, clamp(0.4, calc(0.5 + (var(--splat-appearance-draft, var(--splat-canvas-veil, 0.12)) - 0.12) * 0.6), 0.86)),
+    rgba(17, 17, 16, clamp(0.4, calc(0.5 + (var(--splat-appearance-draft, var(--splat-canvas-veil, 0.12)) - 0.12) * 0.6), 0.86))
+  );
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] .splat-ui-appearance__preview-tag {
+  border-color: #f2f2e8;
+  background: var(--splat-pink);
+  color: #ffffff;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__preset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 112px;
+  padding: 8px 14px;
+  border: 2px solid var(--splat-border);
+  border-radius: 10px;
+  background: var(--splat-paper);
+  color: var(--splat-ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 900;
+  text-align: left;
+  cursor: pointer;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.6),
+    0 3px 0 var(--splat-shadow-button);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__preset small {
+  color: var(--splat-muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__preset[aria-pressed="true"] {
+  border-color: var(--splat-border);
+  background-color: var(--splat-lime);
+  background-image: radial-gradient(circle, rgba(18, 18, 18, 0.16) 1.2px, transparent 1.5px);
+  background-size: 10px 10px;
+  color: #121212;
+  box-shadow:
+    inset 0 0 0 2px #121212,
+    2px 2px 0 rgba(18, 18, 18, 0.22);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__preset[aria-pressed="true"] small {
+  color: var(--splat-preset-sub);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] .splat-ui-appearance__preset[aria-pressed="true"] {
+  background-color: var(--splat-lime);
+  background-image: radial-gradient(circle, rgba(18, 18, 18, 0.18) 1.2px, transparent 1.5px);
+  color: #121212;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] .splat-ui-appearance__preset[aria-pressed="true"] small {
+  color: var(--splat-preset-sub);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__green {
+  display: grid;
+  gap: 8px;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 10px 0 0;
+  border: 0;
+  border-top: 1px dashed color-mix(in srgb, var(--splat-ink) 22%, transparent);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__green-title {
+  padding: 0;
+  color: var(--splat-ink);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__green-hint {
+  max-width: 52ch;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__green-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__green-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__swatch {
+  flex: 0 0 auto;
+  width: 11px;
+  height: 11px;
+  border: 1.5px solid #121212;
+  border-radius: 50%;
+}
+
+/* 「diff 语法配色」reuses the preset slab buttons so the two visual choices read
+   as one family; the fieldset only lays out its own legend and options. */
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__diff {
+  display: grid;
+  gap: 8px;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 10px 0 0;
+  border: 0;
+  border-top: 1px dashed color-mix(in srgb, var(--splat-ink) 22%, transparent);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__diff-title {
+  padding: 0;
+  color: var(--splat-ink);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__diff-hint {
+  max-width: 52ch;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__diff-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__custom {
+  display: grid;
+  gap: 10px;
+  min-inline-size: 0;
+  padding: 12px 14px;
+  border: 2px solid var(--splat-border);
+  border-radius: 10px;
+  background-color: var(--splat-cream);
+  background-image: radial-gradient(circle, rgba(18, 18, 18, 0.06) 0.6px, transparent 0.8px);
+  background-size: 7px 7px;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.6);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] .splat-ui-appearance__custom {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.045) 0.6px, transparent 0.8px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__slider {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px 12px;
+  min-inline-size: 0;
+  color: var(--splat-ink);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__slider-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__slider-title::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid #121212;
+  border-radius: 50%;
+  background: var(--splat-pink);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__slider input[type="range"] {
+  box-sizing: border-box;
+  grid-column: 1 / -1;
+  width: 100%;
+  min-width: 0;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+  accent-color: var(--splat-lime);
+  appearance: none;
+  cursor: pointer;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__slider input[type="range"]:focus-visible {
+  outline-offset: 2px;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__slider input[type="range"]::-webkit-slider-runnable-track {
+  box-sizing: border-box;
+  height: 10px;
+  border: 2px solid var(--splat-border);
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--splat-lime) 0 var(--splat-slider-progress, 0%), var(--splat-slider-track) var(--splat-slider-progress, 0%) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__slider input[type="range"]::-webkit-slider-thumb {
+  box-sizing: border-box;
+  width: 22px;
+  height: 22px;
+  margin-top: -8px;
+  border: 2.5px solid var(--splat-border);
+  border-radius: 50%;
+  background: var(--splat-pink);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 3px 0 rgba(18, 18, 18, 0.35);
+  appearance: none;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__slider input[type="range"]::-moz-range-track {
+  box-sizing: border-box;
+  height: 10px;
+  border: 2px solid var(--splat-border);
+  border-radius: 999px;
+  background: var(--splat-slider-track);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__slider input[type="range"]::-moz-range-progress {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--splat-lime);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__slider input[type="range"]::-moz-range-thumb {
+  box-sizing: border-box;
+  width: 22px;
+  height: 22px;
+  border: 2.5px solid var(--splat-border);
+  border-radius: 50%;
+  background: var(--splat-pink);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__slider-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 50px;
+  padding: 2px 9px;
+  border: 2px solid var(--splat-border);
+  border-radius: 5px;
+  background: var(--splat-paper);
+  color: var(--splat-ink);
+  font-size: 11px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  line-height: 18px;
+  box-shadow: 1.5px 1.5px 0 rgba(18, 18, 18, 0.24);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__slider-value::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--splat-lime);
+  box-shadow: 0 0 0 1.5px #121212;
+}
+
+/* 「细节」reuses the slab buttons and diff fieldset rhythm: one label plus a
+   pair of choices per row, wrapping to a second line at 320px. */
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__details {
+  display: grid;
+  gap: 10px;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 10px 0 0;
+  border: 0;
+  border-top: 1px dashed color-mix(in srgb, var(--splat-ink) 22%, transparent);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__details-title {
+  padding: 0;
+  color: var(--splat-ink);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__details-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  min-inline-size: 0;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__details-label {
+  min-width: 62px;
+  color: var(--splat-ink);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__details-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__details-hint {
+  max-width: 52ch;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__actions {
+  display: flex;
+  justify-content: flex-end;
+  min-inline-size: 0;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  width: 100%;
+  min-inline-size: 0;
+  margin-top: 6px;
+  padding: 12px 14px;
+  border: 2px solid var(--splat-border);
+  border-radius: 10px;
+  background-color: var(--splat-cream);
+  background-image: radial-gradient(circle, rgba(18, 18, 18, 0.06) 0.6px, transparent 0.8px);
+  background-size: 7px 7px;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.66);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] .splat-ui-appearance__reset-card {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.045) 0.6px, transparent 0.8px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset-info {
+  display: grid;
+  gap: 4px;
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset-title {
+  color: var(--splat-ink);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset-info .splat-ui-appearance__note {
+  margin: 0;
+  max-width: 48ch;
+  font-size: 11px;
+  color: var(--splat-muted);
+  line-height: 1.45;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__custom-hint {
+  color: var(--splat-muted);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  padding: 5px 10px 5px 7px;
+  border: 2px solid var(--splat-border);
+  border-radius: 8px;
+  background: var(--splat-paper);
+  color: var(--splat-ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 3px 0 var(--splat-shadow-button);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid #121212;
+  border-radius: 50%;
+  background: var(--splat-lime);
+  color: #121212;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset-icon svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset-copy {
+  display: grid;
+  gap: 1px;
+  line-height: 1.1;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset-copy > span {
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset-copy small {
+  color: var(--splat-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset:hover {
+  background: var(--splat-lime);
+  color: #121212;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset:hover .splat-ui-appearance__reset-icon {
+  background: var(--splat-pink);
+  color: #ffffff;
+  border-color: #121212;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__note {
+  font-size: 11px;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 2px dashed rgba(18, 18, 18, 0.18);
+  font-size: 11px;
+  color: var(--splat-muted);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] .splat-ui-appearance__about {
+  border-top-color: rgba(255, 255, 255, 0.16);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-title {
+  font-weight: 900;
+  color: var(--splat-ink);
+  letter-spacing: 0.04em;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-author {
+  font-weight: 600;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-build {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  color: var(--splat-muted);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-author a {
+  color: var(--splat-pink-deep);
+  font-weight: 800;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--splat-muted);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--splat-paper);
+  border: 1.5px solid var(--splat-border);
+  transition: all 0.15s ease;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-icon {
+  flex: none;
+  opacity: 0.8;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-icon--afdian {
+  color: #ff4070;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-icon--kofi {
+  color: #ff5e5b;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-link:hover {
+  color: var(--splat-pink-deep);
+  border-color: var(--splat-border);
+  background: var(--splat-lime);
+  text-decoration: none;
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-link:hover .splat-ui-appearance__about-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-dot {
+  color: var(--splat-border);
+  font-weight: 900;
+}
+
+@media (max-width: 520px) {
+  html[data-dsh-splat-ui-skin] .splat-ui-appearance {
+    gap: 10px;
+    padding-inline: 0;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-appearance__preview {
+    height: 104px;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-appearance__presets {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-appearance__presets .splat-ui-appearance__preset,
+  html[data-dsh-splat-ui-skin] .splat-ui-appearance__diff-options .splat-ui-appearance__preset {
+    min-width: 0;
+    padding-inline: 9px;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-appearance__diff-options,
+  html[data-dsh-splat-ui-skin] .splat-ui-appearance__details-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-appearance__details-row {
+    display: grid;
+    gap: 6px;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset-card {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-appearance__reset {
+    min-height: 44px;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-appearance__about-link {
+    min-height: 44px;
+    padding-inline: 10px;
+  }
+}
+
+/* Trajectory (trace) view: DSH exposes data hooks for its toolbar, timeline
+   lanes and ledger rows, so the skin paints paper, ink rims and turf bars
+   without binding to hashed class names. */
+html[data-dsh-splat-ui-skin] [role="toolbar"][aria-label="轨迹工具栏"],
+html[data-dsh-splat-ui-skin] section[aria-label="轨迹时间线"],
+html[data-dsh-splat-ui-skin] div[data-trajectory-scroll],
+html[data-dsh-splat-ui-skin] table[data-scroll-ready] {
+  background: var(--splat-paper-warm) !important;
+  color: var(--splat-ink);
+}
+
+html[data-dsh-splat-ui-skin] [role="toolbar"][aria-label="轨迹工具栏"] {
+  border-bottom: 2px solid var(--splat-border);
+}
+
+html[data-dsh-splat-ui-skin] [role="toolbar"][aria-label="轨迹工具栏"] button {
+  border: 1.5px solid var(--splat-border) !important;
+  border-radius: 6px;
+  background: var(--splat-paper) !important;
+  color: var(--splat-ink) !important;
+  font-weight: 700;
+}
+
+html[data-dsh-splat-ui-skin] [role="toolbar"][aria-label="轨迹工具栏"] button:hover {
+  background: var(--splat-cream) !important;
+}
+
+html[data-dsh-splat-ui-skin] [role="toolbar"][aria-label="轨迹工具栏"] button[aria-pressed="true"] {
+  background: var(--splat-lime) !important;
+  color: #121212 !important;
+}
+
+html[data-dsh-splat-ui-skin] [role="toolbar"][aria-label="轨迹工具栏"] div:has(> input[type="search"]) {
+  background: var(--splat-paper) !important;
+  border: 1.5px solid var(--splat-border) !important;
+  border-radius: 999px;
+  padding-inline: 8px;
+}
+
+html[data-dsh-splat-ui-skin] [role="toolbar"][aria-label="轨迹工具栏"] input[type="search"] {
+  color: var(--splat-ink);
+}
+
+html[data-dsh-splat-ui-skin] section[aria-label="轨迹时间线"] {
+  border-bottom: 2px solid var(--splat-border);
+}
+
+/* Lanes read as turf: pink inputs, lime context, magenta tools, ink system. */
+html[data-dsh-splat-ui-skin] [data-timeline-span="system"] {
+  background: var(--splat-muted) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-timeline-span="user"] {
+  background: var(--splat-pink) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-timeline-span="context"] {
+  background: color-mix(in srgb, var(--splat-lime) 62%, var(--splat-body)) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-timeline-span="message"] {
+  --trajectory-assistant-decoding-color: var(--splat-lime) !important;
+  --trajectory-assistant-ttft-color: color-mix(in srgb, var(--splat-lime) 52%, var(--splat-paper)) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-timeline-span="tool"],
+html[data-dsh-splat-ui-skin] [data-timeline-span="subtool"] {
+  background: var(--splat-pink-deep) !important;
+}
+
+/* The ledger sits on the same paper: hairline rows, lime hover and selection. */
+html[data-dsh-splat-ui-skin] table[data-scroll-ready] {
+  --trajectory-turn-accent: color-mix(in srgb, var(--splat-lime) 40%, var(--splat-paper-warm));
+}
+
+html[data-dsh-splat-ui-skin] table[data-scroll-ready] tbody tr[data-kind] {
+  box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--splat-ink) 9%, transparent);
+}
+
+html[data-dsh-splat-ui-skin] table[data-scroll-ready] tbody tr[data-kind]:hover:not([data-selected="true"]) {
+  background: color-mix(in srgb, var(--splat-lime) 16%, var(--splat-paper-warm)) !important;
+}
+
+html[data-dsh-splat-ui-skin] table[data-scroll-ready] tbody tr[data-selected="true"] {
+  background: color-mix(in srgb, var(--splat-lime) 30%, var(--splat-paper-warm)) !important;
+  box-shadow:
+    inset 3px 0 0 var(--splat-ink),
+    inset 0 -1px 0 color-mix(in srgb, var(--splat-ink) 9%, transparent) !important;
+}
+
+html[data-dsh-splat-ui-skin] table[data-scroll-ready] [data-role-kind] {
+  border: 1px solid color-mix(in srgb, var(--splat-ink) 24%, transparent) !important;
+  border-radius: 999px !important;
+  background: color-mix(in srgb, var(--splat-ink) 7%, var(--splat-paper-warm)) !important;
+  color: var(--splat-ink) !important;
+}
+
+html[data-dsh-splat-ui-skin] table[data-scroll-ready] [data-role-kind="user"] {
+  background: color-mix(in srgb, var(--splat-pink) 20%, var(--splat-paper-warm)) !important;
+}
+
+html[data-dsh-splat-ui-skin] table[data-scroll-ready] [data-role-kind="context"] {
+  background: color-mix(in srgb, var(--splat-lime) 36%, var(--splat-paper-warm)) !important;
+}
+
+html[data-dsh-splat-ui-skin] table[data-scroll-ready] [data-role-kind="message"] {
+  background: color-mix(in srgb, var(--splat-lime) 26%, var(--splat-paper-warm)) !important;
+}
+
+html[data-dsh-splat-ui-skin] table[data-scroll-ready] [data-role-kind="tool"] {
+  background: color-mix(in srgb, var(--splat-pink-deep) 18%, var(--splat-paper-warm)) !important;
+}
+
+/* Full-page work surfaces (plugins, automation, market) sit on a printed sheet
+   instead of the arena art, so rows, fields and buttons keep their contrast. */
+html[data-dsh-splat-ui-skin] [data-global-panel] section {
+  background: var(--splat-paper-warm);
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] h1 {
+  color: var(--splat-ink);
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] section h2 {
+  color: var(--splat-ink);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] li[data-plugin-package],
+html[data-dsh-splat-ui-skin] [data-global-panel] li[data-plugin-item] {
+  background: var(--splat-paper);
+  border: 1.5px solid var(--splat-border);
+  border-radius: 10px;
+}
+
+/* Plugin glyphs read as printed stickers instead of DSH's pastel app tiles.
+   Built-in rows carry an inline svg; package rows carry an image, so both get
+   the same rim and warm fill. The art keeps its own colours — it is ink, not a
+   monochrome print — and is pushed to Splatoon saturation so the gradients read
+   as ink dyes instead of UI pastels. */
+html[data-dsh-splat-ui-skin] [data-global-panel] li[data-plugin-item] > div > span:has(> :is(svg, img)),
+html[data-dsh-splat-ui-skin] [data-global-panel] li[data-plugin-package] > div > span:has(> :is(svg, img)) {
+  border: 1.5px solid var(--splat-border);
+  border-radius: 10px;
+  background: var(--splat-paper-warm);
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] li[data-plugin-item] > div > span:has(> :is(svg, img)) :is(svg, img),
+html[data-dsh-splat-ui-skin] [data-global-panel] li[data-plugin-package] > div > span:has(> :is(svg, img)) :is(svg, img) {
+  filter: saturate(2.2) contrast(1.05);
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-global-panel] li[data-plugin-item] > div > span:has(> :is(svg, img)) :is(svg, img),
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-global-panel] li[data-plugin-package] > div > span:has(> :is(svg, img)) :is(svg, img) {
+  filter: saturate(1.9) brightness(1.08);
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] li[data-plugin-package]:hover,
+html[data-dsh-splat-ui-skin] [data-global-panel] li[data-plugin-item]:hover {
+  background: var(--splat-cream);
+}
+
+html[data-dsh-splat-ui-skin] body:not([data-ds-dark-theme]) [data-global-panel] li[data-plugin-package]:hover,
+html[data-dsh-splat-ui-skin] body:not([data-ds-dark-theme]) [data-global-panel] li[data-plugin-item]:hover {
+  box-shadow: 2px 2px 0 rgba(18, 18, 18, 0.18);
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] ul[aria-label="任务列表"] li > button {
+  border-radius: 8px;
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] ul[aria-label="任务列表"] li > button:hover {
+  background: var(--splat-cream);
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] aside {
+  background: var(--splat-paper-warm);
+  border-left: 2px solid var(--splat-border);
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] aside h2 {
+  color: var(--splat-ink);
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+/* The workspace panel reuses the dialog control language. DSH's own fields are
+   1px hairlines with no lift, which reads as a different product next to the
+   composer and settings fields, so the shell gets the ink rim and hard shadow. */
+html[data-dsh-splat-ui-skin] [data-global-panel] span:has(> input:not([type="search"]):not([type="checkbox"]):not([type="radio"]):not([type="hidden"])) {
+  box-sizing: border-box;
+  border: 2px solid var(--splat-border-strong);
+  border-radius: 14px;
+  background: var(--splat-paper);
+  box-shadow: 0 3px 0 var(--splat-shadow-input);
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-global-panel]
+  span:has(> input:not([type="search"]):not([type="checkbox"]):not([type="radio"]):not([type="hidden"]))
+  > input {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  outline: none !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] span:has(> input:focus-visible) {
+  outline: none;
+  border-color: var(--splat-focus);
+  box-shadow:
+    0 0 0 2px rgba(var(--splat-lime-dark-rgb), 0.28),
+    0 2px 0 var(--splat-shadow-input) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] textarea {
+  box-sizing: border-box;
+  border: 2px solid var(--splat-border-strong);
+  border-radius: 14px;
+  background: var(--splat-paper);
+  color: var(--splat-ink);
+  box-shadow: 0 3px 0 var(--splat-shadow-input);
+}
+
+html[data-dsh-splat-ui-skin]
+  :where([role="dialog"], [role="menu"], [data-global-panel])
+  :where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]), textarea):not(span > input):not(
+    [role="search"] > input
+  ):focus-visible {
+  outline: none !important;
+  border-color: var(--splat-focus);
+  box-shadow:
+    0 0 0 2px rgba(var(--splat-lime-dark-rgb), 0.28),
+    0 2px 0 var(--splat-shadow-input) !important;
+}
+
+/* The rule groups (execution target, repeat, date, time) are selects built
+   from rows, so the group box carries the same field surface as an input. */
+html[data-dsh-splat-ui-skin] [data-global-panel] aside fieldset div:has(> span > button[aria-haspopup]) {
+  box-sizing: border-box;
+  border: 2px solid var(--splat-border-strong);
+  border-radius: 14px;
+  background: var(--splat-paper);
+  box-shadow: 0 3px 0 var(--splat-shadow-input);
+}
+
+/* These rows already focus their value face. Suppress the generic row ring
+   instead of adding two more rings around the row and the whole field group. */
+html[data-dsh-splat-ui-skin] [data-global-panel] aside fieldset div:has(> span > button[aria-haspopup]) > span > button[aria-haspopup]:focus-visible {
+  outline: none !important;
+}
+
+/* Page toolbars keep the flatter search treatment used by the trace toolbar. */
+html[data-dsh-splat-ui-skin] [data-global-panel] div:has(> div > span > input[type="search"]) {
+  border: 1.5px solid var(--splat-border-strong);
+  border-radius: 12px;
+  background: var(--splat-paper);
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] div:has(> span > input[type="search"]) {
+  border: 0;
+  background: transparent;
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] input[type="search"] {
+  color: var(--splat-ink);
+}
+
+/* Action buttons on a page bar carry the same inset rim as the selected
+   segmented pill, so the lime primary and the outline secondary read as one
+   control family. Ghost icon buttons and filter chips keep their own states. */
+html[data-dsh-splat-ui-skin] [data-global-panel] header button:not([role="tab"]):not([aria-pressed]):not([aria-label="插件说明"]),
+html[data-dsh-splat-ui-skin] [data-global-panel] aside footer + footer button {
+  box-shadow: inset 0 0 0 1.5px var(--splat-border-strong);
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] button[aria-pressed="false"]:hover:not(:disabled) {
+  background: var(--splat-cream);
+}
+
+/* The save bar closes the sheet with a rule of its own instead of DSH's 0.7px
+   hairline over a translucent fill. */
+html[data-dsh-splat-ui-skin] [data-global-panel] aside footer + footer {
+  background: var(--splat-paper-warm);
+  border-top: 1.5px solid var(--splat-border);
+}
+
+/* Dark paper keeps the dialog field step: one hairline rim over a raised
+   surface, because a 2px light rim on near-black reads as a wireframe. */
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  [data-global-panel]
+  :is(
+    span:has(> input:not([type="search"]):not([type="checkbox"]):not([type="radio"]):not([type="hidden"])),
+    textarea,
+    div:has(> div > span > input[type="search"]),
+    aside fieldset div:has(> span > button[aria-haspopup])
+  ) {
+  border-width: 1px;
+  background: #282826;
+  box-shadow: 0 2px 0 #050505;
+}
+
+/* Selected filters and segmented tabs use the same lime slab as the appearance
+   presets; DSH's accent tint alone washes out on the paper sheet. Detail-panel
+   tabs keep their underline instead. */
+html[data-dsh-splat-ui-skin] [data-global-panel] section :is([role="tab"][aria-selected="true"], button[aria-pressed="true"]):not(aside *) {
+  background: var(--splat-lime) !important;
+  color: #121212 !important;
+  box-shadow: inset 0 0 0 1.5px #121212;
+}
+
+/* DSH fades disabled buttons to 40%, which turns the lime primary into pale
+   text on pale lime. Keep the faded surface but hold the label readable. */
+html[data-dsh-splat-ui-skin] [data-global-panel] button:disabled {
+  opacity: 0.62 !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] aside button[aria-label] {
+  color: var(--splat-ink) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] aside [role="tab"] {
+  color: var(--splat-muted) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] aside [role="tab"][aria-selected="true"] {
+  color: var(--splat-ink) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-global-panel] aside [role="tab"][aria-selected="true"]::after {
+  background: var(--splat-lime) !important;
+}
+
+/* The detail tab bar closes like the save bar: one ink rule, not a hairline. */
+html[data-dsh-splat-ui-skin] [data-global-panel] aside div:has(> [role="tablist"]) {
+  border-bottom: 1.5px solid var(--splat-border);
+}
+
+/* The scheduled-message card is a turn trigger: DSH paints it as a dark notice
+   island, so its meta line has to leave DSH's muted ink for the light ink. */
+html[data-dsh-splat-ui-skin] [data-turn-trigger] {
+  background: #101010 !important;
+  border: 1.5px solid var(--splat-border);
+  border-radius: 10px;
+  color: #f4f4ec;
+  box-shadow: inset 3px 0 0 var(--splat-lime);
+}
+
+html[data-dsh-splat-ui-skin] [data-turn-trigger] button {
+  border-bottom: 1px solid rgba(242, 242, 232, 0.14);
+  font-weight: 700;
+}
+
+html[data-dsh-splat-ui-skin] [data-turn-trigger] button > span > svg {
+  color: var(--splat-lime);
+}
+
+html[data-dsh-splat-ui-skin] [data-turn-trigger] button > svg {
+  color: #a9a9a0;
+}
+
+html[data-dsh-splat-ui-skin] [data-turn-trigger] time {
+  color: #a9a9a0;
+}
+
+html[data-dsh-splat-ui-skin] [data-turn-trigger] :where(button, span, div, p, strong) {
+  color: #e7e7de;
+}
+
+html[data-dsh-splat-ui-skin] [data-turn-trigger] :where(pre, code) {
+  color: #f4f4ec;
+}
+
+/* Settings pair an ink navigation rail with a quieter paper form. */
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] {
+  --splat-settings-paper: #fffef9;
+  --splat-settings-ink: #20221f;
+  --splat-settings-rail: #242623;
+  --splat-settings-tab-active: var(--splat-settings-ink);
+  box-sizing: border-box;
+  width: 920px;
+  max-width: calc(100vw - 64px);
+  height: 800px;
+  max-height: calc(100dvh - 64px);
+  grid-template-areas: "title actions" "navigation content";
+  grid-template-columns: 206px minmax(0, 1fr);
+  grid-template-rows: 80px minmax(0, 1fr);
+  border: 2px solid #151613 !important;
+  border-radius: 24px !important;
+  outline: none !important;
+  background: var(--splat-settings-paper) !important;
+  box-shadow:
+    0 8px 0 #151613,
+    0 24px 60px #10110d38 !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"]::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: 5px;
+  border: 1px solid #7c826aa6;
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"]:not(:focus-visible) {
+  outline: none !important;
+}
+
+html[data-dsh-splat-ui-skin] div:has(> [data-shortcut-modal="settings"][role="dialog"]) > [aria-hidden="true"] {
+  background: rgba(17, 20, 14, 0.48) !important;
+  backdrop-filter: blur(2px);
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > div:has(+ nav) {
+  grid-area: title;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 28px;
+  border-right: 1px solid #141511;
+  background: var(--splat-settings-rail);
+  color: #f8f8ed;
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > div:has(+ nav)::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 37px;
+  height: 9px;
+  background: linear-gradient(to right, var(--splat-lime-solid) 0 36%, transparent 36% 64%, var(--splat-lime-solid) 64%);
+  transform: skewX(-30deg);
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav {
+  grid-area: navigation;
+  position: relative;
+  padding: 10px 16px 30px;
+  border-right: 1px solid #141511;
+  background:
+    var(--splat-decor-squid-watermark) right -76px bottom 26px / 284px auto no-repeat,
+    radial-gradient(#ffffff09 0.8px, transparent 1px) 0 0 / 10px 10px,
+    var(--splat-settings-rail);
+  color: #e9ecdf;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  bottom: 26px;
+  width: 68px;
+  height: 7px;
+  background: repeating-linear-gradient(120deg, var(--splat-lime-solid) 0 12px, transparent 12px 20px);
+  opacity: 0.7;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav button {
+  min-height: 44px;
+  margin-bottom: 6px;
+  padding-inline: 14px;
+  border: 1px solid transparent;
+  border-color: transparent !important;
+  border-radius: 12px;
+  background: transparent;
+  color: #e9ecdf !important;
+  font-weight: 650;
+  font-size: 14px;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav button svg {
+  width: 18px;
+  height: 18px;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav button[aria-current="true"] {
+  border-color: transparent !important;
+  border-radius: 10px;
+  background: var(--splat-decor-settings-selected-ink) center / 100% 100% no-repeat !important;
+  box-shadow: none;
+  filter: drop-shadow(0 1px 0 #10110e);
+  color: #121212 !important;
+  font-weight: 800;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav button[aria-current="true"] :where(span, svg) {
+  color: #121212 !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav button:not([aria-current="true"]):hover {
+  background: #ffffff10;
+  color: #fffef4 !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav button:focus-visible {
+  outline: 2px solid #fffef0 !important;
+  outline-offset: -3px;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav button[aria-current="true"]:focus-visible {
+  outline-color: #fffef0 !important;
+  outline-offset: -2px;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav + div {
+  grid-area: actions;
+  min-height: 0;
+  height: auto;
+  align-items: center;
+  padding: 20px 26px;
+  border-bottom: 1px solid #20221f18;
+  background: var(--splat-settings-paper);
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav + div > button {
+  width: 34px;
+  height: 34px;
+  margin-left: 12px;
+  border: 1px solid #20221f30 !important;
+  border-radius: 50% !important;
+  background: transparent;
+  color: var(--splat-settings-ink);
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav + div > button:hover {
+  background: #f0f2e6;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav + div button:not(:has(> svg)) {
+  min-height: 30px;
+  border: 1px solid #20221f28 !important;
+  border-radius: 8px;
+  background: transparent;
+  padding-inline: 11px;
+  color: var(--splat-settings-ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav + div + div {
+  grid-area: content;
+  --dsw-alias-border-l1: #20221f18;
+  --dsw-alias-border-l2: #20221f28;
+  padding: 10px 28px 28px;
+  background: var(--splat-settings-paper);
+  scrollbar-color: #c5c8b9 transparent;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] button[aria-haspopup="menu"] {
+  min-height: 36px;
+  border: 1px solid #20221f24 !important;
+  border-radius: 11px;
+  background: #f0f2e6 !important;
+  box-shadow: 0 1px 0 #20221f12;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] button[aria-haspopup="menu"]:hover {
+  border-color: #20221f65 !important;
+  background: #e9eed7 !important;
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-shortcut-modal="settings"][role="dialog"]
+  div:has(> button[aria-pressed] + button[aria-pressed] + button[aria-pressed])
+  > button[aria-pressed] {
+  height: 82px;
+  border: 1px solid #20221f35 !important;
+  border-radius: 14px;
+  background: #fffef9 !important;
+  box-shadow: none !important;
+  color: #20221f !important;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-shortcut-modal="settings"][role="dialog"]
+  div:has(> button[aria-pressed] + button[aria-pressed] + button[aria-pressed])
+  > button[aria-pressed="true"] {
+  border: 1.5px solid #20221f !important;
+  background: var(--splat-lime-solid) !important;
+  box-shadow: 0 3px 0 #20221f !important;
+}
+
+/* Plugin views use underline tabs, with the full button as the click target.
+   The shared baseline separates navigation from content without a box. */
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] [role="tablist"]:not(:has(> span[aria-hidden])) {
+  align-items: stretch;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0;
+  border: 0 !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--splat-settings-ink) 18%, transparent) !important;
+  border-radius: 0;
+  background: transparent !important;
+  overflow: auto hidden;
+  scrollbar-width: thin;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] [role="tablist"]:not(:has(> span[aria-hidden])) > [role="tab"] {
+  position: relative;
+  flex: 0 0 auto;
+  height: 44px;
+  min-height: 44px;
+  padding: 12px 14px;
+  border: 0 !important;
+  border-radius: 8px 8px 0 0;
+  background: transparent;
+  color: color-mix(in srgb, var(--splat-settings-ink) 72%, var(--splat-settings-paper)) !important;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-shortcut-modal="settings"][role="dialog"]
+  [role="tablist"]:not(:has(> span[aria-hidden]))
+  > [role="tab"]:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--splat-settings-ink) 7%, transparent);
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-shortcut-modal="settings"][role="dialog"]
+  [role="tablist"]:not(:has(> span[aria-hidden]))
+  > [role="tab"][aria-selected="true"] {
+  color: var(--splat-settings-tab-active) !important;
+  font-weight: 800;
+}
+
+html[data-dsh-splat-ui-skin]
+  [data-shortcut-modal="settings"][role="dialog"]
+  [role="tablist"]:not(:has(> span[aria-hidden]))
+  > [role="tab"][aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  bottom: 0;
+  left: 12px;
+  width: auto;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--splat-settings-tab-active) !important;
+}
+
+html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] [role="tablist"]:not(:has(> span[aria-hidden])) > [role="tab"]:focus-visible {
+  outline: 2px solid var(--splat-settings-tab-active) !important;
+  outline-offset: -3px;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"][role="dialog"] {
+  --splat-settings-paper: #262824;
+  --splat-settings-ink: #f2f3e8;
+  --splat-settings-rail: #191b18;
+  --splat-settings-tab-active: var(--splat-lime);
+  border-color: #10110e !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"][role="dialog"]::before {
+  border-color: #e2e8d318;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"][role="dialog"] > nav + div {
+  border-bottom-color: #e8eed414;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"][role="dialog"] > nav + div button {
+  border-color: #e8eed430 !important;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"][role="dialog"] > nav + div + div {
+  --dsw-alias-border-l1: #e8eed41c;
+  --dsw-alias-border-l2: #e8eed42c;
+  scrollbar-color: #606956 transparent;
+}
+
+html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-shortcut-modal="settings"][role="dialog"] button[aria-haspopup="menu"] {
+  border-color: #e8eed42c !important;
+  background: #34392f !important;
+}
+
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  [data-shortcut-modal="settings"][role="dialog"]
+  div:has(> button[aria-pressed] + button[aria-pressed] + button[aria-pressed])
+  > button[aria-pressed="false"] {
+  border-color: #e8eed42c !important;
+  background: #30352b !important;
+  color: #f2f3e8 !important;
+}
+
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  [data-shortcut-modal="settings"][role="dialog"]
+  div:has(> button[aria-pressed] + button[aria-pressed] + button[aria-pressed])
+  > button[aria-pressed="true"],
+html[data-dsh-splat-ui-skin]
+  body[data-ds-dark-theme]
+  [data-shortcut-modal="settings"][role="dialog"]
+  div:has(> button[aria-pressed] + button[aria-pressed] + button[aria-pressed])
+  > button[aria-pressed="true"]
+  :where(span, svg) {
+  color: #121212 !important;
+}
+
+@media (max-width: 767px) {
+  html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    grid-template-areas: "title actions" "navigation navigation" "content content";
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 64px 64px minmax(0, 1fr);
+    border-radius: 20px !important;
+  }
+  html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"]::before {
+    border-radius: 14px;
+    inset: 4px;
+  }
+  html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > div:has(+ nav) {
+    padding-inline: 20px;
+    border-right: 0;
+    font-size: 23px;
+  }
+  html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav {
+    padding: 6px 14px 10px;
+    background: var(--splat-settings-rail);
+    border-right: 0;
+  }
+  html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav::after {
+    content: none;
+  }
+  html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    overflow: auto hidden;
+    scrollbar-width: none;
+  }
+  html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav button {
+    flex: 1 0 auto;
+    justify-content: center;
+    min-width: 108px;
+    min-height: 38px;
+    margin-bottom: 0;
+    padding-inline: 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav + div {
+    padding: 14px 16px 14px 0;
+    border: 0;
+    background: var(--splat-settings-rail);
+    color: #f8f8ed;
+  }
+  html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav + div button:not(:focus-visible) {
+    color: #f8f8ed !important;
+    border-color: #ffffff40 !important;
+    background: #ffffff08;
+  }
+  html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav + div > button {
+    width: 30px;
+    height: 30px;
+    margin-left: 8px;
+  }
+  html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > nav + div + div {
+    padding: 5px 18px 24px;
+  }
+  html[data-dsh-splat-ui-skin] [data-shortcut-modal="settings"][role="dialog"] > div:has(+ nav)::after {
+    width: 25px;
+    height: 7px;
+  }
+}
+
+/* Accessibility: a system request for more contrast wins over the slider. */
+@media (prefers-contrast: more) {
+  html[data-dsh-splat-ui-skin] {
+    --splat-canvas-veil: 0.56 !important;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-appearance {
+    --splat-appearance-draft: 0.56 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) :where(button, [role="treeitem"]) {
+    transition-duration: 0.01ms !important;
+  }
+
+  html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) :where(button:hover, button:active) {
+    transform: none !important;
+  }
+
+  html[data-dsh-splat-ui-skin] :where(button, input, textarea, select, [role="button"], [contenteditable="true"]) {
+    transition-duration: 0.01ms !important;
+  }
+
+  html[data-dsh-splat-ui-skin] :where(button, [role="button"]):hover,
+  html[data-dsh-splat-ui-skin] :where(button, [role="button"]):active {
+    transform: none !important;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-brand__mark {
+    transition-duration: 0.01ms !important;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-brand__mark:hover {
+    transform: none;
+  }
+
+  html[data-dsh-splat-ui-skin] .splat-ui-hero__scenery *,
+  html[data-dsh-splat-ui-skin] div[class]:has(> span > div > .splat-ui-hero__brand) > span:has(> span + span) {
+    animation: none !important;
+  }
+
+  html[data-dsh-splat-ui-skin] [data-dsh-boot] > *,
+  html[data-dsh-splat-ui-skin] [data-dsh-boot-spinner]::before {
+    animation: none !important;
+  }
+
+  html[data-dsh-splat-ui-skin]
+    [data-composer-card]
+    > [data-input-scroll]
+    + div
+    > div
+    + div
+    > button[aria-label]:not([aria-haspopup]):not(:has(span)):has(svg)::after {
+    transition: none;
+    transform: none !important;
+  }
+}

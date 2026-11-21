@@ -1,0 +1,31 @@
+{
+  "title": "墨街外观 · 当前设置面板",
+  "group": "设置与外观",
+  "pluginCss": [],
+  "variants": [
+    {
+      "id": "light",
+      "mode": "light",
+      "window": "900,900"
+    },
+    {
+      "id": "dark",
+      "mode": "dark",
+      "window": "900,900"
+    }
+  ],
+  "assertions": [
+    {
+      "message": "标题使用墨街文案且预览可见",
+      "expression": "document.querySelector('h3').textContent==='墨街外观'&&document.querySelector('[aria-label^=\"画布浓度预览\"]').getBoundingClientRect().height>100"
+    },
+    {
+      "message": "三档预设与滑杆保留可访问语义",
+      "expression": "document.querySelectorAll('.splat-ui-appearance__presets button[aria-pressed]').length===3&&!!document.querySelector('input[type=range]')"
+    },
+    {
+      "message": "三档主墨色选项保留可访问语义",
+      "expression": "document.querySelectorAll('.splat-ui-appearance__green button[aria-pressed]').length===3"
+    }
+  ]
+}

@@ -1,0 +1,343 @@
+{
+  "status": "pass",
+  "runtime": "DSH 0.2.2-rc.1 Web",
+  "profile": "isolated local profile, tarball install",
+  "modelRequests": 0,
+  "generatedAt": "2026-11-20T09:12:29.059Z",
+  "results": [
+    {
+      "name": "packed-bundle-loaded",
+      "passed": true,
+      "bundleSha256": "72a8511c5dc30ea5723079675075d88472709dabaa2ea2d96776be2b5b2c4b8e",
+      "build": "0.1.0 2026-11-20 07:43 UTC",
+      "installedFromTarball": true,
+      "runtimeCssMatchesSource": true
+    },
+    {
+      "name": "reading-light",
+      "passed": true,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "code": true,
+      "table": true,
+      "bannerRatios": [17.214204737644273, 17.214204737644273, 17.214204737644273],
+      "codeRatio": 17.214204737644273,
+      "composer": {
+        "x": 469.296875,
+        "y": 826,
+        "width": 774.390625,
+        "height": 144,
+        "top": 826,
+        "right": 1243.6875,
+        "bottom": 970,
+        "left": 469.296875
+      }
+    },
+    {
+      "name": "input-menu-light",
+      "passed": true,
+      "arrowDownChangesSelection": true,
+      "escapeCloses": true
+    },
+    {
+      "name": "settings-light",
+      "passed": true,
+      "visible": true,
+      "outline": "2px",
+      "offset": "-2px",
+      "mask": "none",
+      "clip": "none",
+      "width": 920,
+      "right": 1180,
+      "left": 260
+    },
+    {
+      "name": "appearance-light",
+      "passed": true,
+      "presets": [
+        {
+          "preset": "纸白",
+          "ink": 20
+        },
+        {
+          "preset": "涂地",
+          "ink": 100
+        },
+        {
+          "preset": "均衡",
+          "ink": 50
+        }
+      ]
+    },
+    {
+      "name": "attachment-light",
+      "passed": true,
+      "uploaded": true,
+      "removed": true,
+      "messageSent": false
+    },
+    {
+      "name": "tool-result-light",
+      "passed": true,
+      "expanded": true,
+      "finalLineVisible": true,
+      "contrastRatios": [15.576081165662153],
+      "tail": {
+        "scrolled": true,
+        "scrollTop": 570,
+        "scrollHeight": 744,
+        "clientHeight": 174,
+        "lastLine": {
+          "x": 542.296875,
+          "y": 564.5,
+          "width": 342.375,
+          "height": 13,
+          "top": 564.5,
+          "right": 884.671875,
+          "bottom": 577.5,
+          "left": 542.296875
+        },
+        "viewport": {
+          "top": 417.5,
+          "bottom": 591.5
+        },
+        "visible": true
+      }
+    },
+    {
+      "name": "reading-dark",
+      "passed": true,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "code": true,
+      "table": true,
+      "bannerRatios": [18.076901057546227, 18.076901057546227, 18.076901057546227],
+      "codeRatio": 18.076901057546227,
+      "composer": {
+        "x": 469.296875,
+        "y": 828,
+        "width": 774.390625,
+        "height": 142,
+        "top": 828,
+        "right": 1243.6875,
+        "bottom": 970,
+        "left": 469.296875
+      }
+    },
+    {
+      "name": "input-menu-dark",
+      "passed": true,
+      "arrowDownChangesSelection": true,
+      "escapeCloses": true
+    },
+    {
+      "name": "settings-dark",
+      "passed": true,
+      "visible": true,
+      "outline": "2px",
+      "offset": "-2px",
+      "mask": "none",
+      "clip": "none",
+      "width": 920,
+      "right": 1180,
+      "left": 260
+    },
+    {
+      "name": "appearance-dark",
+      "passed": true,
+      "presets": [
+        {
+          "preset": "纸白",
+          "ink": 20
+        },
+        {
+          "preset": "涂地",
+          "ink": 100
+        },
+        {
+          "preset": "均衡",
+          "ink": 50
+        }
+      ]
+    },
+    {
+      "name": "attachment-dark",
+      "passed": true,
+      "uploaded": true,
+      "removed": true,
+      "messageSent": false
+    },
+    {
+      "name": "tool-result-dark",
+      "passed": true,
+      "expanded": true,
+      "finalLineVisible": true,
+      "contrastRatios": [12.657403751095565],
+      "tail": {
+        "scrolled": true,
+        "scrollTop": 570,
+        "scrollHeight": 744,
+        "clientHeight": 174,
+        "lastLine": {
+          "x": 542.296875,
+          "y": 564.5,
+          "width": 342.375,
+          "height": 13,
+          "top": 564.5,
+          "right": 884.671875,
+          "bottom": 577.5,
+          "left": 542.296875
+        },
+        "viewport": {
+          "top": 417.5,
+          "bottom": 591.5
+        },
+        "visible": true
+      }
+    },
+    {
+      "name": "mobile-light",
+      "passed": true,
+      "width": 390,
+      "scrollWidth": 390,
+      "composer": {
+        "x": 16,
+        "y": 694,
+        "width": 351,
+        "height": 120,
+        "top": 694,
+        "right": 367,
+        "bottom": 814,
+        "left": 16
+      },
+      "menu": {
+        "x": 19,
+        "y": 293,
+        "width": 345,
+        "height": 400,
+        "top": 293,
+        "right": 364,
+        "bottom": 693,
+        "left": 19
+      }
+    },
+    {
+      "name": "settings-mobile-light",
+      "passed": true,
+      "left": 0,
+      "right": 390,
+      "scrollWidth": 386,
+      "clientWidth": 386
+    },
+    {
+      "name": "mobile-dark",
+      "passed": true,
+      "width": 390,
+      "scrollWidth": 390,
+      "composer": {
+        "x": 16,
+        "y": 696,
+        "width": 351,
+        "height": 118,
+        "top": 696,
+        "right": 367,
+        "bottom": 814,
+        "left": 16
+      },
+      "menu": {
+        "x": 18,
+        "y": 294,
+        "width": 347,
+        "height": 400,
+        "top": 294,
+        "right": 365,
+        "bottom": 694,
+        "left": 18
+      }
+    },
+    {
+      "name": "settings-mobile-dark",
+      "passed": true,
+      "left": 0,
+      "right": 390,
+      "scrollWidth": 386,
+      "clientWidth": 386
+    },
+    {
+      "name": "plugin-lifecycle",
+      "passed": true,
+      "disabled": {
+        "styles": 0,
+        "brand": 0,
+        "attributes": []
+      },
+      "enabled": {
+        "styles": 1,
+        "brand": 1
+      }
+    }
+  ],
+  "sourceDateEpoch": 1795160586,
+  "baselineCommit": "7b43fe33eef114a6ab3812ae3d0e80be4e71b5a1",
+  "scope": {
+    "web": "real-host UI acceptance passed",
+    "desktop": "isolated tarball installation only; native GUI not accepted",
+    "modelAndToolCalls": "synthetic session history; no live provider calls"
+  },
+  "gates": {
+    "unitAndContractTests": 18,
+    "fixtureGroups": 18,
+    "fixtureVariants": 41,
+    "fixtureAssertions": 113,
+    "siteBrowserCases": 3,
+    "lintWarnings": 4
+  },
+  "siteBrowser": [
+    {
+      "page": "landing",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "errors": [],
+      "video": true,
+      "badResources": [],
+      "installation": {
+        "visible": "cd <DSH_Profile_目录>\npnpm add file:/path/to/dsh-theme-splat-ui.tgz",
+        "copied": "cd <DSH_Profile_目录>\npnpm add file:/path/to/dsh-theme-splat-ui.tgz",
+        "label": "已复制"
+      }
+    },
+    {
+      "page": "landing",
+      "width": 390,
+      "scrollWidth": 390,
+      "errors": [],
+      "video": true,
+      "badResources": [],
+      "installation": {
+        "visible": "cd <DSH_Profile_目录>\npnpm add file:/path/to/dsh-theme-splat-ui.tgz",
+        "copied": "cd <DSH_Profile_目录>\npnpm add file:/path/to/dsh-theme-splat-ui.tgz",
+        "label": "已复制"
+      }
+    },
+    {
+      "page": "showcase",
+      "cards": 18,
+      "filtered": 1,
+      "width": 390,
+      "scrollWidth": 390,
+      "errors": [],
+      "frameErrors": [],
+      "darkSwitch": true,
+      "filter": true,
+      "appearanceBridge": true
+    }
+  ],
+  "release": {
+    "status": "local-pre-release-accepted",
+    "npm": "deferred by maintainer request",
+    "publicDistribution": "repository, CI, and Pages prepared; npm publish and v* tag deferred",
+    "pages": "pending workflow_dispatch deployment after push",
+    "commitAndPush": "pending commit and push to main",
+    "designGate": "GATE: OFF (no build active); project checks and browser acceptance recorded separately"
+  }
+}

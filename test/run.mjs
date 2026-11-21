@@ -1,0 +1,5 @@
+import './tokens.test.mjs'
+import './build.test.mjs'
+import './css.test.mjs'
+import './docs.test.mjs'
+import './release.test.mjs'

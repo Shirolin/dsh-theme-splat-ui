@@ -1,0 +1,85 @@
+[
+  {
+    "file": "biomejs-icon.svg",
+    "icon": "logos:biomejs-icon",
+    "name": "Biomejs",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://biomejs.dev/"
+  },
+  {
+    "file": "esbuild.svg",
+    "icon": "logos:esbuild",
+    "name": "esbuild",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://esbuild.github.io/"
+  },
+  {
+    "file": "nodejs.svg",
+    "icon": "logos:nodejs-icon",
+    "name": "Node.js",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://nodejs.org/"
+  },
+  {
+    "file": "pnpm.svg",
+    "icon": "logos:pnpm",
+    "name": "pnPM",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://pnpm.io/"
+  },
+  {
+    "file": "react.svg",
+    "icon": "logos:react",
+    "name": "React",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://facebook.github.io/react/"
+  },
+  {
+    "file": "typescript.svg",
+    "icon": "logos:typescript-icon",
+    "name": "Typescript",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://www.typescriptlang.org/"
+  },
+  {
+    "file": "ui-palette.svg",
+    "icon": "ui:palette",
+    "name": "Palette",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  }
+]

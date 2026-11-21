@@ -1,0 +1,150 @@
+{
+  "host": "DSH 0.2.2-rc.1 Web",
+  "captured": "2026-11-15",
+  "method": "真实宿主截图；本地预置演示会话；无实际工具或模型调用",
+  "records": [
+    {
+      "name": "workspace-light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dsf": 2
+      },
+      "session": "隔离宿主演示，无模型请求"
+    },
+    {
+      "name": "hero-light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dsf": 2
+      },
+      "clip": {
+        "x": 477.296875,
+        "y": 214.25,
+        "width": 758.390625,
+        "height": 355.5,
+        "scale": 1
+      },
+      "session": "隔离宿主演示，无模型请求"
+    },
+    {
+      "name": "composer-light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dsf": 2
+      },
+      "clip": {
+        "x": 469.296875,
+        "y": 629.75,
+        "width": 774.390625,
+        "height": 164,
+        "scale": 1
+      },
+      "session": "隔离宿主演示，无模型请求"
+    },
+    {
+      "name": "input-menu-light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dsf": 2
+      },
+      "session": "隔离宿主演示，无模型请求"
+    },
+    {
+      "name": "appearance-light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dsf": 2
+      },
+      "session": "隔离宿主演示，无模型请求"
+    },
+    {
+      "name": "appearance-panel-light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dsf": 2
+      },
+      "clip": {
+        "x": 260,
+        "y": 100,
+        "width": 920,
+        "height": 800,
+        "scale": 1
+      },
+      "session": "隔离宿主演示，无模型请求"
+    },
+    {
+      "name": "workspace-dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dsf": 2
+      },
+      "session": "隔离宿主演示，无模型请求"
+    },
+    {
+      "name": "runtime-reading-dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dsf": 2
+      },
+      "session": "隔离宿主演示，无模型请求"
+    },
+    {
+      "name": "code-dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dsf": 2
+      },
+      "clip": {
+        "x": 485.296875,
+        "y": 403,
+        "width": 742.390625,
+        "height": 273,
+        "scale": 1
+      },
+      "session": "隔离宿主演示，无模型请求"
+    },
+    {
+      "name": "tool-result-dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dsf": 2
+      },
+      "session": "隔离宿主演示，无模型请求"
+    },
+    {
+      "name": "tool-card-dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dsf": 2
+      },
+      "clip": {
+        "x": 485.296875,
+        "y": 467,
+        "width": 737.390625,
+        "height": 308.5,
+        "scale": 1
+      },
+      "session": "隔离宿主演示，无模型请求"
+    },
+    {
+      "name": "input-menu-mobile-dark",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dsf": 2
+      },
+      "session": "隔离宿主演示，无模型请求"
+    }
+  ]
+}

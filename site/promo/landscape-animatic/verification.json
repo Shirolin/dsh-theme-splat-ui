@@ -1,0 +1,157 @@
+{
+  "status": "pass",
+  "kind": "720p animatic; 1080p master awaiting approval",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration": 30,
+    "frames": 900,
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "colorSpace": "bt709",
+    "crf": 18
+  },
+  "audio": {
+    "codec": "aac",
+    "sampleRate": 48000,
+    "channels": 2,
+    "bitRate": 192377,
+    "durationSeconds": 30
+  },
+  "audioStreams": 1,
+  "embeddedCover": true,
+  "faststart": true,
+  "fullDecode": true,
+  "frameChecks": {
+    "checked": 900,
+    "shotsCovered": 9,
+    "textSafeArea": [48, 32, 1872, 1048],
+    "transitionTypes": ["shooter-barrage", "squid-surge", "roller-wipe", "inkbrush-slash", "dual-roller", "turf-clash"],
+    "fullCoverEvents": 5,
+    "fullCoverTypes": ["shooter-barrage", "roller-wipe", "dual-roller", "turf-clash"],
+    "clipRevealFrames": 43,
+    "clipRevealTypes": ["squid-surge", "inkbrush-slash", "dual-roller"],
+    "crossShotClipWindows": {
+      "02-03": 8,
+      "05-06": 10,
+      "06-07": 15
+    },
+    "layoutPresets": ["hero-splash", "right-stage", "dual-stack", "gear-panel", "roller-fest", "left-stage", "tactical-swap", "center-squad", "turf-finale"],
+    "cardTiltRange": [-3.2, 2],
+    "legacyCopyHits": 0,
+    "particleCollisions": 0
+  },
+  "determinism": [
+    {
+      "time": 18.8,
+      "sha256": "de2d9c7ed9ba83a9bce6712659d6b7776b613bdf99baea77a238da0094881041"
+    },
+    {
+      "time": 13.1,
+      "sha256": "b6f579b4b55d5b3fadf6e16b4a3663fa06c6fe191402f767b9aa17272a755a70"
+    },
+    {
+      "time": 18.8,
+      "sha256": "de2d9c7ed9ba83a9bce6712659d6b7776b613bdf99baea77a238da0094881041"
+    },
+    {
+      "time": 27.5,
+      "sha256": "4548942fa20361a1bad2736fa376728fadfd39a8e99013063c744025512e742d"
+    },
+    {
+      "time": 29.9666667,
+      "sha256": "4548942fa20361a1bad2736fa376728fadfd39a8e99013063c744025512e742d"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Nunito",
+      "weight": "700",
+      "status": "loaded"
+    },
+    {
+      "family": "Nunito",
+      "weight": "900",
+      "status": "loaded"
+    }
+  ],
+  "pausedVerticalUnchanged": true,
+  "endingStaticFromSeconds": 27.5,
+  "source": "DSH 真实截图，2x；本地预置演示历史，无实际工具或模型请求",
+  "shots": [
+    {
+      "time": 1.1,
+      "title": "墨街开涂！",
+      "image": "shot-01.png"
+    },
+    {
+      "time": 4,
+      "title": "三色街区",
+      "image": "shot-02.png"
+    },
+    {
+      "time": 7.5,
+      "title": "指令上膛",
+      "image": "shot-03.png"
+    },
+    {
+      "time": 10.9,
+      "title": "浓度随手调",
+      "image": "shot-04.png"
+    },
+    {
+      "time": 13.65,
+      "title": "祭典入夜！",
+      "image": "shot-05.png"
+    },
+    {
+      "time": 16,
+      "title": "午夜祭典",
+      "image": "shot-06.png"
+    },
+    {
+      "time": 18.8,
+      "title": "代码岛视界",
+      "image": "shot-07.png"
+    },
+    {
+      "time": 24,
+      "title": "390px 窄屏",
+      "image": "shot-08.png"
+    },
+    {
+      "time": 27.5,
+      "title": "昼夜双场",
+      "image": "shot-09.png"
+    }
+  ],
+  "extras": [
+    {
+      "time": 21.3,
+      "title": "工具结果卡",
+      "image": "shot-07-tool.png"
+    },
+    {
+      "time": 2.25,
+      "title": "射击墨点转场",
+      "image": "transition-shooter.png"
+    },
+    {
+      "time": 12.75,
+      "title": "巨型滚筒刷屏",
+      "image": "transition-roller.png"
+    },
+    {
+      "time": 22.6,
+      "title": "双滚筒撤开揭露",
+      "image": "transition-dual-roller.png"
+    },
+    {
+      "time": 25.48,
+      "title": "终局满屏对撞",
+      "image": "transition-clash.png"
+    }
+  ],
+  "videoSha256": "358f8a9f02376231dbb1e6527a492814ee8324fb62ff2282de02035cd26e15be"
+}

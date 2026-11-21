@@ -1,0 +1,46 @@
+{
+  "title": "代码岛作用域 · 浅色卡面不被浅色前景命中",
+  "group": "代码与交付",
+  "pluginCss": [
+    "@deepseek-ai/dsh-client-ui-action-cards",
+    "@deepseek-ai/dsh-client-ui-deliverables",
+    "@deepseek-ai/dsh-client-ui-plugin-manager",
+    "@deepseek-ai/dsh-client-ui-agent-preset",
+    "@deepseek-ai/dsh-client-ui-schedule",
+    "@deepseek-ai/dsh-client-ui-trajectory"
+  ],
+  "assertions": [
+    {
+      "message": "浅色结果卡片文字具有4.5:1对比度，避免代码岛规则侵入",
+      "expression": "(() => {\nreturn [...document.querySelectorAll(\"[data-audit=light]\")].every(el => { const surface=el;\nconst rgba=v=>{const n=v.match(/[\\d.]+/g);return [Number(n[0]),Number(n[1]),Number(n[2]),n.length>3?Number(n[3]):1]};\nlet bg=[255,255,255],nodes=[];for(let p=surface;p;p=p.parentElement)nodes.unshift(p);\nfor(const p of nodes){const c=rgba(getComputedStyle(p).backgroundColor);bg=bg.map((v,i)=>c[i]*c[3]+v*(1-c[3]))}\nconst lum=c=>c.map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((n,v,i)=>n+v*[.2126,.7152,.0722][i],0);\nconst a=lum(rgba(getComputedStyle(el).color).slice(0,3)),b=lum(bg);return(Math.max(a,b)+.05)/(Math.min(a,b)+.05)>=4.5;\n});})()"
+    },
+    {
+      "message": "结果列表保持独立文本布局",
+      "expression": "[...document.querySelectorAll('[data-audit=light]')].every(e=>getComputedStyle(e).paddingTop!=='20px')"
+    },
+    {
+      "message": "代码语言标签和操作按钮在实际顶栏底色上可读",
+      "expression": "(() => {\nconst el=document.querySelector(\"[data-audit=banner-label]\"), surface=document.querySelector(\"[data-code-block-banner]\"); if(!el||!surface)return false;\nconst rgba=v=>{const n=v.match(/[\\d.]+/g);return [Number(n[0]),Number(n[1]),Number(n[2]),n.length>3?Number(n[3]):1]};\nlet bg=[255,255,255],nodes=[];for(let p=surface;p;p=p.parentElement)nodes.unshift(p);\nfor(const p of nodes){const c=rgba(getComputedStyle(p).backgroundColor);bg=bg.map((v,i)=>c[i]*c[3]+v*(1-c[3]))}\nconst lum=c=>c.map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((n,v,i)=>n+v*[.2126,.7152,.0722][i],0);\nconst a=lum(rgba(getComputedStyle(el).color).slice(0,3)),b=lum(bg);return(Math.max(a,b)+.05)/(Math.min(a,b)+.05)>=4.5;\n})()"
+    },
+    {
+      "message": "原始工具载荷在跟随日夜的表面上具有4.5:1对比度",
+      "expression": "(() => {\nconst el=document.querySelector(\"[data-audit=dark]\"), surface=document.querySelector(\"[data-audit=dark]\"); if(!el||!surface)return false;\nconst rgba=v=>{const n=v.match(/[\\d.]+/g);return [Number(n[0]),Number(n[1]),Number(n[2]),n.length>3?Number(n[3]):1]};\nlet bg=[255,255,255],nodes=[];for(let p=surface;p;p=p.parentElement)nodes.unshift(p);\nfor(const p of nodes){const c=rgba(getComputedStyle(p).backgroundColor);bg=bg.map((v,i)=>c[i]*c[3]+v*(1-c[3]))}\nconst lum=c=>c.map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((n,v,i)=>n+v*[.2126,.7152,.0722][i],0);\nconst a=lum(rgba(getComputedStyle(el).color).slice(0,3)),b=lum(bg);return(Math.max(a,b)+.05)/(Math.min(a,b)+.05)>=4.5;\n})()"
+    },
+    {
+      "message": "Markdown 正文仍是深色代码岛，保持专属排版与高对比文字",
+      "expression": "(()=>{const e=document.querySelector('[data-code-block-content] pre'),s=getComputedStyle(e);return s.paddingTop==='20px'&&s.color===(document.body.hasAttribute('data-ds-dark-theme')?'rgb(245, 245, 237)':'rgb(244, 244, 236)')})()"
+    }
+  ],
+  "variants": [
+    {
+      "id": "light",
+      "mode": "light",
+      "window": "900,1100"
+    },
+    {
+      "id": "dark",
+      "mode": "dark",
+      "window": "900,1100"
+    }
+  ]
+}

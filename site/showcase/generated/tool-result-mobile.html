@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="zh-CN" data-dsh-splat-ui-skin="active"><head><meta charset="utf-8"><title>真实工具结果卡片</title>
+<link rel="stylesheet" href="css/dsh.css"><link rel="stylesheet" href="css/theme-base.css"><link rel="stylesheet" href="css/plugins/tool.css"><link rel="stylesheet" href="css/skin.css">
+<style>*{box-sizing:border-box}html,body{margin:0;min-height:100%}main{width:min(760px,calc(100% - 32px));padding-block:30px;margin:auto}</style>
+</head><body  style="--dsw-alias-bg-base:#fbfbf4;--dsw-alias-bg-layer-1:#ffffff;--dsw-alias-bg-layer-2:#e6f7e4;--dsw-alias-bg-layer-3:#d0eec9;--dsw-alias-bg-module-platform:#f2f2eb;--dsw-alias-bg-multi-select:#f1f1f1;--dsw-alias-bg-overlay:#ffffff;--dsw-alias-bg-skeleton:rgba(18, 18, 18, 0.08);--dsw-alias-bg-mask-1:#12121252;--dsw-alias-bg-mask-2:#12121224;--dsw-alias-bg-mask-3:#000000b3;--dsw-alias-bg-mask-photo:#000000e6;--dsw-alias-bg-mask-drop:rgba(251, 251, 244, 0.74);--dsw-alias-border-l1:rgba(22, 22, 22, 0.2);--dsw-alias-border-l2:rgba(22, 22, 22, 0.36);--dsw-alias-border-l2-darkmode-thin:rgba(22, 22, 22, 0.3);--dsw-alias-border-l3:rgba(22, 22, 22, 0.55);--dsw-alias-border-l4:rgba(22, 22, 22, 0.82);--dsw-alias-border-inverted:rgba(18, 18, 18, 0.08);--dsw-alias-border-inverted2:rgba(18, 18, 18, 0.12);--dsw-alias-brand-primary:#1edc00;--dsw-alias-brand-primary-invert:#ffffff;--dsw-alias-brand-primary-new-colorprimary-new-color:#1edc00;--dsw-alias-brand-text:#121212;--dsw-alias-link:#ad006c;--dsw-font-family:Nunito, &quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, sans-serif;--ds-font-family-code:&quot;SFMono-Regular&quot;, &quot;Cascadia Code&quot;, &quot;Fira Code&quot;, Consolas, &quot;Liberation Mono&quot;, monospace;--dsw-alias-button-contrast-fill:#252524;--dsw-alias-button-elevated-fill:#ffffff;--dsw-alias-button-floating-fill:#ffffff;--dsw-alias-button-floating-hover:#eeeeee;--dsw-alias-button-ghost-active-border:#161616;--dsw-alias-button-ghost-active-fill:#ececec;--dsw-alias-button-ghost-active-hover:#dedede;--dsw-alias-button-info-fill:#006c88;--dsw-alias-button-info-hover:#035c73;--dsw-alias-button-primary-dimmed:#60e549;--dsw-alias-button-primary-fill:#1edc00;--dsw-alias-button-primary-hover:#47ee2b;--dsw-alias-button-tool-bar-fill:rgba(18, 18, 18, 0.5);--dsw-alias-button-tool-bar-fill-invisible:rgba(18, 18, 18, 0.36);--dsw-alias-button-tool-bar-hover:rgba(18, 18, 18, 0.62);--dsw-alias-interactive-bg-hover:#1edc0059;--dsw-alias-interactive-bg-hover-accent:rgba(30, 220, 0, 0.32);--dsw-alias-interactive-bg-hover-danger:rgba(216, 20, 60, 0.14);--dsw-alias-interactive-bg-hover-solid:rgba(42, 42, 42, 0.9);--dsw-alias-interactive-bg-active:rgba(30, 220, 0, 0.72);--dsw-alias-label-primary:#121212;--dsw-alias-label-secondary:#242420;--dsw-alias-label-tertiary:#5c5c54;--dsw-alias-label-caption:#6a6a61;--dsw-alias-label-dimmed:#c7c7be;--dsw-alias-label-primary-bluish:#121212;--dsw-alias-label-primary-dimmed:#2e2e2d;--dsw-alias-label-primary-foreground:#121212;--dsw-alias-label-primary-inverted:#fbfbf4;--dsw-alias-markdown-code-block:#101010;--dsw-alias-markdown-code-block-banner:#1e1e1d;--dsw-alias-markdown-code-segment-selected:#292928;--dsw-alias-markdown-code-segment-unselected:#101010;--dsw-alias-markdown-inline-code:#dbf3d7;--dsw-alias-markdown-citation:#eeeeee;--dsw-alias-markdown-placeholder:#f2f2eb;--dsw-alias-markdown-tag:#f3f3f3;--dsw-alias-scrollbar-bg-l1:rgba(18, 18, 18, 0.18);--dsw-alias-scrollbar-bg-l2:rgba(18, 18, 18, 0.22);--dsw-alias-scrollbar-hover-l1:rgba(30, 220, 0, 0.6);--dsw-alias-scrollbar-hover-l2:rgba(30, 220, 0, 0.7);--dsw-alias-state-error-primary:#d8143c;--dsw-alias-state-error-secondary:#df4261;--dsw-alias-state-success-primary:#1b7a0c;--dsw-alias-state-success-secondary:#48943a;--dsw-alias-state-success-tertiary:#d3e4ca;--dsw-alias-state-warn-primary:#8a5d00;--dsw-alias-state-warn-secondary:#a17d31;--dsw-alias-state-warn-tertiary:#e7dfc8;--dsw-alias-state-warn-label:#8a5d00;--dsw-alias-state-business-primary:#ad006c;--dsw-alias-state-business-tertiary:#caf4be;--dsw-alias-toast-bg:#292929;--dsw-alias-tooltip-bg:#292929;--dsw-specific-bubble:#e4fde1;--dsw-specific-bubble-highlight:#a9f39e;--dsw-specific-input-major:#ffffff;--dsw-specific-login-input:#f4f4ed;--dsw-specific-menu:#ffffff;--dsw-specific-selector:#f3f3f3;--dsw-specific-sidebar-fill:#242424;--dsw-specific-sidebar-nav-item-hover:#2a2a2a;--dsw-specific-sidebar-nav-item-active:#1edc00;--dsw-specific-sidebar-nav-item-active-accent:#1cbc03;--dsw-specific-tip:#f3f3f3;--dsw-static-deepseek-500:#19600e;--dsw-static-deepseek-200:#a3ef92;--dsw-static-blue-500:#ad006c;--dsw-static-blue-450:#47ee2b;--dsw-static-neutral-bluish-400:#9d9d92;--dsw-shadow-lv1:0 2px 0 0 #1212122e;--dsw-shadow-lv1-blur:0 4px 10px 0 #1212121f;--dsw-shadow-lv2:0 3px 0 0 #1212122e, 0 8px 18px 0 #12121224;--dsw-shadow-lv3:0 0 1px 0 #12121233, 0 4px 0 0 #12121233, 0 14px 34px 0 #12121229;--dsw-elevation-stroke-color:#1212124d;--dsw-elevation-stroke:0 0 0 1px var(--dsw-elevation-stroke-color);--dsw-elevation-panel:var(--dsw-elevation-stroke), 0 3px 0 0 #12121238, 0 10px 24px 0 #1212121f;--dsw-elevation-prominent:var(--dsw-elevation-stroke), 0 4px 0 0 #1212124d, 0 14px 32px 0 #1212122e;--dsw-elevation-soft:var(--dsw-elevation-stroke), 0 4px 14px 0 #1212121a, 0 0 26px 0 #12121212;--dsw-linear-gradient-think:linear-gradient(180deg, #fbfbf4 20.19%, rgba(251, 251, 244, 0) 100%);--dsw-linear-think-select:linear-gradient(180deg, #ffffff 20.19%, rgba(255, 255, 255, 0) 100%);--shiki-foreground:#f4f4ec;--shiki-background:#101010;--shiki-token-comment:#8b8b83;--shiki-token-keyword:#ff4fa3;--shiki-token-string:#1edc00;--shiki-token-string-expression:#1edc00;--shiki-token-constant:#ffd23f;--shiki-token-function:#66e3ff;--shiki-token-parameter:#ff9d5c;--shiki-token-punctuation:#c9c9c0;--shiki-token-link:#66e3ff "><svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true"><defs><symbol viewBox="0 0 16 16" fill="none" stroke-width="1" id="dsw-icon-chevron-up-outline-regular"><path d="M12 10L8.70711 6.70711C8.31658 6.31658 7.68342 6.31658 7.29289 6.70711L4 10" stroke="currentColor"></path></symbol><symbol viewBox="0 0 16 16" fill="none" stroke-width="1" id="dsw-icon-inspect-outline-regular"><path d="M4.67398 4.25061L1.36094 7.86484C1.29085 7.9413 1.29085 8.05866 1.36094 8.13513L4.67398 11.7494" stroke="currentColor"></path><path d="M11.3262 4.25061L14.6392 7.86484C14.7093 7.9413 14.7093 8.05866 14.6392 8.13513L11.3262 11.7494" stroke="currentColor"></path><path d="M9.56222 3.62573L6.43774 12.3743" stroke="currentColor"></path></symbol></defs></svg><main><div class="hKdVjq_root" data-variant="others" data-tool="read_file" data-state="ok"><div class="_root_l4nv8_9" data-open="true"><div class="_header_l4nv8_16" data-disclosure-header="true"><div class="_row_l4nv8_26 hKdVjq_row" data-disclosure-row="true" data-expandable="true" role="button" tabindex="0" aria-expanded="true"><span class="_leading_l4nv8_52 hKdVjq_leading"><svg width="14" height="14" data-icon="dsw-icon-chevron-up-outline-regular" aria-hidden="true"><use href="#dsw-icon-chevron-up-outline-regular"></use></svg></span><span class="_root_1rdzk_1"><span class="_content_1rdzk_11"><span class="_text_1rdzk_17 _title_l4nv8_104 hKdVjq_title">工具调用</span><span class="hKdVjq_sep" data-shimmer-decoration="true" aria-hidden="true"></span><span class="hKdVjq_summary"><span class="_text_1rdzk_17">read_file · acceptance.txt</span></span></span></span></div></div><div class="hKdVjq_bodyWrap"><div class="hKdVjq_ioCard"><div class="hKdVjq_ioSection"><span class="hKdVjq_ioLabel">输入</span><span class="hKdVjq_ioText">{
+  "path": "acceptance.txt"
+}</span></div><span class="hKdVjq_ioDivider" aria-hidden="true"></span><div class="hKdVjq_ioSection"><span class="hKdVjq_ioLabel">输出</span><span class="hKdVjq_ioText">01 | synthetic acceptance tool output — 中文与 English
+02 | synthetic acceptance tool output — 中文与 English
+03 | synthetic acceptance tool output — 中文与 English
+04 | synthetic acceptance tool output — 中文与 English
+05 | synthetic acceptance tool output — 中文与 English
+06 | synthetic acceptance tool output — 中文与 English
+07 | synthetic acceptance tool output — 中文与 English
+08 | synthetic acceptance tool output — 中文与 English
+09 | synthetic acceptance tool output — 中文与 English
+10 | synthetic acceptance tool output — 中文与 English
+11 | synthetic acceptance tool output — 中文与 English
+12 | synthetic acceptance tool output — 中文与 English
+13 | synthetic acceptance tool output — 中文与 English
+14 | synthetic acceptance tool output — 中文与 English
+15 | synthetic acceptance tool output — 中文与 English
+16 | synthetic acceptance tool output — 中文与 English
+17 | synthetic acceptance tool output — 中文与 English
+18 | synthetic acceptance tool output — 中文与 English
+19 | synthetic acceptance tool output — 中文与 English
+20 | synthetic acceptance tool output — 中文与 English
+21 | synthetic acceptance tool output — 中文与 English
+22 | synthetic acceptance tool output — 中文与 English
+23 | synthetic acceptance tool output — 中文与 English
+24 | synthetic acceptance tool output — 中文与 English
+25 | synthetic acceptance tool output — 中文与 English
+26 | synthetic acceptance tool output — 中文与 English
+27 | synthetic acceptance tool output — 中文与 English
+28 | synthetic acceptance tool output — 中文与 English
+29 | synthetic acceptance tool output — 中文与 English
+30 | synthetic acceptance tool output — 中文与 English
+31 | synthetic acceptance tool output — 中文与 English
+32 | synthetic acceptance tool output — 中文与 English
+33 | synthetic acceptance tool output — 中文与 English
+34 | synthetic acceptance tool output — 中文与 English
+35 | synthetic acceptance tool output — 中文与 English
+36 | synthetic acceptance tool output — 中文与 English
+37 | synthetic acceptance tool output — 中文与 English
+38 | synthetic acceptance tool output — 中文与 English
+39 | synthetic acceptance tool output — 中文与 English
+40 | synthetic acceptance tool output — 中文与 English
+41 | synthetic acceptance tool output — 中文与 English
+42 | synthetic acceptance tool output — 中文与 English
+43 | synthetic acceptance tool output — 中文与 English
+44 | synthetic acceptance tool output — 中文与 English
+45 | synthetic acceptance tool output — 中文与 English</span></div></div><button type="button" class="hKdVjq_inspectButton"><svg width="12" height="12" data-icon="dsw-icon-inspect-outline-regular" aria-hidden="true"><use href="#dsw-icon-inspect-outline-regular"></use></svg>查看</button></div></div></div></main><script>
+(() => {
+  const doc = document.documentElement;
+  const body = document.body;
+  const GREEN_TOKENS = {"joycon":{"light":{"--dsw-alias-bg-layer-2":"#e6f7e4","--dsw-alias-bg-layer-3":"#d0eec9","--dsw-alias-brand-primary":"#1edc00","--dsw-alias-brand-primary-new-colorprimary-new-color":"#1edc00","--dsw-alias-link":"#ad006c","--dsw-alias-button-primary-dimmed":"#60e549","--dsw-alias-button-primary-fill":"#1edc00","--dsw-alias-button-primary-hover":"#47ee2b","--dsw-alias-interactive-bg-hover":"#1edc0059","--dsw-alias-interactive-bg-hover-accent":"rgba(30, 220, 0, 0.32)","--dsw-alias-interactive-bg-active":"rgba(30, 220, 0, 0.72)","--dsw-alias-markdown-inline-code":"#dbf3d7","--dsw-alias-scrollbar-hover-l1":"rgba(30, 220, 0, 0.6)","--dsw-alias-scrollbar-hover-l2":"rgba(30, 220, 0, 0.7)","--dsw-alias-state-success-primary":"#1b7a0c","--dsw-alias-state-success-secondary":"#48943a","--dsw-alias-state-success-tertiary":"#d3e4ca","--dsw-alias-state-business-primary":"#ad006c","--dsw-alias-state-business-tertiary":"#caf4be","--dsw-specific-bubble":"#e4fde1","--dsw-specific-bubble-highlight":"#a9f39e","--dsw-specific-sidebar-nav-item-active":"#1edc00","--dsw-specific-sidebar-nav-item-active-accent":"#1cbc03","--dsw-static-deepseek-500":"#19600e","--dsw-static-deepseek-200":"#a3ef92","--dsw-static-blue-500":"#ad006c","--dsw-static-blue-450":"#47ee2b","--shiki-token-string":"#1edc00","--shiki-token-string-expression":"#1edc00"},"dark":{"--dsw-alias-bg-layer-2":"#292927","--dsw-alias-bg-layer-3":"#141413","--dsw-alias-brand-primary":"#44f028","--dsw-alias-brand-primary-new-colorprimary-new-color":"#44f028","--dsw-alias-link":"#44f028","--dsw-alias-button-primary-dimmed":"#1da208","--dsw-alias-button-primary-fill":"#1edc00","--dsw-alias-button-primary-hover":"#47ee2b","--dsw-alias-interactive-bg-hover":"#1edc0024","--dsw-alias-interactive-bg-hover-accent":"rgba(68, 240, 40, 0.2)","--dsw-alias-interactive-bg-active":"rgba(68, 240, 40, 0.72)","--dsw-alias-markdown-inline-code":"#2a2a26","--dsw-alias-scrollbar-hover-l1":"rgba(68, 240, 40, 0.6)","--dsw-alias-scrollbar-hover-l2":"rgba(68, 240, 40, 0.7)","--dsw-alias-state-success-primary":"#5ce046","--dsw-alias-state-success-secondary":"#4fb93d","--dsw-alias-state-success-tertiary":"#273e21","--dsw-alias-state-business-primary":"#44f028","--dsw-alias-state-business-tertiary":"#244a1c","--dsw-specific-bubble":"#123310","--dsw-specific-bubble-highlight":"#216c17","--dsw-specific-sidebar-nav-item-active":"#1edc00","--dsw-specific-sidebar-nav-item-active-accent":"#41e026","--dsw-static-deepseek-500":"#44f028","--dsw-static-deepseek-200":"#2b701f","--dsw-static-blue-500":"#44f028","--dsw-static-blue-450":"#6ef757","--shiki-token-string":"#44f028","--shiki-token-string-expression":"#44f028"}},"neon":{"light":{"--dsw-alias-bg-layer-2":"#eef7e2","--dsw-alias-bg-layer-3":"#ddefc7","--dsw-alias-brand-primary":"#9ae528","--dsw-alias-brand-primary-new-colorprimary-new-color":"#9ae528","--dsw-alias-link":"#ad006c","--dsw-alias-button-primary-dimmed":"#b7ec65","--dsw-alias-button-primary-fill":"#9ae528","--dsw-alias-button-primary-hover":"#b1f24b","--dsw-alias-interactive-bg-hover":"#9ae52859","--dsw-alias-interactive-bg-hover-accent":"rgba(154, 229, 40, 0.32)","--dsw-alias-interactive-bg-active":"rgba(154, 229, 40, 0.72)","--dsw-alias-markdown-inline-code":"#e6f3d5","--dsw-alias-scrollbar-hover-l1":"rgba(154, 229, 40, 0.6)","--dsw-alias-scrollbar-hover-l2":"rgba(154, 229, 40, 0.7)","--dsw-alias-state-success-primary":"#3b7d0c","--dsw-alias-state-success-secondary":"#61963a","--dsw-alias-state-success-tertiary":"#d8e4ca","--dsw-alias-state-business-primary":"#ad006c","--dsw-alias-state-business-tertiary":"#e6f6c7","--dsw-specific-bubble":"#ecffd4","--dsw-specific-bubble-highlight":"#d3f7a0","--dsw-specific-sidebar-nav-item-active":"#9ae528","--dsw-specific-sidebar-nav-item-active-accent":"#84c324","--dsw-static-deepseek-500":"#31620e","--dsw-static-deepseek-200":"#d4f2a2","--dsw-static-blue-500":"#ad006c","--dsw-static-blue-450":"#b1f24b","--shiki-token-string":"#9ae528","--shiki-token-string-expression":"#9ae528"},"dark":{"--dsw-alias-bg-layer-2":"#292927","--dsw-alias-bg-layer-3":"#141413","--dsw-alias-brand-primary":"#a8f03a","--dsw-alias-brand-primary-new-colorprimary-new-color":"#a8f03a","--dsw-alias-link":"#a8f03a","--dsw-alias-button-primary-dimmed":"#74a824","--dsw-alias-button-primary-fill":"#9ae528","--dsw-alias-button-primary-hover":"#b1f24b","--dsw-alias-interactive-bg-hover":"#9ae52824","--dsw-alias-interactive-bg-hover-accent":"rgba(168, 240, 58, 0.2)","--dsw-alias-interactive-bg-active":"rgba(168, 240, 58, 0.72)","--dsw-alias-markdown-inline-code":"#2a2a26","--dsw-alias-scrollbar-hover-l1":"rgba(168, 240, 58, 0.6)","--dsw-alias-scrollbar-hover-l2":"rgba(168, 240, 58, 0.7)","--dsw-alias-state-success-primary":"#8ee04a","--dsw-alias-state-success-secondary":"#77b940","--dsw-alias-state-success-tertiary":"#303e22","--dsw-alias-state-business-primary":"#a8f03a","--dsw-alias-state-business-tertiary":"#3a4a20","--dsw-specific-bubble":"#1f3410","--dsw-specific-bubble-highlight":"#486c1d","--dsw-specific-sidebar-nav-item-active":"#9ae528","--dsw-specific-sidebar-nav-item-active-accent":"#a9e848","--dsw-static-deepseek-500":"#a8f03a","--dsw-static-deepseek-200":"#537026","--dsw-static-blue-500":"#a8f03a","--dsw-static-blue-450":"#bef763","--shiki-token-string":"#a8f03a","--shiki-token-string-expression":"#a8f03a"}},"lime":{"light":{"--dsw-alias-bg-layer-2":"#f4f7e2","--dsw-alias-bg-layer-3":"#e8eecd","--dsw-alias-brand-primary":"#d3f510","--dsw-alias-brand-primary-new-colorprimary-new-color":"#d3f510","--dsw-alias-link":"#ad006c","--dsw-alias-button-primary-dimmed":"#dff754","--dsw-alias-button-primary-fill":"#d3f510","--dsw-alias-button-primary-hover":"#e2ff3d","--dsw-alias-interactive-bg-hover":"#d3f51059","--dsw-alias-interactive-bg-hover-accent":"rgba(211, 245, 16, 0.32)","--dsw-alias-interactive-bg-active":"rgba(211, 245, 16, 0.72)","--dsw-alias-markdown-inline-code":"#eef3d5","--dsw-alias-scrollbar-hover-l1":"rgba(211, 245, 16, 0.6)","--dsw-alias-scrollbar-hover-l2":"rgba(211, 245, 16, 0.7)","--dsw-alias-state-success-primary":"#4d7f0c","--dsw-alias-state-success-secondary":"#70983a","--dsw-alias-state-success-tertiary":"#dce5ca","--dsw-alias-state-business-primary":"#ad006c","--dsw-alias-state-business-tertiary":"#f2fac2","--dsw-specific-bubble":"#f6ffd2","--dsw-specific-bubble-highlight":"#ecfc98","--dsw-specific-sidebar-nav-item-active":"#d3f510","--dsw-specific-sidebar-nav-item-active-accent":"#b4d110","--dsw-static-deepseek-500":"#3c5200","--dsw-static-deepseek-200":"#ebf999","--dsw-static-blue-500":"#ad006c","--dsw-static-blue-450":"#e2ff3d","--shiki-token-string":"#d3f510","--shiki-token-string-expression":"#d3f510"},"dark":{"--dsw-alias-bg-layer-2":"#292927","--dsw-alias-bg-layer-3":"#141413","--dsw-alias-brand-primary":"#d7ff3a","--dsw-alias-brand-primary-new-colorprimary-new-color":"#d7ff3a","--dsw-alias-link":"#d7ff3a","--dsw-alias-button-primary-dimmed":"#9cb413","--dsw-alias-button-primary-fill":"#d3f510","--dsw-alias-button-primary-hover":"#e2ff3d","--dsw-alias-interactive-bg-hover":"#d3f51024","--dsw-alias-interactive-bg-hover-accent":"rgba(215, 255, 58, 0.2)","--dsw-alias-interactive-bg-active":"rgba(215, 255, 58, 0.72)","--dsw-alias-markdown-inline-code":"#2a2a26","--dsw-alias-scrollbar-hover-l1":"rgba(215, 255, 58, 0.6)","--dsw-alias-scrollbar-hover-l2":"rgba(215, 255, 58, 0.7)","--dsw-alias-state-success-primary":"#a8e05a","--dsw-alias-state-success-secondary":"#8cb94d","--dsw-alias-state-success-tertiary":"#343e25","--dsw-alias-state-business-primary":"#d7ff3a","--dsw-alias-state-business-tertiary":"#444d20","--dsw-specific-bubble":"#2b3410","--dsw-specific-bubble-highlight":"#5f711d","--dsw-specific-sidebar-nav-item-active":"#d3f510","--dsw-specific-sidebar-nav-item-active-accent":"#d9f534","--dsw-static-deepseek-500":"#d7ff3a","--dsw-static-deepseek-200":"#667626","--dsw-static-blue-500":"#d7ff3a","--dsw-static-blue-450":"#e8ff72","--shiki-token-string":"#d7ff3a","--shiki-token-string-expression":"#d7ff3a"}}};
+  const GREEN_KEYS = ["--dsw-alias-bg-layer-2","--dsw-alias-bg-layer-3","--dsw-alias-brand-primary","--dsw-alias-brand-primary-new-colorprimary-new-color","--dsw-alias-link","--dsw-alias-button-primary-dimmed","--dsw-alias-button-primary-fill","--dsw-alias-button-primary-hover","--dsw-alias-interactive-bg-hover","--dsw-alias-interactive-bg-hover-accent","--dsw-alias-interactive-bg-active","--dsw-alias-markdown-inline-code","--dsw-alias-scrollbar-hover-l1","--dsw-alias-scrollbar-hover-l2","--dsw-alias-state-success-primary","--dsw-alias-state-success-secondary","--dsw-alias-state-success-tertiary","--dsw-alias-state-business-primary","--dsw-alias-state-business-tertiary","--dsw-specific-bubble","--dsw-specific-bubble-highlight","--dsw-specific-sidebar-nav-item-active","--dsw-specific-sidebar-nav-item-active-accent","--dsw-static-deepseek-500","--dsw-static-deepseek-200","--dsw-static-blue-500","--dsw-static-blue-450","--shiki-token-string","--shiki-token-string-expression"];
+  const initial = {
+    decor: doc.getAttribute('data-splat-decor'),
+    grain: doc.getAttribute('data-splat-grain'),
+    diffSyntax: doc.getAttribute('data-splat-diff-syntax'),
+    font: doc.getAttribute('data-splat-font'),
+    green: doc.getAttribute('data-splat-green'),
+    veil: body.style.getPropertyValue('--splat-canvas-veil'),
+    fontFamily: body.style.getPropertyValue('--dsw-font-family'),
+    greenTokens: Object.fromEntries(GREEN_KEYS.map((key) => [key, body.style.getPropertyValue(key)])),
+  };
+  const restoreAttr = (name, value) => {
+    if (value === null) doc.removeAttribute(name);
+    else doc.setAttribute(name, value);
+  };
+  const restoreProp = (name, value) => {
+    if (value) body.style.setProperty(name, value);
+    else body.style.removeProperty(name);
+  };
+  window.addEventListener('message', (event) => {
+    const data = event.data;
+    if (!data || data.type !== 'splat-ui:appearance') return;
+    if (data.reset) {
+      restoreAttr('data-splat-decor', initial.decor);
+      restoreAttr('data-splat-grain', initial.grain);
+      restoreAttr('data-splat-diff-syntax', initial.diffSyntax);
+      restoreAttr('data-splat-font', initial.font);
+      restoreAttr('data-splat-green', initial.green);
+      restoreProp('--splat-canvas-veil', initial.veil);
+      restoreProp('--dsw-font-family', initial.fontFamily);
+      for (const key of GREEN_KEYS) restoreProp(key, initial.greenTokens[key]);
+      return;
+    }
+    const patch = data.patch || {};
+    if (patch.decor !== undefined) doc.setAttribute('data-splat-decor', patch.decor);
+    if (patch.grain !== undefined) doc.setAttribute('data-splat-grain', patch.grain);
+    if (patch.diffSyntax !== undefined) doc.setAttribute('data-splat-diff-syntax', patch.diffSyntax);
+    if (patch.green !== undefined) {
+      doc.setAttribute('data-splat-green', patch.green);
+      const mode = body.hasAttribute('data-ds-dark-theme') ? 'dark' : 'light';
+      const tokens = GREEN_TOKENS[patch.green]?.[mode];
+      if (tokens) {
+        for (const [key, value] of Object.entries(tokens)) body.style.setProperty(key, value);
+      }
+    }
+    if (patch.font !== undefined) {
+      doc.setAttribute('data-splat-font', patch.font);
+      if (patch.font === 'system') {
+        body.style.setProperty('--dsw-font-family', 'var(--splat-system-font-family, sans-serif)');
+      } else {
+        restoreProp('--dsw-font-family', initial.fontFamily);
+      }
+    }
+    if (patch.veil !== undefined) {
+      body.style.setProperty('--splat-canvas-veil', String(patch.veil));
+    }
+  });
+})();
+</script>
+</body></html>

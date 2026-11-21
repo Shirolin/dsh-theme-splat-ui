@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "Nunito";
+  src: url("../../assets/fonts/nunito-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../../assets/fonts/nunito-900.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  background: #121212;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  display: grid;
+  place-items: center;
+}
+canvas {
+  width: min(100vw, 75vh);
+  height: min(133.3333vw, 100vh);
+  display: block;
+}
+#controls {
+  position: fixed;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #121212e8;
+  color: #fffef9;
+  font:
+    14px "Nunito",
+    "Microsoft YaHei",
+    sans-serif;
+}
+button {
+  background: #1edc00;
+  color: #121212;
+  font-weight: 800;
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+input {
+  width: 240px;
+  accent-color: #ff2d8a;
+}
+output {
+  min-width: 86px;
+}
+html.capture #controls,
+html[data-capture] #controls {
+  display: none;
+}

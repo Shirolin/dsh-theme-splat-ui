@@ -1,0 +1,79 @@
+{
+  "status": "pass",
+  "stream": {
+    "duration": 30,
+    "width": 1280,
+    "height": 720,
+    "error": null
+  },
+  "layouts": [
+    {
+      "viewport": 1100,
+      "width": 1100,
+      "scrollWidth": 1100,
+      "images": true,
+      "buttons": 14
+    },
+    {
+      "viewport": 390,
+      "width": 390,
+      "scrollWidth": 390,
+      "images": true,
+      "buttons": 14
+    }
+  ],
+  "seeking": [
+    {
+      "time": 0,
+      "ready": 4
+    },
+    {
+      "time": 1.1,
+      "ready": 4
+    },
+    {
+      "time": 4,
+      "ready": 4
+    },
+    {
+      "time": 7.5,
+      "ready": 4
+    },
+    {
+      "time": 10.8,
+      "ready": 4
+    },
+    {
+      "time": 13.95,
+      "ready": 4
+    },
+    {
+      "time": 16,
+      "ready": 4
+    },
+    {
+      "time": 18.8,
+      "ready": 4
+    },
+    {
+      "time": 21.3,
+      "ready": 4
+    },
+    {
+      "time": 24,
+      "ready": 4
+    },
+    {
+      "time": 27.5,
+      "ready": 4
+    },
+    {
+      "time": 29.96,
+      "ready": 4
+    }
+  ],
+  "playback": {
+    "time": 14.0021,
+    "error": null
+  }
+}

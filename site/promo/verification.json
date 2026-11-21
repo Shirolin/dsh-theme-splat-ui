@@ -1,0 +1,164 @@
+{
+  "status": "pass",
+  "video": {
+    "index": 0,
+    "codec_name": "h264",
+    "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+    "profile": "High",
+    "codec_type": "video",
+    "codec_tag_string": "avc1",
+    "codec_tag": "0x31637661",
+    "mime_codec_string": "avc1.640028",
+    "width": 1080,
+    "height": 1440,
+    "coded_width": 1080,
+    "coded_height": 1440,
+    "has_b_frames": 2,
+    "sample_aspect_ratio": "1:1",
+    "display_aspect_ratio": "3:4",
+    "pix_fmt": "yuv420p",
+    "level": 40,
+    "color_range": "tv",
+    "color_space": "bt709",
+    "color_transfer": "bt709",
+    "color_primaries": "bt709",
+    "chroma_location": "left",
+    "field_order": "progressive",
+    "is_avc": "true",
+    "nal_length_size": "4",
+    "id": "0x1",
+    "r_frame_rate": "30/1",
+    "avg_frame_rate": "30/1",
+    "time_base": "1/15360",
+    "start_pts": 0,
+    "start_time": "0.000000",
+    "duration_ts": 460800,
+    "duration": "30.000000",
+    "bit_rate": "3527651",
+    "bits_per_raw_sample": "8",
+    "nb_frames": "900",
+    "extradata_size": 51,
+    "disposition": {
+      "default": 1,
+      "dub": 0,
+      "original": 0,
+      "comment": 0,
+      "lyrics": 0,
+      "karaoke": 0,
+      "forced": 0,
+      "hearing_impaired": 0,
+      "visual_impaired": 0,
+      "clean_effects": 0,
+      "attached_pic": 0,
+      "timed_thumbnails": 0,
+      "non_diegetic": 0,
+      "captions": 0,
+      "descriptions": 0,
+      "metadata": 0,
+      "dependent": 0,
+      "still_image": 0,
+      "multilayer": 0
+    },
+    "tags": {
+      "language": "und",
+      "handler_name": "VideoHandler",
+      "encoder": "Lavc63.1.100 libx264"
+    },
+    "durationSeconds": 30
+  },
+  "audio": {
+    "codec_name": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "bit_rate": 192377,
+    "durationSeconds": 30
+  },
+  "audioStreams": 1,
+  "embeddedCover": true,
+  "faststart": true,
+  "fullDecodePassed": true,
+  "atoms": [
+    {
+      "type": "ftyp",
+      "offset": 0,
+      "size": 32
+    },
+    {
+      "type": "moov",
+      "offset": 32,
+      "size": 500910
+    },
+    {
+      "type": "free",
+      "offset": 500942,
+      "size": 8
+    },
+    {
+      "type": "mdat",
+      "offset": 500950,
+      "size": 13950629
+    }
+  ],
+  "crf": 18,
+  "crfEvidence": "encode-vertical.ps1 and x264 encoder options embedded in stream",
+  "sourceUnchangedSinceCapture": true,
+  "deterministicRepeatedTime": true,
+  "endingStatic27to30": true,
+  "storyboard": [
+    {
+      "id": "01",
+      "start": 0,
+      "end": 2.4,
+      "reference": 1.1
+    },
+    {
+      "id": "02",
+      "start": 2.4,
+      "end": 5.95,
+      "reference": 3.1
+    },
+    {
+      "id": "03",
+      "start": 5.95,
+      "end": 9.18,
+      "reference": 6.6
+    },
+    {
+      "id": "04",
+      "start": 9.18,
+      "end": 12.9,
+      "reference": 9.8
+    },
+    {
+      "id": "05",
+      "start": 12.9,
+      "end": 14.45,
+      "reference": 13.1
+    },
+    {
+      "id": "06",
+      "start": 14.45,
+      "end": 17.75,
+      "reference": 15.2
+    },
+    {
+      "id": "07",
+      "start": 17.75,
+      "end": 22.45,
+      "reference": 18.8
+    },
+    {
+      "id": "08",
+      "start": 22.45,
+      "end": 25.48,
+      "reference": 23.7
+    },
+    {
+      "id": "09",
+      "start": 25.48,
+      "end": 30,
+      "reference": 27
+    }
+  ],
+  "videoSha256": "260769f0bbb2e32923a711e99e8552e1cf523cf32c3fc1e5011a540a6e607c17"
+}

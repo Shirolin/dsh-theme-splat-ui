@@ -1,0 +1,61 @@
+{
+  "width": 1280,
+  "height": 720,
+  "logicalStage": {
+    "width": 1920,
+    "height": 1080
+  },
+  "sampling": {
+    "width": 2560,
+    "height": 1440,
+    "dsf": 2,
+    "jpegQuality": 94
+  },
+  "fps": 30,
+  "duration": 30,
+  "frames": 900,
+  "samples": false,
+  "elapsedSeconds": 214.945,
+  "determinism": [
+    {
+      "time": 18.8,
+      "sha256": "de2d9c7ed9ba83a9bce6712659d6b7776b613bdf99baea77a238da0094881041"
+    },
+    {
+      "time": 13.1,
+      "sha256": "b6f579b4b55d5b3fadf6e16b4a3663fa06c6fe191402f767b9aa17272a755a70"
+    },
+    {
+      "time": 18.8,
+      "sha256": "de2d9c7ed9ba83a9bce6712659d6b7776b613bdf99baea77a238da0094881041"
+    },
+    {
+      "time": 27.5,
+      "sha256": "4548942fa20361a1bad2736fa376728fadfd39a8e99013063c744025512e742d"
+    },
+    {
+      "time": 29.9666667,
+      "sha256": "4548942fa20361a1bad2736fa376728fadfd39a8e99013063c744025512e742d"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Nunito",
+      "weight": "700",
+      "status": "loaded"
+    },
+    {
+      "family": "Nunito",
+      "weight": "900",
+      "status": "loaded"
+    }
+  ],
+  "consoleErrors": [],
+  "sourceSha256": {
+    "stage-landscape.html": "f2cdd0ccddb45b8617d4986feb25755441612bc1a12a06c24a09f3be9c0e9341",
+    "landscape.css": "1e60dccf50fe6dfadc328d89b862991a2c3f13eb5b2c2a19f632f6f601713e0f",
+    "film-landscape.js": "4f872350d45eafde6463b0eb2afda0bc887dd166bb5556f6fed134b93a27cb92",
+    "landscape-copy.js": "530f9b70442ddb08e19855c82ea26fd8d3cf3939246618a660b802f01aa1a960",
+    "landscape-transitions.js": "84411d3c5178bd5141667c690d1bfd32703e0672157b8bf9941f6fa389c592b2"
+  }
+}

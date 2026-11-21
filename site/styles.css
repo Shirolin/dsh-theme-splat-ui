@@ -1,0 +1,486 @@
+/* Page-level rules only for SPLAT-STREET (system tokens & layout live in assets/) */
+
+/* ---------- app-frame (#workbench) ---------- */
+
+.app.ui {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  margin-top: var(--s-7);
+  background: var(--u-bg);
+  border: 1px solid var(--u-border);
+  border-radius: var(--u-r);
+  box-shadow: var(--u-shadow);
+}
+
+.app > .app__pane {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.app > .app__pane + .app__pane {
+  border-left: 1px solid var(--u-line);
+}
+
+.app > .app__pane > .ui-panel {
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.app > .app__pane::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 64px;
+  background: linear-gradient(transparent, var(--u-bg));
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .app.ui {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  }
+}
+
+@media (max-width: 1023px) {
+  .app.ui {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .app > .app__pane--list {
+    max-height: 224px;
+  }
+
+  .app > .app__pane--list::after {
+    display: none;
+  }
+
+  .app .ui-win__side {
+    display: none;
+  }
+
+  .app .ui-win__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app > .app__pane + .app__pane {
+    border-left: 0;
+    border-top: 1px solid var(--u-line);
+  }
+}
+
+@media (max-width: 639px) {
+  .app.ui {
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .app > .app__pane--list {
+    display: none;
+  }
+
+  .app > .app__pane + .app__pane {
+    border-top: 0;
+  }
+}
+
+/* ---------- interactive battleground & ink density (#showcase) ---------- */
+
+.showcase__controls {
+  display: grid;
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+
+.density {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.density__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  font-size: var(--t-small);
+  font-weight: 500;
+}
+
+.density output {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.ink-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.ink-preset {
+  min-height: 44px;
+  padding: 0 var(--s-4);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-btn);
+  background: var(--bg);
+  color: var(--ink);
+  font: 500 var(--t-small) / 1 var(--font-text);
+  cursor: pointer;
+}
+
+.ink-preset.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.density__range {
+  display: block;
+  width: 100%;
+  height: 44px;
+  padding-block: 14px;
+  margin: 0;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+
+.showcase__stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: var(--bg);
+  aspect-ratio: 4 / 3;
+}
+
+@media (min-width: 1024px) {
+  .showcase__stage {
+    aspect-ratio: 6 / 5;
+  }
+}
+
+.showcase__stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fbfbf4;
+  opacity: calc(var(--paper-density, 0.12) * 0.72);
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.showcase[data-mode="dark"] .showcase__stage::after {
+  background: #141413;
+}
+
+.showcase__stage > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1023px) {
+  .showcase__controls {
+    gap: var(--s-4);
+    margin-top: var(--s-4);
+  }
+
+  .showcase__stage {
+    margin-top: var(--s-5);
+  }
+}
+
+/* ---------- promo video stage (#promo) ---------- */
+
+.promo-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: #0d0e0d;
+}
+
+.promo-frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background: #0d0e0d;
+}
+
+.promo-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3) var(--s-5);
+  align-items: center;
+}
+
+@media (max-width: 1023px) {
+  .promo-frame {
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+}
+
+/* ---------- feature cards (#features, #toolchain) ---------- */
+
+#features .panel,
+#toolchain .panel {
+  --p-h: 390px;
+}
+
+@media (max-width: 639px) {
+  #features .panel {
+    --p-h: 268px;
+  }
+
+  #toolchain .panel {
+    --p-h: 256px;
+  }
+}
+
+/* ---------- tabs tour (#screens) ---------- */
+
+.tour__panel {
+  min-height: 96px;
+  margin-top: var(--s-5);
+}
+
+.tour__panel p + p {
+  margin-top: var(--s-3);
+}
+
+@media (max-width: 1023px) {
+  .tour__frame {
+    margin-top: var(--s-5);
+  }
+}
+
+/* ---------- install command & counter row (#install) ---------- */
+
+.command {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-lg);
+  background: var(--p-bg);
+  color: var(--p-ink);
+  overflow: hidden;
+}
+
+.command__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-5);
+  border-bottom: 1px solid var(--line);
+  font-size: var(--t-label);
+  color: var(--muted);
+}
+
+.command pre {
+  margin: 0;
+  padding: var(--s-5);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.command code span {
+  display: block;
+}
+
+@media (max-width: 639px) {
+  .command pre {
+    padding: var(--s-4);
+    font-size: 12px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}
+
+.command__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: 0 var(--s-5) var(--s-5);
+}
+
+.install__stats {
+  margin-top: var(--s-8);
+}
+
+/* ---------- faq visual ---------- */
+
+.faq__visual {
+  aspect-ratio: 4 / 3;
+}
+
+#faq .section-head {
+  margin-bottom: var(--s-5);
+}
+
+#faq .faq > .faq__item {
+  padding: var(--s-4) 0;
+}
+
+#faq .faq > .faq__item:first-child {
+  padding-top: 0;
+}
+
+@media (max-width: 1023px) {
+  .install__panel {
+    margin-top: var(--s-5);
+  }
+
+  .faq__visual {
+    margin-top: var(--s-5);
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ---------- responsive tablet/phone screen heights ---------- */
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  #showcase .section-head {
+    margin-bottom: var(--s-4);
+  }
+
+  #showcase .showcase__controls {
+    gap: var(--s-3);
+    margin-top: var(--s-3);
+  }
+
+  #showcase .showcase__stage {
+    aspect-ratio: 16 / 9;
+    margin-top: var(--s-4);
+  }
+
+  #features > .wrap > .grid,
+  #toolchain > .wrap > .grid {
+    flex: 1 1 auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #features .card.span-6,
+  #toolchain .card.span-6 {
+    grid-column: auto / span 1;
+    --c-pad: 20px;
+  }
+
+  #features .panel,
+  #toolchain .panel {
+    flex: 1 1 auto;
+    --p-h: 360px;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero--product .hero__stage {
+    aspect-ratio: 4 / 3;
+  }
+
+  #features .section-head,
+  #toolchain .section-head {
+    margin-bottom: var(--s-3);
+  }
+
+  #features > .wrap > .grid,
+  #toolchain > .wrap > .grid {
+    row-gap: var(--s-2);
+  }
+
+  #features .card,
+  #toolchain .card {
+    --c-pad: 12px;
+  }
+
+  #features .card h3,
+  #toolchain .card h3 {
+    font-size: var(--t-card);
+    line-height: 1.25;
+  }
+
+  #features .card p,
+  #toolchain .card p {
+    margin-top: 2px;
+    font-size: var(--t-small);
+    line-height: 1.35;
+  }
+
+  #features .card > .panel,
+  #toolchain .card > .panel {
+    --p-h: 218px;
+    margin-top: 8px;
+  }
+
+  #features .ui-slider__head {
+    height: 46px;
+    margin-bottom: 4px;
+  }
+
+  #features .ui-slider__row {
+    padding: 5px 0 3px;
+  }
+
+  #features .ui-slider__seg {
+    margin-top: 8px;
+  }
+
+  #features .ui-tg {
+    min-height: 46px;
+    padding: 5px 12px;
+  }
+
+  #install .section-head {
+    margin-bottom: var(--s-3);
+  }
+
+  #install .stack-5 {
+    gap: var(--s-3);
+  }
+
+  #install .checks {
+    gap: var(--s-1);
+  }
+
+  #install .install__panel {
+    margin-top: var(--s-4);
+  }
+
+  #install .command__bar {
+    padding: var(--s-2) var(--s-4);
+  }
+
+  #install .command pre {
+    padding: var(--s-3) var(--s-4);
+  }
+
+  #install .command__foot {
+    padding: 0 var(--s-4) var(--s-3);
+  }
+
+  #install .install__stats {
+    margin-top: var(--s-5);
+    row-gap: var(--s-3);
+  }
+
+  .faq__visual {
+    aspect-ratio: 2 / 1;
+  }
+
+  #faq .faq > .faq__item {
+    padding: var(--s-3) 0;
+  }
+}

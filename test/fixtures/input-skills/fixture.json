@@ -1,0 +1,32 @@
+{
+  "title": "技能建议 · 多条长说明不重叠",
+  "group": "浮层与反馈",
+  "pluginCss": ["@deepseek-ai/dsh-client-ui-input-trigger"],
+  "variants": [
+    {
+      "id": "light",
+      "mode": "light",
+      "window": "900,844"
+    },
+    {
+      "id": "dark",
+      "mode": "dark",
+      "window": "900,844"
+    },
+    {
+      "id": "mobile",
+      "mode": "light",
+      "window": "390,844"
+    }
+  ],
+  "assertions": [
+    {
+      "message": "九条技能各自容纳名称和两行说明，不挤压、不重叠",
+      "expression": "(()=>{const rows=[...document.querySelectorAll('[role=option]')];return rows.length===9&&rows.every(e=>{const r=e.getBoundingClientRect(),cs=[...e.children].map(x=>x.getBoundingClientRect());return getComputedStyle(e).flexShrink==='0'&&cs.every(c=>c.top>=r.top&&c.bottom<=r.bottom+1&&c.right<=r.right+1)&&cs[0].bottom<=cs[1].top+1})})()"
+    },
+    {
+      "message": "滚动保持在菜单中，窄屏菜单不越界",
+      "expression": "(()=>{const e=document.querySelector('[data-trigger-menu]'),r=e.getBoundingClientRect(),l=e.querySelector('[role=listbox]');return r.left>=0&&r.right<=innerWidth&&l.scrollHeight>l.clientHeight})()"
+    }
+  ]
+}

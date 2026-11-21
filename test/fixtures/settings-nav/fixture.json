@@ -1,0 +1,40 @@
+{
+  "title": "设置页 · 墨迹选中、标题与完整焦点环",
+  "group": "设置与外观",
+  "pluginCss": ["@deepseek-ai/dsh-client-ui-settings-general"],
+  "variants": [
+    {
+      "id": "light",
+      "mode": "light",
+      "window": "1100,920"
+    },
+    {
+      "id": "dark",
+      "mode": "dark",
+      "window": "1100,920"
+    },
+    {
+      "id": "mobile",
+      "mode": "light",
+      "window": "390,844"
+    }
+  ],
+  "assertions": [
+    {
+      "message": "设置弹窗处于视口内且没有横向溢出",
+      "expression": "(()=>{const e=document.querySelector('[data-shortcut-modal=settings]'),r=e.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth+1&&e.scrollWidth<=e.clientWidth})()"
+    },
+    {
+      "message": "选中项使用荧光墨背景，保留桌面44px与窄屏38px点击高度",
+      "expression": "(()=>{const e=document.querySelector('nav button[aria-current=true]'),r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.height>=(innerWidth<768?38:44)&&s.backgroundImage.includes('data:image/svg+xml')&&s.color==='rgb(18, 18, 18)'})()"
+    },
+    {
+      "message": "标题的两块斜纹不会被压缩",
+      "expression": "(()=>{const s=getComputedStyle(document.querySelector('[data-shortcut-modal=settings] > div:has(+ nav)'),'::after');return s.flexShrink==='0'&&parseFloat(s.width)===(innerWidth<768?25:37)})()"
+    },
+    {
+      "message": "聚焦环完整内收，不裁切点击控件",
+      "expression": "(()=>{const e=document.querySelector('nav button[aria-current=true]');e.focus({focusVisible:true});const s=getComputedStyle(e);return s.outlineStyle==='solid'&&s.outlineWidth==='2px'&&s.outlineOffset==='-2px'&&s.clipPath==='none'&&s.maskImage==='none'})()"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "title": "主工作区 · 标题栏、代码块与输入卡片",
+  "group": "工作区与会话",
+  "pluginCss": [
+    "@deepseek-ai/dsh-client-ui-layout",
+    "@deepseek-ai/dsh-client-ui-conversation",
+    "@deepseek-ai/dsh-client-ui-chat",
+    "@deepseek-ai/dsh-client-ui-model-selection"
+  ],
+  "assertions": [
+    {
+      "message": "标题栏具备真实盒子尺寸",
+      "expression": "(() => { const nav = document.querySelector('header nav'); if (!nav) return false; const r = nav.getBoundingClientRect(); return r.width >= 60 && r.height >= 24; })()"
+    },
+    {
+      "message": "输入卡片 保留非空纸纹与边框",
+      "expression": "(() => { const card = document.querySelector('[data-composer-card]'); if (!card) return false; const cs = getComputedStyle(card); return cs.backgroundImage.includes('data:image/svg+xml') && Number.parseFloat(cs.borderTopWidth) >= 1.5; })()"
+    },
+    {
+      "message": "发送键采用主题实色胶囊背景",
+      "expression": "(() => { const btn = document.querySelector('[data-composer-card] button[aria-label=\"发送\"]'); if (!btn) return false; const bg = getComputedStyle(btn).backgroundColor; return bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent'; })()"
+    },
+    {
+      "message": "用户消息气泡保留清晰描边与硬阴影边界",
+      "expression": "(() => { const b = document.querySelector('[data-message-bubble]'); if (!b) return false; const cs = getComputedStyle(b); return Number.parseFloat(cs.borderTopWidth) >= 1.5 && cs.boxShadow !== 'none' && cs.backgroundColor !== 'rgba(0, 0, 0, 0)'; })()"
+    }
+  ],
+  "variants": [
+    {
+      "id": "light",
+      "mode": "light",
+      "window": "940,860"
+    },
+    {
+      "id": "dark",
+      "mode": "dark",
+      "window": "940,860"
+    }
+  ]
+}

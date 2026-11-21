@@ -1,0 +1,123 @@
+{
+  "name": "dsh-theme-splat-ui",
+  "version": "0.1.0",
+  "description": "SPLAT-STREET, a Splatoon 2 inspired DSH Web skin with lime and magenta ink, halftone paper, and ThemeRuntime tokens",
+  "icon": "./assets/icon-256.png",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shirolin/dsh-theme-splat-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Shirolin/dsh-theme-splat-ui/issues"
+  },
+  "homepage": "https://shirolin.github.io/dsh-theme-splat-ui/",
+  "type": "module",
+  "packageManager": "pnpm@11.1.2",
+  "license": "MIT",
+  "author": "Shirolin",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "theme",
+    "skin",
+    "splatoon",
+    "splat",
+    "plugin"
+  ],
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./palette": {
+      "types": "./lib/types/palette.d.ts",
+      "default": "./lib/palette.js"
+    },
+    "./tokens": {
+      "types": "./lib/types/tokens.d.ts",
+      "default": "./lib/tokens.js"
+    },
+    "./icon": "./assets/icon-256.png",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-theme",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ],
+      "immediately": true
+    }
+  },
+  "files": [
+    "lib",
+    "assets/icon-256.png",
+    "locale",
+    "screenshots.json",
+    "README.md",
+    "README.zh.md",
+    "README.ja.md",
+    "README.ko.md",
+    "CHANGELOG.md",
+    "docs",
+    "cordis.patch.yml",
+    "THIRD_PARTY_NOTICES.md",
+    "LICENSE",
+    "licenses/Nunito-OFL.txt"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "lint": "biome lint .",
+    "typecheck": "tsc --noEmit",
+    "test": "pnpm run build && node test/run.mjs",
+    "demo": "node scripts/demo.mjs",
+    "demo:light": "node scripts/demo.mjs --mode light",
+    "demo:dark": "node scripts/demo.mjs --mode dark",
+    "prepack": "pnpm run build",
+    "check": "pnpm run check:site && pnpm run typecheck && pnpm run build && node test/run.mjs && node scripts/check-compat.mjs",
+    "check:site": "node scripts/check-site.mjs",
+    "check:compat": "pnpm run build && node scripts/check-compat.mjs",
+    "check:visual": "node scripts/fixture.mjs sidebar-masthead",
+    "check:fixtures": "node scripts/fixture-suite.mjs",
+    "fixture": "node scripts/fixture.mjs",
+    "showcase": "pnpm run build && node scripts/build-showcase.mjs",
+    "audit": "pnpm run build && node scripts/audit-coverage.mjs",
+    "release": "node scripts/release.mjs",
+    "install:local": "node scripts/install-local.mjs"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.4",
+    "@deepseek-ai/dsh-client-ui-conversation": "0.1.5-rc.3",
+    "@deepseek-ai/dsh-client-ui-renderer": "0.1.5-rc.3",
+    "@deepseek-ai/dsh-client-ui-sidebar": "0.1.5-rc.3",
+    "@deepseek-ai/dsh-client-ui-theme": "0.1.5-rc.3",
+    "@fontsource/nunito": "5.2.7",
+    "@types/react": "18.3.18",
+    "esbuild": "0.25.6",
+    "jsdom": "29.1.1",
+    "lightningcss": "1.29.2",
+    "react": "18.3.1",
+    "typescript": "5.8.2"
+  }
+}

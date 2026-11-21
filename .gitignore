@@ -1,0 +1,50 @@
+# Dependencies & package stores
+node_modules/
+.pnpm-store/
+
+# Build outputs, packed archives & caches (rebuilt via prepack / pnpm run build)
+/lib/
+dist/
+out/
+*.tgz
+*.tsbuildinfo
+.cache/
+.biome/
+coverage/
+.nyc_output/
+
+# Local DSH, browser smoke, review & exploration artifacts
+.dsh/
+.chrome-smoke/
+.tmp/
+.taste-skill/
+.archify/
+output/
+*-smoke.png
+artifacts/*
+!artifacts/README.md
+docs/palette-preview.png
+docs/palette-preview-*.png
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini

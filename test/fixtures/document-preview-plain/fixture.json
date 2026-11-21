@@ -1,0 +1,27 @@
+{
+  "title": "右侧栏「文档」预览的纯文本视图",
+  "group": "代码与交付",
+  "pluginCss": ["@deepseek-ai/dsh-client-ui-sidebar-documentpreview"],
+  "variants": [
+    {
+      "id": "light",
+      "mode": "light",
+      "window": "820,300"
+    },
+    {
+      "id": "dark",
+      "mode": "dark",
+      "window": "820,300"
+    }
+  ],
+  "assertions": [
+    {
+      "message": "纯文本预览没有被加上代码岛内边距或背景",
+      "expression": "(()=>{const s=getComputedStyle(document.querySelector('[data-textpreview-plain] pre'));return s.paddingTop!=='20px'&&s.backgroundColor==='rgba(0, 0, 0, 0)'})()"
+    },
+    {
+      "message": "纯文本预览文字与承载面具有4.5:1对比度",
+      "expression": "(() => {\nconst el=document.querySelector(\"[data-textpreview-plain] pre\"), surface=document.querySelector(\".sidebarSurface\"); if(!el||!surface)return false;\nconst rgba=v=>{const n=v.match(/[\\d.]+/g);return [Number(n[0]),Number(n[1]),Number(n[2]),n.length>3?Number(n[3]):1]};\nlet bg=[255,255,255],nodes=[];for(let p=surface;p;p=p.parentElement)nodes.unshift(p);\nfor(const p of nodes){const c=rgba(getComputedStyle(p).backgroundColor);bg=bg.map((v,i)=>c[i]*c[3]+v*(1-c[3]))}\nconst lum=c=>c.map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((n,v,i)=>n+v*[.2126,.7152,.0722][i],0);\nconst a=lum(rgba(getComputedStyle(el).color).slice(0,3)),b=lum(bg);return(Math.max(a,b)+.05)/(Math.min(a,b)+.05)>=4.5;\n})()"
+    }
+  ]
+}

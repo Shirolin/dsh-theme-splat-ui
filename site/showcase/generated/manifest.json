@@ -1,0 +1,483 @@
+{
+  "dshVersion": "0.2.2-rc.1",
+  "generatedAt": "2026-11-20T10:05:16.674Z",
+  "groups": [
+    "工作区与会话",
+    "代码与交付",
+    "浮层与反馈",
+    "设置与外观",
+    "启动页"
+  ],
+  "fixtures": [
+    {
+      "name": "conversation-workspace",
+      "title": "主工作区 · 标题栏、代码块与输入卡片",
+      "group": "工作区与会话",
+      "pluginCss": [
+        "layout",
+        "conversation",
+        "chat",
+        "model-selection"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 940,
+          "height": 860,
+          "src": "generated/conversation-workspace-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 940,
+          "height": 860,
+          "src": "generated/conversation-workspace-dark.html"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-masthead",
+      "title": "SPLAT-STREET · 真实侧栏品牌和会话树",
+      "group": "工作区与会话",
+      "pluginCss": [
+        "sidebar",
+        "workspace",
+        "settings-general",
+        "settings-account"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 420,
+          "height": 780,
+          "src": "generated/sidebar-masthead-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 420,
+          "height": 780,
+          "src": "generated/sidebar-masthead-dark.html"
+        }
+      ]
+    },
+    {
+      "name": "turn-trigger-notice",
+      "title": "触发提示条 · 深色卡片文字可读性",
+      "group": "工作区与会话",
+      "pluginCss": [
+        "chat"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 760,
+          "height": 420,
+          "src": "generated/turn-trigger-notice-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 760,
+          "height": 420,
+          "src": "generated/turn-trigger-notice-dark.html"
+        }
+      ]
+    },
+    {
+      "name": "code-island-scopes",
+      "title": "代码岛作用域 · 浅色卡面不被浅色前景命中",
+      "group": "代码与交付",
+      "pluginCss": [
+        "action-cards",
+        "deliverables",
+        "plugin-manager",
+        "agent-preset",
+        "schedule",
+        "trajectory"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 900,
+          "height": 1100,
+          "src": "generated/code-island-scopes-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 900,
+          "height": 1100,
+          "src": "generated/code-island-scopes-dark.html"
+        }
+      ]
+    },
+    {
+      "name": "deliverables-diff",
+      "title": "右侧栏 deliverables diff 的语法配色（浅色面板）",
+      "group": "代码与交付",
+      "pluginCss": [
+        "deliverables"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 760,
+          "height": 520,
+          "src": "generated/deliverables-diff-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 760,
+          "height": 520,
+          "src": "generated/deliverables-diff-dark.html"
+        }
+      ]
+    },
+    {
+      "name": "deliverables-diff-native",
+      "title": "deliverables diff 切到 DSH 原生语法色",
+      "group": "代码与交付",
+      "pluginCss": [
+        "deliverables"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 700,
+          "height": 300,
+          "src": "generated/deliverables-diff-native-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 700,
+          "height": 300,
+          "src": "generated/deliverables-diff-native-dark.html"
+        }
+      ]
+    },
+    {
+      "name": "document-preview-plain",
+      "title": "右侧栏「文档」预览的纯文本视图",
+      "group": "代码与交付",
+      "pluginCss": [
+        "sidebar-documentpreview"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 820,
+          "height": 300,
+          "src": "generated/document-preview-plain-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 820,
+          "height": 300,
+          "src": "generated/document-preview-plain-dark.html"
+        }
+      ]
+    },
+    {
+      "name": "tool-result",
+      "title": "工具结果 · 真实输入输出卡片",
+      "group": "代码与交付",
+      "pluginCss": [
+        "tool"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 900,
+          "height": 600,
+          "src": "generated/tool-result-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 900,
+          "height": 600,
+          "src": "generated/tool-result-dark.html"
+        },
+        {
+          "id": "mobile",
+          "mode": "light",
+          "width": 390,
+          "height": 600,
+          "src": "generated/tool-result-mobile.html"
+        }
+      ]
+    },
+    {
+      "name": "input-menu",
+      "title": "输入菜单 · 指令别名、选中对比与窄屏边界",
+      "group": "浮层与反馈",
+      "pluginCss": [
+        "input-trigger"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 720,
+          "height": 800,
+          "src": "generated/input-menu-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 720,
+          "height": 800,
+          "src": "generated/input-menu-dark.html"
+        },
+        {
+          "id": "mobile",
+          "mode": "light",
+          "width": 390,
+          "height": 844,
+          "src": "generated/input-menu-mobile.html"
+        }
+      ]
+    },
+    {
+      "name": "input-skills",
+      "title": "技能建议 · 多条长说明不重叠",
+      "group": "浮层与反馈",
+      "pluginCss": [
+        "input-trigger"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 900,
+          "height": 844,
+          "src": "generated/input-skills-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 900,
+          "height": 844,
+          "src": "generated/input-skills-dark.html"
+        },
+        {
+          "id": "mobile",
+          "mode": "light",
+          "width": 390,
+          "height": 844,
+          "src": "generated/input-skills-mobile.html"
+        }
+      ]
+    },
+    {
+      "name": "keybinding-search",
+      "title": "快捷键弹窗 · 搜索输入（真实 DSH DOM）",
+      "group": "浮层与反馈",
+      "pluginCss": [
+        "shortcuts"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 700,
+          "height": 700,
+          "src": "generated/keybinding-search-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 700,
+          "height": 700,
+          "src": "generated/keybinding-search-dark.html"
+        }
+      ]
+    },
+    {
+      "name": "model-search",
+      "title": "模型列表 · 单层圆角搜索框",
+      "group": "浮层与反馈",
+      "pluginCss": [
+        "model-selection"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 700,
+          "height": 500,
+          "src": "generated/model-search-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 700,
+          "height": 500,
+          "src": "generated/model-search-dark.html"
+        },
+        {
+          "id": "mobile",
+          "mode": "light",
+          "width": 390,
+          "height": 600,
+          "src": "generated/model-search-mobile.html"
+        }
+      ]
+    },
+    {
+      "name": "toast-notice",
+      "title": "浮层提示 · toast 在工具提示面上的可读性",
+      "group": "浮层与反馈",
+      "pluginCss": [],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 760,
+          "height": 300,
+          "src": "generated/toast-notice-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 760,
+          "height": 300,
+          "src": "generated/toast-notice-dark.html"
+        }
+      ]
+    },
+    {
+      "name": "appearance-panel",
+      "title": "墨街外观 · 当前设置面板",
+      "group": "设置与外观",
+      "pluginCss": [],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 900,
+          "height": 900,
+          "src": "generated/appearance-panel-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 900,
+          "height": 900,
+          "src": "generated/appearance-panel-dark.html"
+        }
+      ]
+    },
+    {
+      "name": "plugin-settings-light",
+      "title": "插件管理 · 亮色开关边界与阅读面",
+      "group": "设置与外观",
+      "pluginCss": [
+        "plugin-manager"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 820,
+          "height": 540,
+          "src": "generated/plugin-settings-light-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 820,
+          "height": 540,
+          "src": "generated/plugin-settings-light-dark.html"
+        }
+      ]
+    },
+    {
+      "name": "settings-nav",
+      "title": "设置页 · 墨迹选中、标题与完整焦点环",
+      "group": "设置与外观",
+      "pluginCss": [
+        "settings-general"
+      ],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 1100,
+          "height": 920,
+          "src": "generated/settings-nav-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 1100,
+          "height": 920,
+          "src": "generated/settings-nav-dark.html"
+        },
+        {
+          "id": "mobile",
+          "mode": "light",
+          "width": 390,
+          "height": 844,
+          "src": "generated/settings-nav-mobile.html"
+        }
+      ]
+    },
+    {
+      "name": "boot-failure",
+      "title": "DSH 启动失败页 · 官方错误列表可滚动",
+      "group": "启动页",
+      "pluginCss": [],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 900,
+          "height": 620,
+          "src": "generated/boot-failure-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 900,
+          "height": 620,
+          "src": "generated/boot-failure-dark.html"
+        }
+      ]
+    },
+    {
+      "name": "boot-loading",
+      "title": "DSH 启动等待页 · 墨街加载场景",
+      "group": "启动页",
+      "pluginCss": [],
+      "variants": [
+        {
+          "id": "light",
+          "mode": "light",
+          "width": 900,
+          "height": 620,
+          "src": "generated/boot-loading-light.html"
+        },
+        {
+          "id": "dark",
+          "mode": "dark",
+          "width": 900,
+          "height": 620,
+          "src": "generated/boot-loading-dark.html"
+        }
+      ]
+    }
+  ]
+}
