@@ -68,7 +68,13 @@ The static component catalogue (`site/showcase/index.html`, live at https://shir
 
 Keep only one theme plugin enabled per profile.
 
-### From npm (recommended)
+### Via DSH CLI / npm (recommended)
+
+```sh
+dsh plugin add dsh-theme-splat-ui
+```
+
+Or install directly inside your DSH profile directory (validated against DSH Web `0.2.2-rc.1` and Windows Desktop `0.2.2-rc.5`):
 
 ```sh
 cd <DSH_Profile_dir>

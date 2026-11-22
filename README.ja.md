@@ -68,7 +68,13 @@
 
 1つのプロファイルにつき、有効化するテーマプラグインは1つだけにすることを推奨します。
 
-### npm からインストール（推奨）
+### DSH CLI / npm からインストール（推奨）
+
+```sh
+dsh plugin add dsh-theme-splat-ui
+```
+
+または DSH プロファイルディレクトリ内で直接インストールします（DSH Web `0.2.2-rc.1`・Windows Desktop `0.2.2-rc.5` で検証済み）：
 
 ```sh
 cd <DSH_Profile_dir>

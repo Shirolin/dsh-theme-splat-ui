@@ -68,7 +68,13 @@
 
 同一 profile 下建议只启用一个主题插件。
 
-### npm 安装（推荐）
+### 通过 DSH CLI / npm 安装（推荐）
+
+```sh
+dsh plugin add dsh-theme-splat-ui
+```
+
+或进入你的 DSH profile 目录直接安装（已在 DSH Web `0.2.2-rc.1` 与 Windows Desktop `0.2.2-rc.5` 实机验证）：
 
 ```sh
 cd <DSH_Profile_目录>
