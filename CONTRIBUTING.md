@@ -34,11 +34,11 @@ pnpm run audit
 2. 运行 `pnpm run release <version>`，生成并逐文件核对 `artifacts/release-v<version>/`。该命令只更新本地版本与产物。
 3. 重新运行常规门禁和真实宿主验收。用 `pnpm run install:local -- --dry-run` 预览安装；正式安装默认处理 Web、Desktop 两个 profile，可用 `--only web` 限定范围，用 `DSH_HOME` 指定隔离配置目录。
 4. 用打包时同一个 `SOURCE_DATE_EPOCH` 更新验收证据后重新打包，确认最终包逐文件匹配当前仓库，再安装一次并核对 bundle 指纹。构建标记包含时间，固定该环境变量可避免仅因重打包使已验收的 bundle 发生变化。
-5. 确认素材权利、版本号及 npm 发布配置后，由维护者授权提交、推送与打 tag。标签 `v<version>` 会触发 `release.yml`；当前暂缓 npm 发布，因此本地验收结束后保持无标签状态。
+5. 确认素材权利、版本号及 `NPM_TOKEN`（或 npm 发布凭证）配置后，由维护者授权提交、推送并打标 `v<version>` 触发 `release.yml`。
 
 发布工作流再次运行门禁、打包，并核对版本、CHANGELOG、`files` 白名单及文件字节，然后发布 npm 和 GitHub Release。仅 CI 生成随正式产物分发的 `SHA256SUMS`；本地产物不登记 tgz 校验和，因为跨平台压缩字节可能不同。
 
-远程仓库、常规 CI 与 Pages 展示站工作流均已就绪；公开 npm 发布与打 tag 触发的 GitHub Release 暂缓（待配置 npm 发布凭证后执行）。Pages 站点的对外访问应在工作流部署后核对。
+远程仓库、常规 CI 与 Pages 展示站工作流均已就绪；推送代码后如需刷新线上展示站，请手动触发 `pages.yml` 并核对访问结果。
 
 ## 许可与素材
 

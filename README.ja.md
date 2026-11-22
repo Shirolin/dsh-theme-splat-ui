@@ -9,8 +9,8 @@
 [![check](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/check.yml)
 [![pages](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/pages.yml/badge.svg?branch=main)](https://shirolin.github.io/dsh-theme-splat-ui/)
 [![version](https://img.shields.io/badge/version-0.1.0-1edc00?labelColor=141413)](CHANGELOG.md)
-[![npm](https://img.shields.io/badge/npm-pending-5c5c54?logo=npm&logoColor=white&labelColor=141413)](#インストール状況)
-[![DSH Target](https://img.shields.io/badge/DSH_Web-0.2.2--rc.1-ff2d8a?labelColor=141413)](docs/compatibility.md)
+[![npm](https://img.shields.io/npm/v/dsh-theme-splat-ui?color=1edc00&logo=npm&logoColor=white&labelColor=141413)](https://www.npmjs.com/package/dsh-theme-splat-ui)
+[![DSH Target](https://img.shields.io/badge/DSH_Web-0.2.2--rc.1_·_Desktop_0.2.2--rc.5-ff2d8a?labelColor=141413)](docs/compatibility.md)
 [![license: MIT](https://img.shields.io/badge/license-MIT-d3f510?labelColor=141413)](LICENSE)
 
 [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A522.13.0-5FA04E?logo=nodedotjs&logoColor=white&labelColor=141413)](package.json)
@@ -68,29 +68,18 @@
 
 1つのプロファイルにつき、有効化するテーマプラグインは1つだけにすることを推奨します。
 
-### インストール状況
-
-現在 npm への公開は保留しています。公開リポジトリ、通常の CI、および GitHub Pages ショーケースは利用可能です。ローカルで生成した `.tgz` パッケージ、または本リポジトリから直接インストールしてください。
-
-### ローカル検証パッケージ
-
-まず本リポジトリでビルドとパッケージ検証を実行します：
-
-```sh
-pnpm install --frozen-lockfile
-pnpm run release 0.1.0
-```
-
-続いて、隔離された DSH プロファイルディレクトリへインストールします：
+### npm からインストール（推奨）
 
 ```sh
 cd <DSH_Profile_dir>
-pnpm add file:<repo>/artifacts/release-v0.1.0/dsh-theme-splat-ui-0.1.0.tgz
+pnpm add dsh-theme-splat-ui
 ```
 
-インストール後、DSH サービスを完全に再起動してページを再読み込みしてください。
+インストール後、DSH サービス（またはデスクトップ版アプリ）を完全に再起動してページを再読み込みしてください。
 
-### オフライン `.tgz`
+### GitHub Release / オフライン `.tgz`
+
+[GitHub Releases](https://github.com/Shirolin/dsh-theme-splat-ui/releases) から `dsh-theme-splat-ui-<version>.tgz` をダウンロード（または本リポジトリで `pnpm run release 0.1.0` を実行）してインストールします：
 
 ```sh
 cd <DSH_Profile_dir>

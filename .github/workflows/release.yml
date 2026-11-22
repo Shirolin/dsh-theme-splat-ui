@@ -62,6 +62,7 @@ jobs:
             pnpm config set //registry.npmjs.org/:_authToken "${NODE_AUTH_TOKEN}"
           fi
           pnpm publish "$RUNNER_TEMP/release/dsh-theme-splat-ui-${GITHUB_REF_NAME#v}.tgz" --access public --no-git-checks --provenance
+        continue-on-error: true
 
       - name: Publish GitHub Release
         env:

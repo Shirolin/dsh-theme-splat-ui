@@ -9,8 +9,8 @@
 [![check](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/check.yml)
 [![pages](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/pages.yml/badge.svg?branch=main)](https://shirolin.github.io/dsh-theme-splat-ui/)
 [![version](https://img.shields.io/badge/version-0.1.0-1edc00?labelColor=141413)](CHANGELOG.md)
-[![npm](https://img.shields.io/badge/npm-pending-5c5c54?logo=npm&logoColor=white&labelColor=141413)](#설치-안내)
-[![DSH Target](https://img.shields.io/badge/DSH_Web-0.2.2--rc.1-ff2d8a?labelColor=141413)](docs/compatibility.md)
+[![npm](https://img.shields.io/npm/v/dsh-theme-splat-ui?color=1edc00&logo=npm&logoColor=white&labelColor=141413)](https://www.npmjs.com/package/dsh-theme-splat-ui)
+[![DSH Target](https://img.shields.io/badge/DSH_Web-0.2.2--rc.1_·_Desktop_0.2.2--rc.5-ff2d8a?labelColor=141413)](docs/compatibility.md)
 [![license: MIT](https://img.shields.io/badge/license-MIT-d3f510?labelColor=141413)](LICENSE)
 
 [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A522.13.0-5FA04E?logo=nodedotjs&logoColor=white&labelColor=141413)](package.json)
@@ -68,29 +68,18 @@
 
 하나의 프로필에는 테마 플러그인을 하나만 활성화하는 것을 권장합니다.
 
-### 설치 안내
-
-현재 npm 배포는 보류 중입니다. 공개 저장소, 기본 CI 및 GitHub Pages 쇼케이스는 이용할 수 있으며, 로컬에서 빌드한 `.tgz` 패키지 또는 본 저장소에서 직접 설치할 수 있습니다.
-
-### 로컬 패키징 설치
-
-먼저 본 저장소에서 패키지를 빌드하고 검증합니다:
-
-```sh
-pnpm install --frozen-lockfile
-pnpm run release 0.1.0
-```
-
-그다음 격리된 DSH 프로필 디렉터리에서 설치합니다:
+### npm으로 설치(권장)
 
 ```sh
 cd <DSH_Profile_dir>
-pnpm add file:<repo>/artifacts/release-v0.1.0/dsh-theme-splat-ui-0.1.0.tgz
+pnpm add dsh-theme-splat-ui
 ```
 
-설치 후 DSH 서비스를 완전히 재시작하고 페이지를 새로고침하세요.
+설치 후 DSH 서비스(또는 데스크톱 앱)를 완전히 재시작하고 페이지를 새로고침하세요.
 
-### 오프라인 `.tgz`
+### GitHub Release / 오프라인 `.tgz`
+
+[GitHub Releases](https://github.com/Shirolin/dsh-theme-splat-ui/releases)에서 `dsh-theme-splat-ui-<version>.tgz`를 내려받거나(또는 저장소에서 `pnpm run release 0.1.0` 실행) 설치합니다:
 
 ```sh
 cd <DSH_Profile_dir>

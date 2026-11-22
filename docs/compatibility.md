@@ -2,7 +2,7 @@
 
 ## 验证基线
 
-构建依赖锁定的客户端 UI 包与实际运行的 DSH 应用有不同版本号。兼容性门禁读取锁定 UI 包的声明与源码；真实宿主和离屏夹具本轮使用 DSH `0.2.2-rc.1`。实际验收范围见 [acceptance.md](acceptance.md)。
+构建依赖锁定的客户端 UI 包与实际运行的 DSH 应用有不同版本号。兼容性门禁读取锁定 UI 包的声明与源码；Web 全量验收基线使用 DSH `0.2.2-rc.1`，并补充验证了 DSH `0.2.2-rc.5` Windows 桌面端侧栏结构与原生标题栏兼容性。实际验收范围见 [acceptance.md](acceptance.md)。
 
 `pnpm run check:compat` 检查 ThemeRuntime 的 Token 覆写与 disposer、服务注入顺序、公开 Slot、CSS 消费的 data/ARIA 接缝、Token 是否存在，以及私有导入与 DOM 回退。登记及证据的单一事实源是 [seam-contract.mjs](../scripts/seam-contract.mjs)，具体结果由命令输出。
 

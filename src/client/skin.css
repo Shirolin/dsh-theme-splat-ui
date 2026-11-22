@@ -341,7 +341,7 @@ html[data-windows-titlebar] #root {
   --dsw-specific-sidebar-fill: var(--splat-sidebar-fill) !important;
 }
 
-html[data-windows-titlebar] div:has(> nav[aria-label]) {
+html[data-windows-titlebar] div:has(> [data-window-drag]):has(nav[aria-label]):not(header *) {
   --dsw-specific-sidebar-fill: var(--splat-sidebar-fill) !important;
   background-color: var(--splat-sidebar-fill) !important;
 }
@@ -2048,14 +2048,17 @@ html[data-dsh-splat-ui-skin]
 
 /* The panel list stays a quiet navigation group. The brand slot scopes these
    rules to the sidebar even when no global panels are registered. */
-html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) > nav[aria-label] {
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) nav[aria-label] {
   gap: 0;
   margin-block: 10px 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) > nav[aria-label] > button {
+html[data-dsh-splat-ui-skin]
+  div:has(> div > button .splat-ui-brand__name):not(header *)
+  nav[aria-label]
+  > :where(button, div > button:has(> span), span > button) {
   min-height: 36px;
   gap: 6px;
   padding: 7px 9px;
@@ -2065,7 +2068,7 @@ html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(h
   line-height: 22px;
 }
 
-html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) > nav[aria-label] svg {
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(header *) nav[aria-label] svg {
   width: 16px;
   height: 16px;
 }
@@ -2090,7 +2093,7 @@ html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__name):not(h
   height: 16px;
 }
 
-html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) > nav[aria-label] [aria-current="page"] {
+html[data-dsh-splat-ui-skin] div:has(> div > button .splat-ui-brand__mark):not(header *) nav[aria-label] [aria-current="page"] {
   background: var(--splat-lime) !important;
   color: #121212 !important;
   transform: none;
@@ -2324,9 +2327,11 @@ html[data-dsh-splat-ui-skin] div[class]:has(> button .splat-ui-brand__name) > bu
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* New-session pill. DSH renders it as the sibling immediately after the logo
-   row; the demo fixture carries the same class for the same target. */
-html[data-dsh-splat-ui-skin] div:has(> button .splat-ui-brand__name) + button,
+/* New-session pill. DSH 0.2.2-rc.1 renders it as the button directly after the
+   logo row, while 0.2.2-rc.5+ wraps it in a newSessionRow + slot container;
+   the demo fixture carries .splat-ui-new-session for the same target. */
+html[data-dsh-splat-ui-skin] div:has(> :is(button, span) .splat-ui-brand__name) + button,
+html[data-dsh-splat-ui-skin] div:has(> :is(button, span) .splat-ui-brand__name) + div:not(:has([role="tree"], nav, input)) > div > button,
 html[data-dsh-splat-ui-skin] .splat-ui-new-session {
   display: flex;
   flex: none;
@@ -2355,19 +2360,22 @@ html[data-dsh-splat-ui-skin] .splat-ui-new-session {
     background-color 140ms ease;
 }
 
-html[data-dsh-splat-ui-skin] div:has(> button .splat-ui-brand__name) + button :where(span, svg),
+html[data-dsh-splat-ui-skin] div:has(> :is(button, span) .splat-ui-brand__name) + button :where(span, svg),
+html[data-dsh-splat-ui-skin] div:has(> :is(button, span) .splat-ui-brand__name) + div:not(:has([role="tree"], nav, input)) > div > button :where(span, svg),
 html[data-dsh-splat-ui-skin] .splat-ui-new-session :where(span, svg) {
   color: #ffffff !important;
 }
 
-html[data-dsh-splat-ui-skin] div:has(> button .splat-ui-brand__name) + button svg,
+html[data-dsh-splat-ui-skin] div:has(> :is(button, span) .splat-ui-brand__name) + button svg,
+html[data-dsh-splat-ui-skin] div:has(> :is(button, span) .splat-ui-brand__name) + div:not(:has([role="tree"], nav, input)) > div > button svg,
 html[data-dsh-splat-ui-skin] .splat-ui-new-session svg {
   flex: none;
   width: 16px;
   height: 16px;
 }
 
-html[data-dsh-splat-ui-skin] div:has(> button .splat-ui-brand__name) + button:not(:disabled):hover,
+html[data-dsh-splat-ui-skin] div:has(> :is(button, span) .splat-ui-brand__name) + button:not(:disabled):hover,
+html[data-dsh-splat-ui-skin] div:has(> :is(button, span) .splat-ui-brand__name) + div:not(:has([role="tree"], nav, input)) > div > button:not(:disabled):hover,
 html[data-dsh-splat-ui-skin] .splat-ui-new-session:not(:disabled):hover {
   background: #ff4b9c;
   transform: translateY(-1px);
@@ -2376,7 +2384,8 @@ html[data-dsh-splat-ui-skin] .splat-ui-new-session:not(:disabled):hover {
     0 4px 0 rgba(18, 18, 18, 0.6);
 }
 
-html[data-dsh-splat-ui-skin] div:has(> button .splat-ui-brand__name) + button:not(:disabled):active,
+html[data-dsh-splat-ui-skin] div:has(> :is(button, span) .splat-ui-brand__name) + button:not(:disabled):active,
+html[data-dsh-splat-ui-skin] div:has(> :is(button, span) .splat-ui-brand__name) + div:not(:has([role="tree"], nav, input)) > div > button:not(:disabled):active,
 html[data-dsh-splat-ui-skin] .splat-ui-new-session:not(:disabled):active {
   transform: translateY(2px);
   box-shadow:
@@ -2384,7 +2393,8 @@ html[data-dsh-splat-ui-skin] .splat-ui-new-session:not(:disabled):active {
     0 2px 0 rgba(18, 18, 18, 0.6);
 }
 
-html[data-dsh-splat-ui-skin] div:has(> button .splat-ui-brand__name) + button:focus-visible,
+html[data-dsh-splat-ui-skin] div:has(> :is(button, span) .splat-ui-brand__name) + button:focus-visible,
+html[data-dsh-splat-ui-skin] div:has(> :is(button, span) .splat-ui-brand__name) + div:not(:has([role="tree"], nav, input)) > div > button:focus-visible,
 html[data-dsh-splat-ui-skin] .splat-ui-new-session:focus-visible {
   outline: 3px solid var(--splat-lime);
   outline-offset: 3px;

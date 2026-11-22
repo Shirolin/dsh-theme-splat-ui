@@ -87,6 +87,7 @@ export const PUBLIC_ARIA_ROLES = [
   'tab',
   'tablist',
   'toolbar',
+  'tree',
   'treeitem',
 ].map((role) => ({ role, purpose: '按标准语义定位控件或其内容边界', evidence: { kind: 'aria-standard' }, probe: null }))
 export const REVIEWED_ARIA_ROLES = PUBLIC_ARIA_ROLES.map(({ role }) => role)

@@ -1,10 +1,10 @@
 # 上线前验收记录
 
-2026-11-20，完成最新版本的本地打包与真实宿主复验。npm 发布暂缓（暂不推送 `v*` 标签以免触发 npm 发布工作流）；代码已同步至远程仓库并部署展示站。逐项结果和验证范围以 [acceptance-results.json](acceptance-results.json) 为准。
+2026-11-20 完成 DSH `0.2.2-rc.1` Web 全量验收与本地出包复验；2026-11-22 针对升级后的 DSH `0.2.2-rc.5` Windows 桌面端补充排查并修复侧栏「新会话」槽位包装、`[data-sidebar-scrollport]` 滚动容器背景遮挡与 `nav[aria-label]` 分隔线选择器，经 headless Chrome 实染（明/暗模式）与 Windows Desktop 实装验证通过，同步更新展示站、README 与发布文档以备打标发布。Web 逐项矩阵与几何数据以 [acceptance-results.json](acceptance-results.json) 为准。
 
 ## 构建与宿主
 
-- 真实宿主：DSH `0.2.2-rc.1` Web，独立配置目录与 Chromium profile。
+- 真实宿主：DSH `0.2.2-rc.1` Web，独立配置目录与 Chromium profile；桌面补充验证：DSH `0.2.2-rc.5` Windows Desktop（`install:local -- --only desktop`）。
 - 安装来源：`pnpm run release 0.1.0` 生成的 tgz，经 `install:local` 安装到隔离 profile；已确认不是源码目录链接。
 - 验收前核对安装目录和仓库的 `lib/client.js` 字节，以及页面实际加载的完整 Skin CSS。
 - 构建及最终重打包使用同一个 `SOURCE_DATE_EPOCH`。构建标记、bundle 指纹和逐项几何数据见机器结果；指纹指向客户端 bundle，不是 tgz 校验和。最终包会重新安装并核对同一 bundle。
@@ -41,10 +41,10 @@
 ## 验收边界与上线条件
 
 - 静态 API 门禁针对锁定的 UI 开发依赖；桌面分发的运行时不附完整类型声明，因此没有将它冒充为完整的新版 ABI 门禁。
-- 首版验证范围为 Web。隔离 Web、Desktop profile 都已验证包安装；Windows 原生标题栏、菜单及独立用量 WebView 尚未做桌面 GUI 验收，因此不将安装成功当作桌面界面通过。
+- Web 矩阵验证范围为 DSH `0.2.2-rc.1`；Desktop profile 已安装验收并完成 Windows 原生标题栏与侧栏（`0.2.2-rc.5`）的明/暗实机验证，独立用量 WebView 仍未做自动化桌面 GUI 验收。
 - 未验证真实模型流式输出、实际工具执行、附件发送后的模型处理、登录账户和计费接口。
 - 覆盖率审计仍列出未覆写语义 Token 与未进夹具的组件；具体清单由 `pnpm run audit` 生成，优先补模型设置、插件库存与附件等表面。
-- 远程仓库和常规 GitHub 检查已建立，本轮提交推送后的远程 CI 与 Pages 部署状态以实际工作流运行为准。npm 发布身份和正式 npm 安装尚待后续启用 npm 发布后验证。
+- 远程仓库、常规 GitHub 检查与 Pages 展示站均已就绪；`v0.1.0` 公开 npm 发布需在仓库配置 `NPM_TOKEN`（并确认素材边界与声明无异议）后，由维护者授权推送与打标触发 `release.yml`。
 - 旧官方光栅占位图已移除。广场底图原始游戏参考截图 `inkopolis-square-reference.png` 已从仓库移除，`src/client/assets/inkopolis-square.png` 已压为 16 色索引透明 PNG；其原始参考来源未记录且涉及原作广场剪影，已按非商用粉丝二创在 [第三方声明](../THIRD_PARTY_NOTICES.md) 中明确排除于 MIT 授权之外。
 
-当前交付为经过本地验证的候选包。素材确认和正式发布配置完成后，再由维护者授权提交、推送与发布；本地准备不会自动触发公开上线。
+本地候选包 `0.1.0` 已验证就绪，等待维护者确认发布凭据后提交、推送与打标上线。

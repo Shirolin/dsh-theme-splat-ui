@@ -448,8 +448,8 @@
       <div class="grid grid--top">
         <div class="span-5 stack-5">
           <div class="section-head">
-            <h2 id="install-h">本地 2 步完成安装。<span class="muted">当前为本地验收版。</span></h2>
-            <p>当前尚未发布至 npm。先按仓库 <a class="link" href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/README.zh.md#安装">README</a> 生成本地 <code>.tgz</code> 安装包，再在 DSH profile 目录安装并完整重启服务。</p>
+            <h2 id="install-h">两条命令完成安装。<span class="muted">支持 npm 与离线归档包。</span></h2>
+            <p>进入 DSH profile 目录通过 npm 安装最新版；若使用离线归档包，可前往 <a class="link" href="https://github.com/Shirolin/dsh-theme-splat-ui/releases">Releases</a> 下载 <code>.tgz</code> 或按 <a class="link" href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/README.zh.md#安装">README</a> 本地打包后完整重启服务。</p>
           </div>
           <ul class="checks">
             <li>同一 profile 建议只启用一个主题插件</li>
@@ -462,10 +462,10 @@
           <div class="command" data-ui>
             <div class="command__bar">
               <span>在 DSH profile 目录执行</span>
-              <span>pnpm · local tgz</span>
+              <span>pnpm · npm registry</span>
             </div>
             <pre><code><span>cd &lt;DSH_Profile_目录&gt;</span>
-<span>pnpm add file:/path/to/dsh-theme-splat-ui.tgz</span></code></pre>
+<span>pnpm add dsh-theme-splat-ui</span></code></pre>
             <div class="command__foot">
               <button class="btn btn--primary" type="button" data-copy>复制命令</button>
               <a class="link" href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/docs/compatibility.md">查看兼容性契约</a>
@@ -500,7 +500,7 @@
           </div>
           <div class="faq__item">
             <h3>目前支持哪些运行平台？</h3>
-            <p>已在真实 Web 宿主完成日夜与 390px 窄屏验收，Windows 原生标题栏与独立 WebView 尚待桌面端补充验收。</p>
+            <p>已完成真实 Web 宿主的日夜与 390px 窄屏全量验收，以及 Windows 桌面端原生标题栏与侧栏布局实机验证；独立 WebView 窗口仍随后续版本补充回归。</p>
           </div>
           <div class="faq__item">
             <h3>怎么恢复原生外观？</h3>
@@ -523,7 +523,7 @@
     <div class="closing__cta close--type">
       <div class="section-head">
         <h2 id="close-h">把工作台涂成墨街主场</h2>
-        <p class="t-lead">按仓库 README 打包本地 .tgz，一条命令安装并重启生效。</p>
+        <p class="t-lead">进入 DSH profile 目录执行 <code>pnpm add dsh-theme-splat-ui</code>，安装后重启生效。</p>
       </div>
       <a class="btn btn--primary btn--xl btn--wide" href="#install">安装主题<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
     </div>

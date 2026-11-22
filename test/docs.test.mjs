@@ -20,7 +20,7 @@ const documents = [
   'LICENSE',
 ]
 
-test('install button copies the visible local tarball command', async () => {
+test('install button copies the visible install command', async () => {
   const html = await readFile(resolve(root, 'site/index.html'), 'utf8')
   const script = await readFile(resolve(root, 'site/app.js'), 'utf8')
   const dom = new JSDOM(html, { runScripts: 'outside-only' })
@@ -40,7 +40,7 @@ test('install button copies the visible local tarball command', async () => {
     await new Promise((resolve) => setImmediate(resolve))
     const visible = button.closest('.command').querySelector('pre').textContent
     assert.equal(copied, visible)
-    assert.match(copied, /pnpm add file:.*\.tgz/)
+    assert.match(copied, /pnpm add dsh-theme-splat-ui/)
     assert.equal(button.textContent, '已复制')
   } finally {
     dom.window.close()

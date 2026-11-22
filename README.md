@@ -9,8 +9,8 @@
 [![check](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/check.yml)
 [![pages](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/pages.yml/badge.svg?branch=main)](https://shirolin.github.io/dsh-theme-splat-ui/)
 [![version](https://img.shields.io/badge/version-0.1.0-1edc00?labelColor=141413)](CHANGELOG.md)
-[![npm](https://img.shields.io/badge/npm-pending-5c5c54?logo=npm&logoColor=white&labelColor=141413)](#installation-status)
-[![DSH Target](https://img.shields.io/badge/DSH_Web-0.2.2--rc.1-ff2d8a?labelColor=141413)](docs/compatibility.md)
+[![npm](https://img.shields.io/npm/v/dsh-theme-splat-ui?color=1edc00&logo=npm&logoColor=white&labelColor=141413)](https://www.npmjs.com/package/dsh-theme-splat-ui)
+[![DSH Target](https://img.shields.io/badge/DSH_Web-0.2.2--rc.1_·_Desktop_0.2.2--rc.5-ff2d8a?labelColor=141413)](docs/compatibility.md)
 [![license: MIT](https://img.shields.io/badge/license-MIT-d3f510?labelColor=141413)](LICENSE)
 
 [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A522.13.0-5FA04E?logo=nodedotjs&logoColor=white&labelColor=141413)](package.json)
@@ -68,29 +68,18 @@ The static component catalogue (`site/showcase/index.html`, live at https://shir
 
 Keep only one theme plugin enabled per profile.
 
-### Installation status
-
-The npm release is currently on hold. The public repository, regular CI, and Pages showcase are available; npm installation will be enabled in a future release. Use a local `.tgz` package or install directly from this repository.
-
-### Local release tarball
-
-Build and verify the tarball in this repository first:
-
-```sh
-pnpm install --frozen-lockfile
-pnpm run release 0.1.0
-```
-
-Then install it into an isolated DSH profile:
+### From npm (recommended)
 
 ```sh
 cd <DSH_Profile_dir>
-pnpm add file:<repo>/artifacts/release-v0.1.0/dsh-theme-splat-ui-0.1.0.tgz
+pnpm add dsh-theme-splat-ui
 ```
 
-Restart the DSH service completely and reload the page.
+Restart the DSH service completely (or restart DeepSeek Harness Desktop) and reload the page.
 
-### Offline `.tgz`
+### From GitHub Release / Offline `.tgz`
+
+Download `dsh-theme-splat-ui-<version>.tgz` from [GitHub Releases](https://github.com/Shirolin/dsh-theme-splat-ui/releases) (or build locally via `pnpm run release 0.1.0`):
 
 ```sh
 cd <DSH_Profile_dir>
