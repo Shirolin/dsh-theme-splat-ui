@@ -25,7 +25,7 @@ let localReferenceCount = 0
 async function validateHtmlReferences(pageFile, label) {
   const html = await readFile(pageFile, 'utf8')
   const pageDir = dirname(pageFile)
-  const tags = [...html.matchAll(/<(img|a|link|script|video|source|meta)\b[^>]*>/gi)].map((match) => ({
+  const tags = [...html.matchAll(/<(img|iframe|a|link|script|video|source|meta)\b[^>]*>/gi)].map((match) => ({
     name: match[1].toLowerCase(),
     markup: match[0],
   }))

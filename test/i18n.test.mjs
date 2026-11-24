@@ -378,6 +378,14 @@ test('landing page switches html lang, headings, command dir, and copy feedback 
       assert.match(copied, /pnpm add dsh-theme-splat-ui/)
       assert.equal(copyBtn.textContent, expectedCopied)
     }
+
+    const appearanceTab = dom.window.document.querySelector('[data-fixture-tab="appearance-panel"]')
+    const darkModeBtn = dom.window.document.querySelector('[data-mode-set="dark"]')
+    const frame = dom.window.document.querySelector('#showcase-frame')
+    assert.ok(appearanceTab && darkModeBtn && frame)
+    appearanceTab.click()
+    darkModeBtn.click()
+    assert.equal(frame.getAttribute('src'), 'showcase/generated/appearance-panel-dark.html')
   } finally {
     dom.window.close()
   }
