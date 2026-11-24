@@ -657,11 +657,11 @@ html[data-dsh-splat-ui-skin]:lang(zh) [data-dsh-boot-spinner] + *::after {
 }
 
 html[data-dsh-splat-ui-skin]:lang(ja) [data-dsh-boot-spinner] + *::after {
-  content: var(--splat-boot-loading-text, "バトルフィールドを塗り広げ中…");
+  content: var(--splat-boot-loading-text, "ステージを塗り広げ中…");
 }
 
 html[data-dsh-splat-ui-skin]:lang(ko) [data-dsh-boot-spinner] + *::after {
-  content: var(--splat-boot-loading-text, "배틀필드를 칠하는 중…");
+  content: var(--splat-boot-loading-text, "스테이지를 색칠하는 중…");
 }
 
 html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-dsh-boot] {

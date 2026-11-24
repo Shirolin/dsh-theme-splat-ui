@@ -150,8 +150,8 @@ test('client runtime tracks host locale switches and cleans up CSS vars on dispo
 
 test('client runtime falls back to ja/ko when host locale is en or absent, and tolerates strict register()', async () => {
   for (const [envTag, expectedLocale, expectedTab, expectedBoot] of [
-    ['ja-JP', 'ja', '墨街外観', '"バトルフィールドを塗り広げ中…"'],
-    ['ko-KR', 'ko', 'SPLAT-STREET 외관', '"배틀필드를 칠하는 중…"'],
+    ['ja-JP', 'ja', 'SPLAT-STREET 外観', '"ステージを塗り広げ中…"'],
+    ['ko-KR', 'ko', 'SPLAT-STREET 외관', '"스테이지를 색칠하는 중…"'],
   ]) {
     const dom = new JSDOM(`<!doctype html><html lang="${envTag}"><head></head><body></body></html>`, { url: 'https://dsh.local/' })
     Object.defineProperty(dom.window.navigator, 'language', { configurable: true, value: envTag })
@@ -215,6 +215,55 @@ test('client runtime falls back to ja/ko when host locale is en or absent, and t
     } finally {
       runner.restore()
     }
+  }
+})
+
+test('client runtime tolerates Cordis-style throwing ctx.locale getter without inject', async () => {
+  const dom = new JSDOM('<!doctype html><html lang="zh-CN"><head></head><body></body></html>', { url: 'https://dsh.local/' })
+  Object.defineProperty(dom.window.navigator, 'language', { configurable: true, value: 'zh-CN' })
+  Object.defineProperty(dom.window.navigator, 'languages', { configurable: true, value: ['zh-CN'] })
+
+  const runner = loadClientBundleInDom(dom)
+  try {
+    await runner.run((loadedModule) => {
+      const disposers = []
+      let registeredTabOptions
+      const ctx = {
+        theme: {
+          overrideTokens: () => () => {},
+          getTheme: () => ({ preference: 'light', active: { colorScheme: 'light' } }),
+        },
+        get locale() {
+          throw new Error('cannot get property "locale" without inject')
+        },
+        slots: {
+          inject(_key, callback) {
+            const clean = callback()
+            return typeof clean === 'function' ? clean : () => {}
+          },
+          register(options) {
+            if (options.name === 'settings.plugins.tab') {
+              registeredTabOptions = options
+            }
+            return () => {}
+          },
+        },
+        effect(fn) {
+          const clean = fn()
+          if (typeof clean === 'function') disposers.push(clean)
+        },
+      }
+
+      loadedModule.apply(ctx)
+      const html = dom.window.document.documentElement
+      assert.equal(html.getAttribute('data-dsh-splat-ui-skin'), 'active')
+      assert.equal(registeredTabOptions.label(), '墨街外观')
+      assert.equal(html.style.getPropertyValue('--splat-boot-loading-text'), '"正在涂满战场…"')
+
+      while (disposers.length > 0) disposers.pop()()
+    })
+  } finally {
+    runner.restore()
   }
 })
 
