@@ -66,17 +66,20 @@ for (const button of inkPresetButtons) {
 }
 
 if (copyButton) {
+  let resetTimer = null
   copyButton.addEventListener('click', async () => {
     const text = copyButton.closest('.command').querySelector('pre').textContent
-    const original = copyButton.textContent
+    const i18n = window.splatSiteI18n
     try {
       await navigator.clipboard.writeText(text)
-      copyButton.textContent = '已复制'
+      copyButton.textContent = i18n?.t('landing.install.copied') || '已复制'
     } catch {
-      copyButton.textContent = '复制失败，请手动选择'
+      copyButton.textContent = i18n?.t('landing.install.copyFailed') || '复制失败，请手动选择'
     }
-    window.setTimeout(() => {
-      copyButton.textContent = original
+    if (resetTimer !== null) window.clearTimeout(resetTimer)
+    resetTimer = window.setTimeout(() => {
+      resetTimer = null
+      copyButton.textContent = window.splatSiteI18n?.t('landing.install.copyBtn') || '复制命令'
     }, 1800)
   })
 }

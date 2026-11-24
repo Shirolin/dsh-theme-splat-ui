@@ -1,12 +1,9 @@
 import type { SlotRegistryLike } from './context.ts'
 import { AppearanceTab } from './components/appearance-tab.tsx'
+import { getClientMessages } from './i18n.ts'
 import type { InstalledSkin } from './install.ts'
 
 const APPEARANCE_TAB_ID = 'splat-ui-appearance'
-
-function tabLabel(): string {
-  return typeof navigator !== 'undefined' && navigator.language.toLowerCase().startsWith('zh') ? '墨街外观' : 'Splat appearance'
-}
 
 /**
  * Register the per-client appearance preference and its Settings → Plugins tab.
@@ -18,6 +15,7 @@ function tabLabel(): string {
  * per-device visual choice, not a Host-owned setting.
  */
 export function registerAppearanceTab(slots: SlotRegistryLike, installedSkin: InstalledSkin): () => void {
+  const tabLabel = () => getClientMessages(installedSkin.locale.getSnapshot()).tabLabel
   return slots.inject('settings.plugins.tab', () =>
     slots.register(
       {
@@ -25,7 +23,7 @@ export function registerAppearanceTab(slots: SlotRegistryLike, installedSkin: In
         id: APPEARANCE_TAB_ID,
         order: 40,
         label: tabLabel,
-        inject: () => ({ appearance: installedSkin.appearance }),
+        inject: () => ({ appearance: installedSkin.appearance, locale: installedSkin.locale }),
       },
       AppearanceTab,
     ),

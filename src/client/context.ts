@@ -49,9 +49,18 @@ export interface SlotRegistryLike {
   spec(key: string): SlotSpecLike | undefined
 }
 
+export interface LocaleServiceLike {
+  register?(ns: string, dictionaries: Record<string, Record<string, string>>): () => void
+  bind?(ns: string): (key: string, params?: Record<string, unknown>) => string
+  getSnapshot?(): unknown
+  subscribe?(listener: () => void): () => void
+}
+
 export interface ClientContextLike {
   theme?: ThemeRuntimeLike
   slots?: SlotRegistryLike
+  locale?: LocaleServiceLike
+  get?(name: string): unknown
   effect(effect: () => (() => void) | undefined, name?: string): unknown
   on?(event: 'theme/change', listener: (snapshot: ThemeSnapshotLike) => void): () => void
 }

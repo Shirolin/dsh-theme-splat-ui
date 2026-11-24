@@ -14,81 +14,90 @@
     <link rel="apple-touch-icon" href="../assets/icon-256.png?v=3" />
     <link rel="stylesheet" href="showcase.css" />
   </head>
-  <body>
+  <body data-i18n-page="showcase">
     <header class="topbar">
       <div class="topbar__row topbar__row--brand">
         <div class="topbar__title">
           <a class="back-link" href="../">
             <img src="../assets/icon-256.png" alt="" width="28" height="28" />
-            <span>返回官网</span>
+            <span data-i18n="showcase.backHome">返回官网</span>
           </a>
           <span class="divider" aria-hidden="true">/</span>
-          <h1>DSH 组件图鉴</h1>
+          <h1 data-i18n="showcase.heading">DSH 组件图鉴</h1>
         </div>
 
         <div class="topbar__tools">
-          <a class="nav-chip" href="../promo/">宣传片</a>
+          <a class="nav-chip" href="../promo/" data-i18n="showcase.navPromo">宣传片</a>
           <a class="nav-chip" href="https://github.com/Shirolin/dsh-theme-splat-ui" target="_blank" rel="noreferrer">GitHub</a>
+          <select class="lang-select" data-lang-select aria-label="选择语言">
+            <option value="zh">简体中文</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+          </select>
 
           <label class="search-field">
-            <span class="sr-only">搜索组件或插件包</span>
-            <input type="search" id="search-input" placeholder="筛选组件名、标题或插件包（按 / 聚焦）" autocomplete="off" />
+            <span class="sr-only" data-i18n="showcase.searchSr">搜索组件或插件包</span>
+            <input type="search" id="search-input" placeholder="筛选组件名、标题或插件包（按 / 聚焦）" data-i18n-attr="placeholder:showcase.searchPlaceholder" autocomplete="off" />
           </label>
 
-          <div class="mode-switch" role="group" aria-label="切换日夜模式">
-            <button type="button" class="seg-btn is-active" data-mode="light" aria-pressed="true">日间</button>
-            <button type="button" class="seg-btn" data-mode="dark" aria-pressed="false">夜间</button>
+          <div class="mode-switch" role="group" aria-label="切换日夜模式" data-i18n-attr="aria-label:showcase.modeSwitchAria">
+            <button type="button" class="seg-btn is-active" data-mode="light" aria-pressed="true" data-i18n="showcase.modeLight">日间</button>
+            <button type="button" class="seg-btn" data-mode="dark" aria-pressed="false" data-i18n="showcase.modeDark">夜间</button>
           </div>
         </div>
       </div>
 
-      <div class="topbar__row topbar__row--controls" aria-label="外观参数实时调节">
+      <div class="topbar__row topbar__row--controls" aria-label="外观参数实时调节" data-i18n-attr="aria-label:showcase.controlsAria">
         <div
           class="ctrl-group"
           title="调节主工作台画布、Diff 交付区、迷你预览窗等使用 --dsw-alias-bg-base 的画布墨度；固定背景卡片不变"
+          data-i18n-attr="title:showcase.densityGroupTitle"
         >
-          <span class="ctrl-label">画布墨度</span>
-          <div class="preset-group" role="group" aria-label="画布墨度预设">
-            <button type="button" class="pill-btn" data-ink-preset="20" aria-pressed="false">纸白</button>
-            <button type="button" class="pill-btn is-active" data-ink-preset="50" aria-pressed="true">均衡</button>
-            <button type="button" class="pill-btn" data-ink-preset="100" aria-pressed="false">涂地</button>
+          <span class="ctrl-label" data-i18n="showcase.densityLabel">画布墨度</span>
+          <div class="preset-group" role="group" aria-label="画布墨度预设" data-i18n-attr="aria-label:showcase.densityPresetsAria">
+            <button type="button" class="pill-btn" data-ink-preset="20" aria-pressed="false" data-i18n="showcase.presetPaper">纸白</button>
+            <button type="button" class="pill-btn is-active" data-ink-preset="50" aria-pressed="true" data-i18n="showcase.presetBalanced">均衡</button>
+            <button type="button" class="pill-btn" data-ink-preset="100" aria-pressed="false" data-i18n="showcase.presetTurf">涂地</button>
           </div>
-          <input type="range" id="veil-slider" min="0" max="100" step="1" value="50" aria-label="画布墨度" />
+          <input type="range" id="veil-slider" min="0" max="100" step="1" value="50" aria-label="画布墨度" data-i18n-attr="aria-label:showcase.densityLabel" />
           <output id="veil-output" for="veil-slider">50%</output>
         </div>
 
-        <div class="ctrl-group" title="切换全局主墨色（官方绿 / 荧光绿 / 黄绿）">
-          <span class="ctrl-label">主墨色</span>
-          <div class="preset-group" role="group" aria-label="主墨色预设">
-            <button type="button" class="pill-btn is-active" data-green-preset="joycon" aria-pressed="true">官方绿</button>
-            <button type="button" class="pill-btn" data-green-preset="neon" aria-pressed="false">荧光绿</button>
-            <button type="button" class="pill-btn" data-green-preset="lime" aria-pressed="false">黄绿</button>
+        <div class="ctrl-group" title="切换全局主墨色（官方绿 / 荧光绿 / 黄绿）" data-i18n-attr="title:showcase.greenGroupTitle">
+          <span class="ctrl-label" data-i18n="showcase.greenLabel">主墨色</span>
+          <div class="preset-group" role="group" aria-label="主墨色预设" data-i18n-attr="aria-label:showcase.greenPresetsAria">
+            <button type="button" class="pill-btn is-active" data-green-preset="joycon" aria-pressed="true" data-i18n="showcase.greenOfficial">官方绿</button>
+            <button type="button" class="pill-btn" data-green-preset="neon" aria-pressed="false" data-i18n="showcase.greenNeon">荧光绿</button>
+            <button type="button" class="pill-btn" data-green-preset="lime" aria-pressed="false" data-i18n="showcase.greenLime">黄绿</button>
           </div>
         </div>
 
         <div class="ctrl-group">
-          <label class="toggle-chip" title="切换工作台与纸面边缘的墨滴和泼溅装饰">
+          <label class="toggle-chip" title="切换工作台与纸面边缘的墨滴和泼溅装饰" data-i18n-attr="title:showcase.decorTitle">
             <input type="checkbox" id="toggle-decor" checked />
-            <span>插画装饰</span>
+            <span data-i18n="showcase.decorLabel">插画装饰</span>
           </label>
-          <label class="toggle-chip" title="切换纸面与输入卡的网点纹理">
+          <label class="toggle-chip" title="切换纸面与输入卡的网点纹理" data-i18n-attr="title:showcase.grainTitle">
             <input type="checkbox" id="toggle-grain" checked />
-            <span>纸面网点</span>
+            <span data-i18n="showcase.grainLabel">纸面网点</span>
           </label>
           <label
             class="toggle-chip"
             id="toggle-diff-chip"
             title="切换 Diff 红绿行高亮（仅日间模式作用于 Diff 交付区卡片）"
+            data-i18n-attr="title:showcase.diffTitleLight"
           >
             <input type="checkbox" id="toggle-diff" />
-            <span>原生 Diff 语法</span>
+            <span data-i18n="showcase.diffLabel">原生 Diff 语法</span>
           </label>
           <label
             class="toggle-chip"
             title="切换主题内置 Nunito 圆体与系统默认字体（主要影响英文与数字字形）"
+            data-i18n-attr="title:showcase.fontTitle"
           >
             <input type="checkbox" id="toggle-font" />
-            <span>系统字体</span>
+            <span data-i18n="showcase.fontLabel">系统字体</span>
           </label>
         </div>
 
@@ -97,39 +106,42 @@
           class="reset-btn"
           id="reset-btn"
           title="清除统一覆盖，使每张卡片恢复各自的演示预设状态"
+          data-i18n-attr="title:showcase.resetTitle"
+          data-i18n="showcase.resetBtn"
         >
           恢复各卡默认
         </button>
 
-        <span class="ctrl-hint">墨度作用于画布、Diff 与预览窗；开关实时透传给每张卡片。</span>
+        <span class="ctrl-hint" data-i18n="showcase.ctrlHint">墨度作用于画布、Diff 与预览窗；开关实时透传给每张卡片。</span>
       </div>
     </header>
 
     <div class="layout">
-      <aside class="sidebar" aria-label="组件分类目录">
+      <aside class="sidebar" aria-label="组件分类目录" data-i18n-attr="aria-label:showcase.sidebarAria">
         <nav id="toc" class="toc"></nav>
       </aside>
 
       <main class="stage-column" id="stage-column">
-        <p class="status-bar" id="status-bar">正在加载组件清单…</p>
+        <p class="status-bar" id="status-bar" data-i18n="showcase.loading">正在加载组件清单…</p>
         <div id="sections-root"></div>
         <div class="empty-state" id="empty-state" hidden>
-          <p class="empty-state__title">没有找到匹配的组件夹具。</p>
-          <p class="empty-state__hint">试试搜索 `composer`、`diff`、`appearance` 或插件包名。</p>
-          <button type="button" class="pill-btn is-active" id="clear-search-btn">清空筛选</button>
+          <p class="empty-state__title" data-i18n="showcase.emptyTitle">没有找到匹配的组件夹具。</p>
+          <p class="empty-state__hint" data-i18n="showcase.emptyHint">试试搜索 `composer`、`diff`、`appearance` 或插件包名。</p>
+          <button type="button" class="pill-btn is-active" id="clear-search-btn" data-i18n="showcase.clearSearch">清空筛选</button>
         </div>
       </main>
     </div>
 
     <footer class="showcase-footer">
-      <p id="footer-meta">渲染于真实 DSH 运行时 CSS 与主题构建产物。</p>
+      <p id="footer-meta" data-i18n="showcase.footerDefault">渲染于真实 DSH 运行时 CSS 与主题构建产物。</p>
       <div class="footer-links">
-        <a href="../">主题首页</a>
-        <a href="../promo/">宣传片</a>
-        <a href="https://github.com/Shirolin/dsh-theme-splat-ui" target="_blank" rel="noreferrer">GitHub 仓库</a>
+        <a href="../" data-i18n="showcase.footerHome">主题首页</a>
+        <a href="../promo/" data-i18n="showcase.footerPromo">宣传片</a>
+        <a href="https://github.com/Shirolin/dsh-theme-splat-ui" target="_blank" rel="noreferrer" data-i18n="showcase.footerRepo">GitHub 仓库</a>
       </div>
     </footer>
 
+    <script defer src="../i18n.js"></script>
     <script defer src="showcase.js"></script>
   </body>
 </html>

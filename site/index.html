@@ -69,49 +69,55 @@
 <link rel="modulepreload" href="assets/moments/line-carries-colour/moment.js">
 <link rel="modulepreload" href="assets/moments/counter-rolls/moment.js">
 </head>
-<body>
+<body data-i18n-page="landing">
 <!-- type: software
      deal: hero product, nav nav-mega, close close-type, footer footer-statement, rhythm surface-pairs, buttons solid, mark arc, ground sage, card-fx gradient-mesh
      moments: line-carries-colour (#promo), counter-rolls (#install) -->
 
 <header class="nav">
   <div class="wrap nav__bar">
-    <a class="skip-link" href="#top">跳到正文</a>
+    <a class="skip-link" href="#top" data-i18n="landing.nav.skip">跳到正文</a>
     <a class="nav__logo" href="#top"><img src="assets/icon-256.png" width="24" height="24" alt="">SPLAT-STREET</a>
-    <nav class="nav__links" aria-label="主导航">
+    <nav class="nav__links" aria-label="主导航" data-i18n-attr="aria-label:landing.nav.aria">
       <div class="nav__item">
-        <a class="nav__link" href="#showcase">战场 <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="nav__link" href="#showcase"><span data-i18n="landing.nav.battleground">战场</span> <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <div class="nav__menu">
           <div class="wrap grid">
             <div class="menu-col span-3">
-              <p class="t-label">视觉系统</p>
-              <a href="#workbench">组件上色<span>公开 Token 与 4 个品牌 Slot</span></a>
-              <a href="#showcase">昼夜战场<span>交互调节日间、夜间与画布墨度</span></a>
-              <a href="#features">外观定制<span>主墨色预设与表面开关</span></a>
+              <p class="t-label" data-i18n="landing.nav.mega.visualLabel">视觉系统</p>
+              <a href="#workbench" data-i18n-html="landing.nav.mega.paintHtml">组件上色<span>公开 Token 与 4 个品牌 Slot</span></a>
+              <a href="#showcase" data-i18n-html="landing.nav.mega.dayNightHtml">昼夜战场<span>交互调节日间、夜间与画布墨度</span></a>
+              <a href="#features" data-i18n-html="landing.nav.mega.appearanceHtml">外观定制<span>主墨色预设与表面开关</span></a>
             </div>
             <div class="menu-col span-3">
-              <p class="t-label">演示与文档</p>
-              <a href="#promo">宣传片<span>30 秒横版实机演示与配乐</span></a>
-              <a href="promo/">竖版分镜<span>3:4 竖版宣传片与九镜索引</span></a>
-              <a href="showcase/">组件图鉴<span>18 组真实 DSH 组件对照</span></a>
+              <p class="t-label" data-i18n="landing.nav.mega.docsLabel">演示与文档</p>
+              <a href="#promo" data-i18n-html="landing.nav.mega.promoHtml">宣传片<span>30 秒横版实机演示与配乐</span></a>
+              <a href="promo/" data-i18n-html="landing.nav.mega.verticalHtml">竖版分镜<span>3:4 竖版宣传片与九镜索引</span></a>
+              <a href="showcase/" data-i18n-html="landing.nav.mega.catalogueHtml">组件图鉴<span>18 组真实 DSH 组件对照</span></a>
             </div>
             <a class="menu-card span-3 start-10" href="showcase/">
-              <div class="panel"><img class="frame__img" src="assets/composer-light.webp" width="1549" height="328" alt="SPLAT-STREET 白色描边 Composer 卡片与右上角洋红滴墨装饰" loading="lazy"></div>
-              <span class="t-card">18 组实时组件图鉴</span>
-              <span class="t-small muted">在线切换主墨色与画布墨度</span>
+              <div class="panel"><img class="frame__img" src="assets/composer-light.webp" width="1549" height="328" alt="SPLAT-STREET 白色描边 Composer 卡片与右上角洋红滴墨装饰" data-i18n-attr="alt:landing.nav.mega.cardAlt" loading="lazy"></div>
+              <span class="t-card" data-i18n="landing.nav.mega.cardTitle">18 组实时组件图鉴</span>
+              <span class="t-small muted" data-i18n="landing.nav.mega.cardDesc">在线切换主墨色与画布墨度</span>
             </a>
           </div>
         </div>
       </div>
-      <div class="nav__item"><a class="nav__link" href="#promo">宣传片</a></div>
-      <div class="nav__item"><a class="nav__link" href="showcase/">图鉴</a></div>
-      <div class="nav__item"><a class="nav__link" href="#faq">问答</a></div>
+      <div class="nav__item"><a class="nav__link" href="#promo" data-i18n="landing.nav.promo">宣传片</a></div>
+      <div class="nav__item"><a class="nav__link" href="showcase/" data-i18n="landing.nav.showcase">图鉴</a></div>
+      <div class="nav__item"><a class="nav__link" href="#faq" data-i18n="landing.nav.faq">问答</a></div>
     </nav>
     <div class="nav__actions">
       <a class="nav__link" href="https://github.com/Shirolin/dsh-theme-splat-ui">GitHub</a>
-      <a class="btn btn--primary" href="#install">安装主题</a>
+      <select class="lang-select" data-lang-select aria-label="选择语言">
+        <option value="zh">简体中文</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+      </select>
+      <a class="btn btn--primary" href="#install" data-i18n="landing.nav.installCta">安装主题</a>
     </div>
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="打开导航菜单">
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="打开导航菜单" data-i18n-attr="aria-label:landing.nav.toggleAria">
       <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
     </button>
   </div>
@@ -123,16 +129,16 @@
       <div class="hero-text hero__in">
         <div class="hero__head">
           <div>
-            <h1 id="hero-h">DeepSeek Harness 墨街主题</h1>
-            <p class="hero__lead">斯普拉遁 2 风格皮肤插件：官方绿 #1EDC00 三色条纹画布、炭黑夜间模式、3 档主墨色与连续画布墨度，仅覆写公开 Token 与 Slot。</p>
+            <h1 id="hero-h" data-i18n="landing.hero.title">DeepSeek Harness 墨街主题</h1>
+            <p class="hero__lead" data-i18n="landing.hero.lead">斯普拉遁 2 风格皮肤插件：官方绿 #1EDC00 三色条纹画布、炭黑夜间模式、3 档主墨色与连续画布墨度，仅覆写公开 Token 与 Slot。</p>
           </div>
           <div class="btn-row">
-            <a class="btn btn--primary" href="#install">安装主题<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-            <a class="btn btn--secondary" href="#promo">看 30 秒宣传片</a>
+            <a class="btn btn--primary" href="#install"><span data-i18n="landing.hero.installCta">安装主题</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+            <a class="btn btn--secondary" href="#promo" data-i18n="landing.hero.promoCta">看 30 秒宣传片</a>
           </div>
         </div>
         <div class="hero__stage">
-          <img src="assets/workspace-dark.webp" width="1440" height="1000" alt="SPLAT-STREET 夜间午夜祭典工作台：炭黑画布、洋红泼溅、官方绿选中行与墨街广场插画" style="--ly-pos: 50% 24%" fetchpriority="high">
+          <img src="assets/workspace-dark.webp" width="1440" height="1000" alt="SPLAT-STREET 夜间午夜祭典工作台：炭黑画布、洋红泼溅、官方绿选中行与墨街广场插画" data-i18n-attr="alt:landing.hero.stageAlt" style="--ly-pos: 50% 24%" fetchpriority="high">
         </div>
       </div>
     </div>
@@ -142,45 +148,45 @@
     <div class="wrap">
       <div class="grid">
         <div class="span-5">
-          <h2 id="workbench-h">4 个接缝逐项上色。<span class="muted">保留原生侧栏与快捷键。</span></h2>
+          <h2 id="workbench-h" data-i18n-html="landing.workbench.headingHtml">4 个接缝逐项上色。<span class="muted">保留原生侧栏与快捷键。</span></h2>
         </div>
         <div class="span-6 start-7 stack-4">
-          <p class="t-lead muted">主题只覆写公开的 ThemeRuntime Token 与 4 个品牌 Slot。侧栏会话、Diff 交付区、工具卡片与输入区保持原生交互，停用即完整清理。</p>
-          <p><a class="link" href="showcase/">查看 18 组实时组件图鉴</a></p>
+          <p class="t-lead muted" data-i18n="landing.workbench.lead">主题只覆写公开的 ThemeRuntime Token 与 4 个品牌 Slot。侧栏会话、Diff 交付区、工具卡片与输入区保持原生交互，停用即完整清理。</p>
+          <p><a class="link" href="showcase/" data-i18n="landing.workbench.cta">查看 18 组实时组件图鉴</a></p>
         </div>
       </div>
 
-      <div class="ui app fill" role="img" aria-label="DSH 侧栏会话列表与 SPLAT-STREET Token Diff 交付预览" data-ui-pause-host>
+      <div class="ui app fill" role="img" aria-label="DSH 侧栏会话列表与 SPLAT-STREET Token Diff 交付预览" data-i18n-attr="aria-label:landing.workbench.appAria" data-ui-pause-host>
         <div class="app__pane app__pane--list">
-          <div class="ui ui-panel ui-win" data-ui="window" data-open="待验收" data-work="调试中" data-done="已通过">
+          <div class="ui ui-panel ui-win" data-ui="window" data-open="待验收" data-work="调试中" data-done="已通过" data-i18n-attr="data-open:landing.workbench.dataOpen,data-work:landing.workbench.dataWork,data-done:landing.workbench.dataDone">
             <div class="ui-win__bar">
               <span class="ui-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="ui-win__crumb">墨街工作室 <i>/</i> <b>真实宿主</b></span>
+              <span class="ui-win__crumb" data-i18n-html="landing.workbench.crumbHtml">墨街工作室 <i>/</i> <b>真实宿主</b></span>
               <span class="ui-spacer"></span>
-              <span class="ui-win__search" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><span class="ui-win__ph">筛选</span><span class="ui-kbd">/</span></span>
+              <span class="ui-win__search" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><span class="ui-win__ph" data-i18n="landing.workbench.filterPh">筛选</span><span class="ui-kbd">/</span></span>
             </div>
             <div class="ui-win__body">
               <nav class="ui-win__side" aria-hidden="true">
-                <span class="ui-win__nav is-on"><svg class="ui-icon" viewBox="0 0 16 16"><path d="M2.5 9h3l1 1.5h3l1-1.5h3"/><path d="M2.5 9 4 3.5h8L13.5 9v3.5h-11z"/></svg>全部<em>18</em></span>
-                <span class="ui-win__nav"><svg class="ui-icon" viewBox="0 0 16 16"><circle cx="8" cy="6" r="2.5"/><path d="M3.5 13.5c.6-2.3 2.4-3.5 4.5-3.5s3.9 1.2 4.5 3.5"/></svg>日间<em>9</em></span>
-                <span class="ui-win__nav"><svg class="ui-icon" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg>夜间<em>9</em></span>
-                <span class="ui-win__nav"><svg class="ui-icon" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg>已验收</span>
-                <span class="ui-win__label">接缝</span>
+                <span class="ui-win__nav is-on"><svg class="ui-icon" viewBox="0 0 16 16"><path d="M2.5 9h3l1 1.5h3l1-1.5h3"/><path d="M2.5 9 4 3.5h8L13.5 9v3.5h-11z"/></svg><span data-i18n="landing.workbench.navAll">全部</span><em>18</em></span>
+                <span class="ui-win__nav"><svg class="ui-icon" viewBox="0 0 16 16"><circle cx="8" cy="6" r="2.5"/><path d="M3.5 13.5c.6-2.3 2.4-3.5 4.5-3.5s3.9 1.2 4.5 3.5"/></svg><span data-i18n="landing.workbench.navDay">日间</span><em>9</em></span>
+                <span class="ui-win__nav"><svg class="ui-icon" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg><span data-i18n="landing.workbench.navNight">夜间</span><em>9</em></span>
+                <span class="ui-win__nav"><svg class="ui-icon" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span data-i18n="landing.workbench.navVerified">已验收</span></span>
+                <span class="ui-win__label" data-i18n="landing.workbench.navSeams">接缝</span>
                 <span class="ui-win__nav"><span class="ui-win__hash">#</span>tokens</span>
                 <span class="ui-win__nav"><span class="ui-win__hash">#</span>slots</span>
               </nav>
               <div class="ui-win__main">
-                <div class="ui-win__cols" aria-hidden="true"><span>模块</span><span>验收项</span><span>状态</span><span>耗时</span></div>
+                <div class="ui-win__cols" aria-hidden="true" data-i18n-html="landing.workbench.colsHtml"><span>模块</span><span>验收项</span><span>状态</span><span>耗时</span></div>
                 <ul class="ui-win__rows">
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="1">TK</span><span class="ui-win__who">tokens.ts</span><span class="ui-win__sub">日夜色板映射</span><span class="ui-win__st is-you" data-st>调试中</span><span class="ui-win__age">2m</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="3">SK</span><span class="ui-win__who">skin.css</span><span class="ui-win__sub">三色条纹与滴墨</span><span class="ui-win__st is-done" data-st>已通过</span><span class="ui-win__age">6m</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="4">BT</span><span class="ui-win__who">boot-ring</span><span class="ui-win__sub">24 格大招能量槽</span><span class="ui-win__st is-done" data-st>已通过</span><span class="ui-win__age">11m</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="2">AP</span><span class="ui-win__who">prefs.ts</span><span class="ui-win__sub">三档主墨色存储</span><span class="ui-win__st is-done" data-st>已通过</span><span class="ui-win__age">18m</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="5">DF</span><span class="ui-win__who">diff-view</span><span class="ui-win__sub">霓虹与原生切换</span><span class="ui-win__st is-done" data-st>已通过</span><span class="ui-win__age">24m</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="3">SB</span><span class="ui-win__who">sidebar</span><span class="ui-win__sub">官方绿选中墨尾</span><span class="ui-win__st is-done" data-st>已通过</span><span class="ui-win__age">31m</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="1">TR</span><span class="ui-win__who">tool-card</span><span class="ui-win__sub">45 行结果对比度</span><span class="ui-win__st is-done" data-st>已通过</span><span class="ui-win__age">39m</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="4">MB</span><span class="ui-win__who">narrow</span><span class="ui-win__sub">390px 窄屏阅读</span><span class="ui-win__st is-done" data-st>已通过</span><span class="ui-win__age">44m</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="2">UN</span><span class="ui-win__who">install.ts</span><span class="ui-win__sub">停用完整清理还原</span><span class="ui-win__st is-done" data-st>已通过</span><span class="ui-win__age">52m</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="1">TK</span><span class="ui-win__who">tokens.ts</span><span class="ui-win__sub" data-i18n="landing.workbench.rows.tokensSub">日夜色板映射</span><span class="ui-win__st is-you" data-st data-i18n="landing.workbench.statusWork">调试中</span><span class="ui-win__age">2m</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="3">SK</span><span class="ui-win__who">skin.css</span><span class="ui-win__sub" data-i18n="landing.workbench.rows.skinSub">三色条纹与滴墨</span><span class="ui-win__st is-done" data-st data-i18n="landing.workbench.statusDone">已通过</span><span class="ui-win__age">6m</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="4">BT</span><span class="ui-win__who">boot-ring</span><span class="ui-win__sub" data-i18n="landing.workbench.rows.bootSub">24 格大招能量槽</span><span class="ui-win__st is-done" data-st data-i18n="landing.workbench.statusDone">已通过</span><span class="ui-win__age">11m</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="2">AP</span><span class="ui-win__who">prefs.ts</span><span class="ui-win__sub" data-i18n="landing.workbench.rows.prefsSub">三档主墨色存储</span><span class="ui-win__st is-done" data-st data-i18n="landing.workbench.statusDone">已通过</span><span class="ui-win__age">18m</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="5">DF</span><span class="ui-win__who">diff-view</span><span class="ui-win__sub" data-i18n="landing.workbench.rows.diffSub">霓虹与原生切换</span><span class="ui-win__st is-done" data-st data-i18n="landing.workbench.statusDone">已通过</span><span class="ui-win__age">24m</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="3">SB</span><span class="ui-win__who">sidebar</span><span class="ui-win__sub" data-i18n="landing.workbench.rows.sidebarSub">官方绿选中墨尾</span><span class="ui-win__st is-done" data-st data-i18n="landing.workbench.statusDone">已通过</span><span class="ui-win__age">31m</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="1">TR</span><span class="ui-win__who">tool-card</span><span class="ui-win__sub" data-i18n="landing.workbench.rows.toolSub">45 行结果对比度</span><span class="ui-win__st is-done" data-st data-i18n="landing.workbench.statusDone">已通过</span><span class="ui-win__age">39m</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="4">MB</span><span class="ui-win__who">narrow</span><span class="ui-win__sub" data-i18n="landing.workbench.rows.narrowSub">390px 窄屏阅读</span><span class="ui-win__st is-done" data-st data-i18n="landing.workbench.statusDone">已通过</span><span class="ui-win__age">44m</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="2">UN</span><span class="ui-win__who">install.ts</span><span class="ui-win__sub" data-i18n="landing.workbench.rows.installSub">停用完整清理还原</span><span class="ui-win__st is-done" data-st data-i18n="landing.workbench.statusDone">已通过</span><span class="ui-win__age">52m</span></li>
                 </ul>
               </div>
             </div>
@@ -211,11 +217,11 @@
                   <span class="ui-diff__time">2m</span>
                   <span class="ui-spacer"></span>
                   <span class="ui-diff__act" data-diff-act>
-                    <button class="ui-btn ui-btn--sm ui-diff__apply" type="button" tabindex="-1" data-diff-apply><span class="ui-diff__lbl">应用修改</span><i class="ui-diff__spin" aria-hidden="true"></i></button>
-                    <span class="ui-chip ui-diff__done"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 8.4 2.6 2.6L12 5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>已应用</span>
+                    <button class="ui-btn ui-btn--sm ui-diff__apply" type="button" tabindex="-1" data-diff-apply><span class="ui-diff__lbl" data-i18n="landing.workbench.diffApply">应用修改</span><i class="ui-diff__spin" aria-hidden="true"></i></button>
+                    <span class="ui-chip ui-diff__done"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 8.4 2.6 2.6L12 5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="landing.workbench.diffApplied">已应用</span></span>
                   </span>
                 </div>
-                <div class="ui-diff__msg">官方绿 <code>#1EDC00</code> 底上白字对比度不足，统一用 <code>readable()</code> 选择深墨文字。</div>
+                <div class="ui-diff__msg" data-i18n-html="landing.workbench.diffMsgHtml">官方绿 <code>#1EDC00</code> 底上白字对比度不足，统一用 <code>readable()</code> 选择深墨文字。</div>
               </div>
               <div class="ui-diff__ln"><i>45</i><i>45</i><span class="ui-diff__code" data-i="1"><span class="ui-diff__ind">  </span><span class="k">return</span> {</span></div>
               <div class="ui-diff__ln is-add"><i></i><i>46</i><span class="ui-diff__code" data-i="2"><span class="ui-diff__ind">    </span><span class="s">"--dsw-alias-accent-primary"</span>: green.primary,</span></div>
@@ -237,37 +243,37 @@
     <div class="wrap grid grid--top">
       <div class="span-5">
         <div class="section-head">
-          <h2 id="showcase-h">昼夜双战场与画布墨度。<span class="muted">从纸白到涂地实时切换。</span></h2>
-          <p>日间采用官方绿、奶油与洋红三色条纹，夜间切换为炭黑广场。拖动滑杆可在纸白 20%、均衡 50% 与涂地 100% 间连续微调画布纸雾。</p>
+          <h2 id="showcase-h" data-i18n-html="landing.showcase.headingHtml">昼夜双战场与画布墨度。<span class="muted">从纸白到涂地实时切换。</span></h2>
+          <p data-i18n="landing.showcase.lead">日间采用官方绿、奶油与洋红三色条纹，夜间切换为炭黑广场。拖动滑杆可在纸白 20%、均衡 50% 与涂地 100% 间连续微调画布纸雾。</p>
         </div>
 
         <div class="showcase__controls">
-          <div class="ink-presets" role="group" aria-label="昼夜战场模式">
-            <button type="button" class="ink-preset is-active" data-mode-set="light" aria-pressed="true">日间涂地</button>
-            <button type="button" class="ink-preset" data-mode-set="dark" aria-pressed="false">夜间祭典</button>
+          <div class="ink-presets" role="group" aria-label="昼夜战场模式" data-i18n-attr="aria-label:landing.showcase.modeAria">
+            <button type="button" class="ink-preset is-active" data-mode-set="light" aria-pressed="true" data-i18n="landing.showcase.lightMode">日间涂地</button>
+            <button type="button" class="ink-preset" data-mode-set="dark" aria-pressed="false" data-i18n="landing.showcase.darkMode">夜间祭典</button>
           </div>
 
           <div class="density">
             <div class="density__head">
-              <label for="density">画布墨度</label>
+              <label for="density" data-i18n="landing.showcase.densityLabel">画布墨度</label>
               <output id="density-value" for="density">50%</output>
             </div>
-            <div class="ink-presets" role="group" aria-label="画布墨度预设">
-              <button type="button" class="ink-preset" data-ink-preset="20" aria-pressed="false">纸白 20%</button>
-              <button type="button" class="ink-preset is-active" data-ink-preset="50" aria-pressed="true">均衡 50%</button>
-              <button type="button" class="ink-preset" data-ink-preset="100" aria-pressed="false">涂地 100%</button>
+            <div class="ink-presets" role="group" aria-label="画布墨度预设" data-i18n-attr="aria-label:landing.showcase.densityPresetsAria">
+              <button type="button" class="ink-preset" data-ink-preset="20" aria-pressed="false" data-i18n="landing.showcase.presetPaper">纸白 20%</button>
+              <button type="button" class="ink-preset is-active" data-ink-preset="50" aria-pressed="true" data-i18n="landing.showcase.presetBalanced">均衡 50%</button>
+              <button type="button" class="ink-preset" data-ink-preset="100" aria-pressed="false" data-i18n="landing.showcase.presetTurf">涂地 100%</button>
             </div>
             <input id="density" class="density__range" type="range" min="0" max="100" step="1" value="50">
           </div>
 
-          <p><a class="link" href="showcase/">前往组件图鉴切换三套主墨色</a></p>
+          <p><a class="link" href="showcase/" data-i18n="landing.showcase.cta">前往组件图鉴切换三套主墨色</a></p>
         </div>
       </div>
 
       <div class="span-6 start-7">
         <div class="showcase__stage" data-visual>
-          <img data-preview-light src="assets/workspace-light.webp" width="1440" height="1000" alt="日间工作台：近黑侧栏、官方绿/奶油/洋红三色条纹画布、自由漂浮的广场插画与白色 Composer 卡片" loading="lazy">
-          <img data-preview-dark src="assets/hero-dark.webp" width="782" height="380" alt="夜间午夜祭典广场场景：炭黑底色上的墨街广场插画、两侧鱿鱼贴纸与洋红官方绿装饰" hidden loading="lazy">
+          <img data-preview-light src="assets/workspace-light.webp" width="1440" height="1000" alt="日间工作台：近黑侧栏、官方绿/奶油/洋红三色条纹画布、自由漂浮的广场插画与白色 Composer 卡片" data-i18n-attr="alt:landing.showcase.lightAlt" loading="lazy">
+          <img data-preview-dark src="assets/hero-dark.webp" width="782" height="380" alt="夜间午夜祭典广场场景：炭黑底色上的墨街广场插画、两侧鱿鱼贴纸与洋红官方绿装饰" data-i18n-attr="alt:landing.showcase.darkAlt" hidden loading="lazy">
         </div>
       </div>
     </div>
@@ -277,12 +283,12 @@
     <div class="wrap">
       <div class="section-head section-head--row">
         <div>
-          <h2 id="promo-h">30 秒实机宣传片。<span class="muted">完整演示昼夜战场与斜杠指令。</span></h2>
-          <p class="promo-links"><a class="link" href="promo/">查看竖版 3:4 与九镜索引</a><a class="link" href="promo/animatic-landscape.html">横版分镜拆解</a></p>
+          <h2 id="promo-h" data-i18n-html="landing.promo.headingHtml">30 秒实机宣传片。<span class="muted">完整演示昼夜战场与斜杠指令。</span></h2>
+          <p class="promo-links"><a class="link" href="promo/" data-i18n="landing.promo.verticalLink">查看竖版 3:4 与九镜索引</a><a class="link" href="promo/animatic-landscape.html" data-i18n="landing.promo.landscapeLink">横版分镜拆解</a></p>
         </div>
       </div>
       <div class="promo-frame fill">
-        <video controls playsinline preload="metadata" src="promo/splat-street-landscape-animatic.mp4" poster="promo/poster-landscape.webp" aria-label="SPLAT-STREET 墨街主题 30 秒横版宣传片（含昼夜战场、斜杠指令、墨度调节与窄屏演示）"></video>
+        <video controls playsinline preload="metadata" src="promo/splat-street-landscape-animatic.mp4" poster="promo/poster-landscape.webp" aria-label="SPLAT-STREET 墨街主题 30 秒横版宣传片（含昼夜战场、斜杠指令、墨度调节与窄屏演示）" data-i18n-attr="aria-label:landing.promo.videoAria"></video>
       </div>
     </div>
   </section>
@@ -290,32 +296,32 @@
   <section class="section" id="features" style="--h: 1" aria-labelledby="features-h">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="features-h">外观面板与表面开关。<span class="muted">主墨色与墨度都在客户端本地生效。</span></h2>
+        <h2 id="features-h" data-i18n-html="landing.features.headingHtml">外观面板与表面开关。<span class="muted">主墨色与墨度都在客户端本地生效。</span></h2>
       </div>
       <div class="grid">
         <article class="card card--row card--open span-6">
-          <h3>切换三套主墨色与画布墨度</h3>
-          <p>外观面板提供官方绿 #1EDC00、荧光绿与黄绿三档主墨色，并支持 0%–100% 滑杆微调。</p>
+          <h3 data-i18n="landing.features.card1Title">切换三套主墨色与画布墨度</h3>
+          <p data-i18n="landing.features.card1Desc">外观面板提供官方绿 #1EDC00、荧光绿与黄绿三档主墨色，并支持 0%–100% 滑杆微调。</p>
           <div class="panel" data-fx="gradient-mesh" data-fx-seed="11" data-fx-params='{"drift":0}'>
             <div class="stage stage--fade-b">
               <div class="at-center" style="--w:288px" data-ui-loop>
                 <div class="ui ui-panel ui-slider" data-ui="slider">
                   <div class="ui-slider__head">
                     <span class="ui-slider__ico" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="4" cy="4" r="1.1"/><circle cx="8" cy="4" r="1.1"/><circle cx="12" cy="4" r="1.1"/><circle cx="4" cy="8" r="1.1"/><circle cx="8" cy="8" r="1.1"/><circle cx="12" cy="8" r="1.1"/><circle cx="4" cy="12" r="1.1"/><circle cx="8" cy="12" r="1.1"/><circle cx="12" cy="12" r="1.1"/></svg></span>
-                    <span class="ui-slider__name"><span class="ui-title">墨街外观</span><span class="ui-meta">settings.plugins.tab</span></span>
+                    <span class="ui-slider__name"><span class="ui-title" data-i18n="landing.features.sliderTitle">墨街外观</span><span class="ui-meta">settings.plugins.tab</span></span>
                     <span class="ui-spacer"></span>
-                    <span class="ui-slider__reset">重置</span>
+                    <span class="ui-slider__reset" data-i18n="landing.features.sliderReset">重置</span>
                   </div>
                   <div class="ui-slider__row">
-                    <div class="ui-slider__top"><span>画布墨度</span><output data-slider-val>50</output></div>
+                    <div class="ui-slider__top"><span data-i18n="landing.features.sliderDensity">画布墨度</span><output data-slider-val>50</output></div>
                     <div class="ui-slider__track" data-slider-track style="--v:0.5"><i class="ui-slider__fill"></i><i class="ui-slider__thumb"></i></div>
                   </div>
                   <div class="ui-slider__row">
-                    <div class="ui-slider__top"><span>圆角与阴影</span><output>22 px</output></div>
+                    <div class="ui-slider__top"><span data-i18n="landing.features.sliderRadius">圆角与阴影</span><output>22 px</output></div>
                     <div class="ui-slider__track" style="--v:0.65"><i class="ui-slider__fill"></i><i class="ui-slider__thumb"></i></div>
                   </div>
-                  <div class="ui-slider__seg" role="group" aria-label="主墨色预设">
-                    <span class="is-on">官方绿</span><span>荧光绿</span><span>黄绿</span>
+                  <div class="ui-slider__seg" role="group" aria-label="主墨色预设" data-i18n-attr="aria-label:landing.features.sliderGreenAria">
+                    <span class="is-on" data-i18n="landing.features.greenOfficial">官方绿</span><span data-i18n="landing.features.greenNeon">荧光绿</span><span data-i18n="landing.features.greenLime">黄绿</span>
                   </div>
                 </div>
               </div>
@@ -324,30 +330,30 @@
         </article>
 
         <article class="card card--row card--open span-6">
-          <h3>独立开关装饰、网点与语法</h3>
-          <p>插画装饰、纸面网点、内置 Nunito 字体与原生 Diff 语法可单独开关，偏好存本地 localStorage。</p>
+          <h3 data-i18n="landing.features.card2Title">独立开关装饰、网点与语法</h3>
+          <p data-i18n="landing.features.card2Desc">插画装饰、纸面网点、内置 Nunito 字体与原生 Diff 语法可单独开关，偏好存本地 localStorage。</p>
           <div class="panel" data-fx="gradient-mesh" data-fx-seed="22" data-fx-params='{"drift":0}'>
             <div class="stage stage--fade-b">
               <div class="at-right to-edge" style="--ax:32px;--ay:28px;--ay-sm:10px" data-ui-still>
                 <div class="ui ui-panel ui-toggles" data-ui="toggles">
                   <div class="ui-head">
                     <svg class="ui-icon ui-toggles__ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.8 13 4v3.6c0 3-2.1 5.4-5 6.6-2.9-1.2-5-3.6-5-6.6V4z"/><path d="m5.8 8 1.6 1.6 3-3.2"/></svg>
-                    <div class="ui-title">墨街表面开关</div>
+                    <div class="ui-title" data-i18n="landing.features.togglesTitle">墨街表面开关</div>
                     <span class="ui-spacer"></span>
-                    <div class="ui-meta" data-tg-count>2 of 3 on</div>
+                    <div class="ui-meta" data-tg-count data-i18n="landing.features.togglesCount">2 of 3 on</div>
                   </div>
                   <ul class="ui-toggles__list">
                     <li class="ui-tg">
-                      <span class="ui-tg__text"><span class="ui-tg__label">广场插画与墨迹</span><span class="ui-tg__sub">关闭后仅保留三色画布</span></span>
-                      <button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="广场插画与墨迹"><i></i></button>
+                      <span class="ui-tg__text"><span class="ui-tg__label" data-i18n="landing.features.toggle1Label">广场插画与墨迹</span><span class="ui-tg__sub" data-i18n="landing.features.toggle1Sub">关闭后仅保留三色画布</span></span>
+                      <button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="广场插画与墨迹" data-i18n-attr="aria-label:landing.features.toggle1Label"><i></i></button>
                     </li>
                     <li class="ui-tg">
-                      <span class="ui-tg__text"><span class="ui-tg__label">纸面网点与内置字体</span><span class="ui-tg__sub">构建期内嵌 WOFF2 无需联网</span></span>
-                      <button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="纸面网点与内置字体"><i></i></button>
+                      <span class="ui-tg__text"><span class="ui-tg__label" data-i18n="landing.features.toggle2Label">纸面网点与内置字体</span><span class="ui-tg__sub" data-i18n="landing.features.toggle2Sub">构建期内嵌 WOFF2 无需联网</span></span>
+                      <button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="纸面网点与内置字体" data-i18n-attr="aria-label:landing.features.toggle2Label"><i></i></button>
                     </li>
                     <li class="ui-tg">
-                      <span class="ui-tg__text"><span class="ui-tg__label">DSH 原生 Diff 配色</span><span class="ui-tg__sub">切换霓虹与红绿行</span></span>
-                      <button class="ui-switch" type="button" role="switch" aria-checked="false" aria-label="DSH 原生 Diff 配色"><i></i></button>
+                      <span class="ui-tg__text"><span class="ui-tg__label" data-i18n="landing.features.toggle3Label">DSH 原生 Diff 配色</span><span class="ui-tg__sub" data-i18n="landing.features.toggle3Sub">切换霓虹与红绿行</span></span>
+                      <button class="ui-switch" type="button" role="switch" aria-checked="false" aria-label="DSH 原生 Diff 配色" data-i18n-attr="aria-label:landing.features.toggle3Label"><i></i></button>
                     </li>
                   </ul>
                 </div>
@@ -362,20 +368,20 @@
   <section class="section ground-surface" id="toolchain" style="--h: 1" aria-labelledby="toolchain-h">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="toolchain-h">离线构建与门禁校验。<span class="muted">字体与素材内嵌进客户端产物。</span></h2>
+        <h2 id="toolchain-h" data-i18n-html="landing.toolchain.headingHtml">离线构建与门禁校验。<span class="muted">字体与素材内嵌进客户端产物。</span></h2>
       </div>
       <div class="grid">
         <article class="card card--row card--open span-6">
-          <h3>标准前端工具链离线打包</h3>
-          <p>基于 TypeScript、esbuild、Biome 与 Lightning CSS 构建，字体与 SVG/PNG 素材内嵌进产物。</p>
+          <h3 data-i18n="landing.toolchain.card1Title">标准前端工具链离线打包</h3>
+          <p data-i18n="landing.toolchain.card1Desc">基于 TypeScript、esbuild、Biome 与 Lightning CSS 构建，字体与 SVG/PNG 素材内嵌进产物。</p>
           <div class="panel" data-fx="gradient-mesh" data-fx-seed="33" data-fx-params='{"drift":0}'>
-            <div class="dg" data-diagram='{"layout":"hub","alt":"SPLAT-STREET 基于 TypeScript、esbuild、Biome、Node.js、pnpm 与 React 构建。","center":{"label":"SPLAT-STREET","icon":"ui:palette"},"spokes":[{"label":"TypeScript","icon":"typescript"},{"label":"esbuild","icon":"esbuild"},{"label":"Biome","icon":"logos:biomejs-icon"},{"label":"Node.js","icon":"nodejs"},{"label":"pnpm","icon":"pnpm"},{"label":"React","icon":"react"}]}'></div>
+            <div class="dg" data-i18n-diagram-alt="landing.toolchain.diagramAlt" data-diagram='{"layout":"hub","alt":"SPLAT-STREET 基于 TypeScript、esbuild、Biome、Node.js、pnpm 与 React 构建。","center":{"label":"SPLAT-STREET","icon":"ui:palette"},"spokes":[{"label":"TypeScript","icon":"typescript"},{"label":"esbuild","icon":"esbuild"},{"label":"Biome","icon":"logos:biomejs-icon"},{"label":"Node.js","icon":"nodejs"},{"label":"pnpm","icon":"pnpm"},{"label":"React","icon":"react"}]}'></div>
           </div>
         </article>
 
         <article class="card card--row card--open span-6">
-          <h3>通过完整门禁与夹具校验</h3>
-          <p>每次构建均运行站点校验、TypeScript 类型检查、契约测试与 DSH 主题兼容性核对。</p>
+          <h3 data-i18n="landing.toolchain.card2Title">通过完整门禁与夹具校验</h3>
+          <p data-i18n="landing.toolchain.card2Desc">每次构建均运行站点校验、TypeScript 类型检查、契约测试与 DSH 主题兼容性核对。</p>
           <div class="panel" data-fx="gradient-mesh" data-fx-seed="44" data-fx-params='{"drift":0}'>
             <div class="stage">
               <div class="at-rise fit" style="--fit-max:440px;--ax:max(24px, 50% - 220px);--ay:24px;--ay-sm:16px" data-ui-still>
@@ -410,34 +416,34 @@
     <div class="wrap grid grid--top">
       <div class="span-5">
         <div class="section-head">
-          <h2 id="screens-h">工作台的三处重绘。<span class="muted">从启动加载槽到设置面板统一视觉语言。</span></h2>
+          <h2 id="screens-h" data-i18n-html="landing.screens.headingHtml">工作台的三处重绘。<span class="muted">从启动加载槽到设置面板统一视觉语言。</span></h2>
         </div>
 
-        <div class="tabs" role="tablist" aria-label="工作台核心界面">
-          <button type="button" class="tab" role="tab" id="t-boot" aria-selected="true" aria-controls="p-boot s-boot">大招启动页</button>
-          <button type="button" class="tab" role="tab" id="t-day" aria-selected="false" aria-controls="p-day s-day">日间外观</button>
-          <button type="button" class="tab" role="tab" id="t-night" aria-selected="false" aria-controls="p-night s-night">夜间广场</button>
+        <div class="tabs" role="tablist" aria-label="工作台核心界面" data-i18n-attr="aria-label:landing.screens.tablistAria">
+          <button type="button" class="tab" role="tab" id="t-boot" aria-selected="true" aria-controls="p-boot s-boot" data-i18n="landing.screens.tabBoot">大招启动页</button>
+          <button type="button" class="tab" role="tab" id="t-day" aria-selected="false" aria-controls="p-day s-day" data-i18n="landing.screens.tabDay">日间外观</button>
+          <button type="button" class="tab" role="tab" id="t-night" aria-selected="false" aria-controls="p-night s-night" data-i18n="landing.screens.tabNight">夜间广场</button>
         </div>
 
         <div class="tour__panel" id="p-boot" role="tabpanel" aria-labelledby="t-boot">
-          <p>启动页保留顶部鱿鱼印章，并将原版加载圈重绘为斯普拉遁 24 格特殊武器能量槽，进度直接读取宿主变量。</p>
-          <p><a class="link" href="showcase/">在图鉴中交互查看启动卡</a></p>
+          <p data-i18n="landing.screens.panelBootDesc">启动页保留顶部鱿鱼印章，并将原版加载圈重绘为斯普拉遁 24 格特殊武器能量槽，进度直接读取宿主变量。</p>
+          <p><a class="link" href="showcase/" data-i18n="landing.screens.panelBootLink">在图鉴中交互查看启动卡</a></p>
         </div>
         <div class="tour__panel" id="p-day" role="tabpanel" aria-labelledby="t-day" hidden>
-          <p>在设置、内置插件、墨街外观中切换纸白 20%、均衡 50%、涂地 100% 与三套主墨色，实时预览战场条纹。</p>
-          <p><a class="link" href="showcase/">在图鉴中打开外观面板</a></p>
+          <p data-i18n="landing.screens.panelDayDesc">在设置、内置插件、墨街外观中切换纸白 20%、均衡 50%、涂地 100% 与三套主墨色，实时预览战场条纹。</p>
+          <p><a class="link" href="showcase/" data-i18n="landing.screens.panelDayLink">在图鉴中打开外观面板</a></p>
         </div>
         <div class="tour__panel" id="p-night" role="tabpanel" aria-labelledby="t-night" hidden>
-          <p>夜间模式统一使用中性炭黑表面与浅墨发丝线，避免纯白过曝，只将荧光绿保留在主按钮与焦点状态。</p>
-          <p><a class="link" href="showcase/">在图鉴中对比夜间样式</a></p>
+          <p data-i18n="landing.screens.panelNightDesc">夜间模式统一使用中性炭黑表面与浅墨发丝线，避免纯白过曝，只将荧光绿保留在主按钮与焦点状态。</p>
+          <p><a class="link" href="showcase/" data-i18n="landing.screens.panelNightLink">在图鉴中对比夜间样式</a></p>
         </div>
       </div>
 
       <div class="span-6 start-7">
         <div class="frame frame--split tour__frame">
-          <img class="frame__img" id="s-boot" src="assets/boot-light.webp" width="1440" height="1000" alt="SPLAT-STREET 启动页：白色贴纸卡、鱿鱼徽章与 24 格绿色大招能量槽进度圈" loading="lazy">
-          <img class="frame__img" id="s-day" src="assets/appearance-light.webp" width="1440" height="1000" alt="日间模式设置页中的墨街外观面板：战场预览卡、墨度滑杆与主墨色选择器" hidden loading="lazy">
-          <img class="frame__img" id="s-night" src="assets/appearance-dark.webp" width="1440" height="1000" alt="夜间模式设置页中的墨街外观面板：炭黑表面、官方绿选中描边与深色预览" hidden loading="lazy">
+          <img class="frame__img" id="s-boot" src="assets/boot-light.webp" width="1440" height="1000" alt="SPLAT-STREET 启动页：白色贴纸卡、鱿鱼徽章与 24 格绿色大招能量槽进度圈" data-i18n-attr="alt:landing.screens.imgBootAlt" loading="lazy">
+          <img class="frame__img" id="s-day" src="assets/appearance-light.webp" width="1440" height="1000" alt="日间模式设置页中的墨街外观面板：战场预览卡、墨度滑杆与主墨色选择器" data-i18n-attr="alt:landing.screens.imgDayAlt" hidden loading="lazy">
+          <img class="frame__img" id="s-night" src="assets/appearance-dark.webp" width="1440" height="1000" alt="夜间模式设置页中的墨街外观面板：炭黑表面、官方绿选中描边与深色预览" data-i18n-attr="alt:landing.screens.imgNightAlt" hidden loading="lazy">
         </div>
       </div>
     </div>
@@ -448,37 +454,37 @@
       <div class="grid grid--top">
         <div class="span-5 stack-5">
           <div class="section-head">
-            <h2 id="install-h">两条命令完成安装。<span class="muted">支持 npm 与离线归档包。</span></h2>
-            <p>进入 DSH profile 目录通过 npm 安装最新版；若使用离线归档包，可前往 <a class="link" href="https://github.com/Shirolin/dsh-theme-splat-ui/releases">Releases</a> 下载 <code>.tgz</code> 或按 <a class="link" href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/README.zh.md#安装">README</a> 本地打包后完整重启服务。</p>
+            <h2 id="install-h" data-i18n-html="landing.install.headingHtml">两条命令完成安装。<span class="muted">支持 npm 与离线归档包。</span></h2>
+            <p data-i18n-html="landing.install.descHtml">进入 DSH profile 目录通过 npm 安装最新版；若使用离线归档包，可前往 <a class="link" href="https://github.com/Shirolin/dsh-theme-splat-ui/releases">Releases</a> 下载 <code>.tgz</code> 或按 <a class="link" href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/README.zh.md#安装">README</a> 本地打包后完整重启服务。</p>
           </div>
           <ul class="checks">
-            <li>同一 profile 建议只启用一个主题插件</li>
-            <li>外观偏好保存在本机 localStorage，不写入 Host 设置</li>
-            <li>停用或卸载主题后自动还原 DSH 原生外观</li>
+            <li data-i18n="landing.install.check1">同一 profile 建议只启用一个主题插件</li>
+            <li data-i18n="landing.install.check2">外观偏好保存在本机 localStorage，不写入 Host 设置</li>
+            <li data-i18n="landing.install.check3">停用或卸载主题后自动还原 DSH 原生外观</li>
           </ul>
         </div>
 
         <div class="span-6 start-7 install__panel">
           <div class="command" data-ui>
             <div class="command__bar">
-              <span>在 DSH profile 目录执行</span>
+              <span data-i18n="landing.install.cmdBarLeft">在 DSH profile 目录执行</span>
               <span>pnpm · npm registry</span>
             </div>
-            <pre><code><span>cd &lt;DSH_Profile_目录&gt;</span>
+            <pre><code><span data-i18n="landing.install.cmdDir">cd &lt;DSH_Profile_目录&gt;</span>
 <span>pnpm add dsh-theme-splat-ui</span></code></pre>
             <div class="command__foot">
-              <button class="btn btn--primary" type="button" data-copy>复制命令</button>
-              <a class="link" href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/docs/compatibility.md">查看兼容性契约</a>
+              <button class="btn btn--primary" type="button" data-copy data-i18n="landing.install.copyBtn">复制命令</button>
+              <a class="link" href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/docs/compatibility.md" data-i18n="landing.install.compatLink">查看兼容性契约</a>
             </div>
           </div>
         </div>
       </div>
 
       <dl class="stats install__stats" data-moment="counter-rolls">
-        <div><dt class="t-small muted">套主墨色预设（官方绿 / 荧光绿 / 黄绿）</dt><dd class="t-stat">3</dd></div>
-        <div><dt class="t-small muted">个公开 DSH Slot 品牌与外观接缝</dt><dd class="t-stat">4</dd></div>
-        <div><dt class="t-small muted">组实时 DSH 组件夹具对比</dt><dd class="t-stat">18</dd></div>
-        <div><dt class="t-small muted">处原生侧栏布局与快捷键改动</dt><dd class="t-stat">0</dd></div>
+        <div><dt class="t-small muted" data-i18n="landing.install.stat1">套主墨色预设（官方绿 / 荧光绿 / 黄绿）</dt><dd class="t-stat">3</dd></div>
+        <div><dt class="t-small muted" data-i18n="landing.install.stat2">个公开 DSH Slot 品牌与外观接缝</dt><dd class="t-stat">4</dd></div>
+        <div><dt class="t-small muted" data-i18n="landing.install.stat3">组实时 DSH 组件夹具对比</dt><dd class="t-stat">18</dd></div>
+        <div><dt class="t-small muted" data-i18n="landing.install.stat4">处原生侧栏布局与快捷键改动</dt><dd class="t-stat">0</dd></div>
       </dl>
     </div>
   </section>
@@ -487,31 +493,31 @@
     <div class="wrap grid grid--top">
       <div class="span-5">
         <div class="section-head">
-          <h2 id="faq-h">常见问答。<span class="muted">授权来源、兼容性与恢复方式。</span></h2>
+          <h2 id="faq-h" data-i18n-html="landing.faq.headingHtml">常见问答。<span class="muted">授权来源、兼容性与恢复方式。</span></h2>
         </div>
         <div class="faq">
           <div class="faq__item">
-            <h3>这是官方主题吗？</h3>
-            <p>不是。SPLAT-STREET 是非官方粉丝主题，与 Nintendo 及 DeepSeek 官方没有隶属或背书关系，来源见<a class="link" href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/THIRD_PARTY_NOTICES.md">第三方声明</a>。</p>
+            <h3 data-i18n="landing.faq.q1Title">这是官方主题吗？</h3>
+            <p data-i18n-html="landing.faq.q1Html">不是。SPLAT-STREET 是非官方粉丝主题，与 Nintendo 及 DeepSeek 官方没有隶属或背书关系，来源见<a class="link" href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/THIRD_PARTY_NOTICES.md">第三方声明</a>。</p>
           </div>
           <div class="faq__item">
-            <h3>会改动默认布局或快捷键吗？</h3>
-            <p>不会。主题只覆写公开 Token 与 4 个品牌 Slot，侧栏、输入区与快捷键保持原生行为。</p>
+            <h3 data-i18n="landing.faq.q2Title">会改动默认布局或快捷键吗？</h3>
+            <p data-i18n="landing.faq.q2Desc">不会。主题只覆写公开 Token 与 4 个品牌 Slot，侧栏、输入区与快捷键保持原生行为。</p>
           </div>
           <div class="faq__item">
-            <h3>目前支持哪些运行平台？</h3>
-            <p>已完成真实 Web 宿主的日夜与 390px 窄屏全量验收，以及 Windows 桌面端原生标题栏与侧栏布局实机验证；独立 WebView 窗口仍随后续版本补充回归。</p>
+            <h3 data-i18n="landing.faq.q3Title">目前支持哪些运行平台？</h3>
+            <p data-i18n="landing.faq.q3Desc">已完成真实 Web 宿主的日夜与 390px 窄屏全量验收，以及 Windows 桌面端原生标题栏与侧栏布局实机验证；独立 WebView 窗口仍随后续版本补充回归。</p>
           </div>
           <div class="faq__item">
-            <h3>怎么恢复原生外观？</h3>
-            <p>在插件管理里禁用主题或卸载包后重启，安装时快照的根属性会清理恢复，不残留外观设置。</p>
+            <h3 data-i18n="landing.faq.q4Title">怎么恢复原生外观？</h3>
+            <p data-i18n="landing.faq.q4Desc">在插件管理里禁用主题或卸载包后重启，安装时快照的根属性会清理恢复，不残留外观设置。</p>
           </div>
         </div>
       </div>
 
       <div class="span-6 start-7">
         <div class="frame frame--photo faq__visual">
-          <img class="frame__img" src="assets/hero-light.webp" width="1200" height="562" alt="SPLAT-STREET 日间墨街广场空会话插画">
+          <img class="frame__img" src="assets/hero-light.webp" width="1200" height="562" alt="SPLAT-STREET 日间墨街广场空会话插画" data-i18n-attr="alt:landing.faq.visualAlt">
         </div>
       </div>
     </div>
@@ -522,51 +528,51 @@
   <div class="wrap">
     <div class="closing__cta close--type">
       <div class="section-head">
-        <h2 id="close-h">把工作台涂成墨街主场</h2>
-        <p class="t-lead">进入 DSH profile 目录执行 <code>pnpm add dsh-theme-splat-ui</code>，安装后重启生效。</p>
+        <h2 id="close-h" data-i18n="landing.close.heading">把工作台涂成墨街主场</h2>
+        <p class="t-lead" data-i18n-html="landing.close.leadHtml">进入 DSH profile 目录执行 <code>pnpm add dsh-theme-splat-ui</code>，安装后重启生效。</p>
       </div>
-      <a class="btn btn--primary btn--xl btn--wide" href="#install">安装主题<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      <a class="btn btn--primary btn--xl btn--wide" href="#install"><span data-i18n="landing.close.cta">安装主题</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
     </div>
 
     <div class="closing__links">
       <div class="grid">
         <div class="span-4 stack-4">
           <a class="nav__logo" href="#top"><img src="assets/icon-256.png" width="24" height="24" alt="" loading="lazy">SPLAT-STREET</a>
-          <p class="footer__lede">斯普拉遁 2 风格的 DeepSeek Harness 主题插件。</p>
+          <p class="footer__lede" data-i18n="landing.footer.lede">斯普拉遁 2 风格的 DeepSeek Harness 主题插件。</p>
         </div>
         <div class="span-2 footer__col">
-          <h3>视觉系统</h3>
+          <h3 data-i18n="landing.footer.col1Title">视觉系统</h3>
           <ul>
-            <li><a href="#workbench">组件上色</a></li>
-            <li><a href="#showcase">昼夜战场</a></li>
+            <li><a href="#workbench" data-i18n="landing.footer.col1Link1">组件上色</a></li>
+            <li><a href="#showcase" data-i18n="landing.footer.col1Link2">昼夜战场</a></li>
           </ul>
         </div>
         <div class="span-2 footer__col">
-          <h3>能力细节</h3>
+          <h3 data-i18n="landing.footer.col2Title">能力细节</h3>
           <ul>
-            <li><a href="#features">外观定制</a></li>
-            <li><a href="#toolchain">离线构建</a></li>
+            <li><a href="#features" data-i18n="landing.footer.col2Link1">外观定制</a></li>
+            <li><a href="#toolchain" data-i18n="landing.footer.col2Link2">离线构建</a></li>
           </ul>
         </div>
         <div class="span-2 footer__col">
-          <h3>演示与图鉴</h3>
+          <h3 data-i18n="landing.footer.col3Title">演示与图鉴</h3>
           <ul>
-            <li><a href="promo/">竖版宣传片</a></li>
-            <li><a href="showcase/">组件图鉴</a></li>
+            <li><a href="promo/" data-i18n="landing.footer.col3Link1">竖版宣传片</a></li>
+            <li><a href="showcase/" data-i18n="landing.footer.col3Link2">组件图鉴</a></li>
           </ul>
         </div>
         <div class="span-2 footer__col">
-          <h3>仓库与文档</h3>
+          <h3 data-i18n="landing.footer.col4Title">仓库与文档</h3>
           <ul>
             <li><a href="https://github.com/Shirolin/dsh-theme-splat-ui">GitHub</a></li>
-            <li><a href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/docs/compatibility.md">兼容性</a></li>
+            <li><a href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/docs/compatibility.md" data-i18n="landing.footer.col4Link2">兼容性</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer__legal">
-        <span>非官方粉丝主题 · Splatoon 与 Splatoon 2 是 Nintendo 的商标 · MIT License 2026 Shirolin · Product names and logos are trademarks of their owners</span>
-        <a class="credits" href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/THIRD_PARTY_NOTICES.md">素材来源与第三方声明</a>
+        <span data-i18n="landing.footer.legal">非官方粉丝主题 · Splatoon 与 Splatoon 2 是 Nintendo 的商标 · MIT License 2026 Shirolin · Product names and logos are trademarks of their owners</span>
+        <a class="credits" href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/THIRD_PARTY_NOTICES.md" data-i18n="landing.footer.credits">素材来源与第三方声明</a>
       </div>
     </div>
   </div>
@@ -576,6 +582,7 @@
 <script type="module" src="assets/motion/motion.js"></script>
 <script type="module" src="assets/layout/layout.js"></script>
 <script type="module" src="assets/diagrams/mount.js"></script>
+<script src="i18n.js" defer></script>
 <script src="app.js" defer></script>
 </body>
 </html>

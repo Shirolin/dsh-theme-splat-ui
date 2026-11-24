@@ -1,5 +1,38 @@
 /* Page-level rules only for SPLAT-STREET (system tokens & layout live in assets/) */
 
+:root {
+  --font-display: "Outfit", system-ui, "Hiragino Sans", "Yu Gothic UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-text: "Outfit", system-ui, "Hiragino Sans", "Yu Gothic UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
+.lang-select {
+  height: var(--btn-h);
+  padding: 0 var(--s-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-btn);
+  background: var(--bg);
+  color: var(--ink);
+  font: 500 var(--t-small) / 1 var(--font-text);
+  cursor: pointer;
+}
+
+.lang-select:hover {
+  border-color: var(--ink);
+}
+
+.lang-select:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1023px) {
+  .nav.is-open .nav__actions .lang-select {
+    width: 100%;
+    height: 48px;
+    font-size: var(--t-body);
+  }
+}
+
 /* ---------- app-frame (#workbench) ---------- */
 
 .app.ui {

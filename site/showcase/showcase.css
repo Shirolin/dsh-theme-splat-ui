@@ -67,7 +67,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Nunito", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "Nunito", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Hiragino Sans", "Yu Gothic UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   font-size: 15px;
   line-height: 1.5;
   transition:
@@ -150,9 +150,28 @@ body {
 }
 
 .back-link:hover,
-.nav-chip:hover {
+.nav-chip:hover,
+.lang-select:hover {
   border-color: var(--link);
   color: var(--link);
+}
+
+.lang-select {
+  min-height: 36px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.lang-select:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 2px;
 }
 
 .divider {

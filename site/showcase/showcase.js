@@ -35,8 +35,14 @@
   }
 
   let manifest = null
+  let loadErrorMessage = null
   const stageEntries = []
+  const groupEntries = []
   let tocObserver = null
+
+  const t = (key, params) => window.splatSiteI18n?.t(key, params) ?? ''
+  const localizedGroupName = (group) => window.splatSiteI18n?.getGroupName(group) ?? group
+  const localizedFixtureTitle = (fixture) => window.splatSiteI18n?.getFixtureTitle(fixture.name, fixture.title) ?? fixture.title
 
   const sectionsRoot = document.getElementById('sections-root')
   const tocRoot = document.getElementById('toc')
@@ -105,7 +111,8 @@
     toggleDiff.disabled = isDark
     if (toggleDiffChip) {
       toggleDiffChip.classList.toggle('is-disabled', isDark)
-      toggleDiffChip.title = isDark ? '原生 Diff 语法仅在日间模式生效（夜间模式保留高对比语义色）' : '切换 Diff 红绿行高亮（仅日间模式作用于 Diff 交付区卡片）'
+      const fallback = isDark ? '原生 Diff 语法仅在日间模式生效（夜间模式保留高对比语义色）' : '切换 Diff 红绿行高亮（仅日间模式作用于 Diff 交付区卡片）'
+      toggleDiffChip.title = t(isDark ? 'showcase.diffTitleDark' : 'showcase.diffTitleLight') || fallback
     }
   }
 
@@ -175,9 +182,16 @@
       emptyState.hidden = !(manifest && visibleCount === 0)
     }
     if (manifest) {
+      const modeWord = t(state.mode === 'dark' ? 'showcase.modeWordDark' : 'showcase.modeWordLight') || (state.mode === 'dark' ? '夜间' : '日间')
       statusBar.textContent = q
-        ? `筛选结果：${visibleCount} / ${manifest.fixtures.length} 组组件夹具（${state.mode === 'dark' ? '夜间' : '日间'}模式）`
-        : `共 ${manifest.fixtures.length} 组真实 DSH 组件夹具 · 当前为${state.mode === 'dark' ? '夜间' : '日间'}模式`
+        ? t('showcase.statusFiltered', { visible: visibleCount, total: manifest.fixtures.length, mode: modeWord }) ||
+          `筛选结果：${visibleCount} / ${manifest.fixtures.length} 组组件夹具（${modeWord}模式）`
+        : t('showcase.statusAll', { total: manifest.fixtures.length, mode: modeWord }) ||
+          `共 ${manifest.fixtures.length} 组真实 DSH 组件夹具 · 当前为${modeWord}模式`
+    } else if (loadErrorMessage !== null) {
+      statusBar.textContent =
+        t('showcase.loadError', { message: loadErrorMessage }) ||
+        `无法加载组件清单（${loadErrorMessage}）。请确认已运行 pnpm run showcase 并通过 HTTP 服务访问。`
     }
   }
 
@@ -198,11 +212,38 @@
     }
   }
 
+  function syncLocalizedManifest() {
+    if (!manifest) return
+    for (const groupEntry of groupEntries) {
+      const groupName = localizedGroupName(groupEntry.group)
+      groupEntry.tocHeading.textContent = `${groupName} (${groupEntry.count})`
+      groupEntry.sectionTitle.textContent = groupName
+      groupEntry.countBadge.textContent = t('showcase.groupCount', { count: groupEntry.count }) || `${groupEntry.count} 项`
+    }
+    for (const entry of stageEntries) {
+      const fixture = entry.fixture
+      const title = localizedFixtureTitle(fixture)
+      const groupName = localizedGroupName(fixture.group)
+      entry.tocLink.textContent = title.split('·')[0].trim()
+      entry.tocLink.title = title
+      entry.titleEl.textContent = title
+      entry.iframe.title = title
+      entry.openRaw.textContent = t('showcase.openRaw') || '单独打开 ↗'
+      entry.card.dataset.search = `${fixture.name} ${fixture.title} ${title} ${fixture.group} ${groupName} ${fixture.pluginCss.join(' ')}`.toLowerCase()
+    }
+    const generatedDate = manifest.generatedAt ? manifest.generatedAt.slice(0, 10) : ''
+    footerMeta.textContent =
+      t('showcase.footerBuilt', { version: manifest.dshVersion, date: generatedDate }) ||
+      `渲染于 DSH ${manifest.dshVersion} · 构建日期 ${generatedDate} · 夹具与皮肤源码未改写`
+  }
+
   function renderManifest(data) {
     manifest = data
+    loadErrorMessage = null
     tocRoot.innerHTML = ''
     sectionsRoot.innerHTML = ''
     stageEntries.length = 0
+    groupEntries.length = 0
 
     for (const group of data.groups) {
       const groupFixtures = data.fixtures.filter((f) => f.group === group)
@@ -212,7 +253,6 @@
       const tocGroup = document.createElement('div')
       const tocHeading = document.createElement('h2')
       tocHeading.className = 'toc__group-title'
-      tocHeading.textContent = `${group} (${groupFixtures.length})`
       const tocList = document.createElement('ul')
       tocList.className = 'toc__list'
       tocGroup.append(tocHeading, tocList)
@@ -222,10 +262,14 @@
       section.id = groupId
       const sectionHeading = document.createElement('h2')
       sectionHeading.className = 'group-section__heading'
-      sectionHeading.innerHTML = `${group} <span class="group-section__count">${groupFixtures.length} 项</span>`
+      const sectionTitle = document.createElement('span')
+      const countBadge = document.createElement('span')
+      countBadge.className = 'group-section__count'
+      sectionHeading.append(sectionTitle, countBadge)
       const grid = document.createElement('div')
       grid.className = 'cards-grid'
       section.append(sectionHeading, grid)
+      groupEntries.push({ group, count: groupFixtures.length, tocHeading, sectionTitle, countBadge })
 
       for (const fixture of groupFixtures) {
         const cardId = `card-${fixture.name}`
@@ -233,8 +277,6 @@
         const a = document.createElement('a')
         a.className = 'toc__link'
         a.href = `#${cardId}`
-        a.textContent = fixture.title.split('·')[0].trim()
-        a.title = fixture.title
         a.addEventListener('click', () => setActiveTocLink(cardId))
         li.append(a)
         tocList.append(li)
@@ -243,14 +285,12 @@
         const card = document.createElement('article')
         card.className = 'fixture-card'
         card.id = cardId
-        card.dataset.search = `${fixture.name} ${fixture.title} ${fixture.group} ${fixture.pluginCss.join(' ')}`.toLowerCase()
 
         const header = document.createElement('header')
         header.className = 'fixture-card__header'
 
         const titleEl = document.createElement('h3')
         titleEl.className = 'fixture-card__title'
-        titleEl.textContent = fixture.title
 
         const meta = document.createElement('div')
         meta.className = 'fixture-card__meta'
@@ -277,7 +317,6 @@
         openRaw.href = variant.src
         openRaw.target = '_blank'
         openRaw.rel = 'noreferrer'
-        openRaw.textContent = '单独打开 ↗'
         meta.append(openRaw)
 
         header.append(titleEl, meta)
@@ -289,12 +328,11 @@
         const iframe = document.createElement('iframe')
         iframe.className = 'fixture-card__iframe'
         iframe.loading = 'lazy'
-        iframe.title = fixture.title
         iframe.src = variant.src
         viewport.append(iframe)
         stage.append(viewport)
 
-        const entry = { fixture, activeVariant: variant, card, tocItem: li, tocLink: a, stage, viewport, iframe, sizeBadge, openRaw }
+        const entry = { fixture, activeVariant: variant, card, tocItem: li, tocLink: a, titleEl, stage, viewport, iframe, sizeBadge, openRaw }
         iframe.addEventListener('load', () => postAppearanceToFrame(iframe))
         stageEntries.push(entry)
 
@@ -306,11 +344,10 @@
       sectionsRoot.append(section)
     }
 
+    syncLocalizedManifest()
     for (const entry of stageEntries) layoutEntry(entry)
     if (stageEntries.length > 0) setActiveTocLink(`card-${stageEntries[0].fixture.name}`)
     observeCards()
-    const generatedDate = data.generatedAt ? data.generatedAt.slice(0, 10) : ''
-    footerMeta.textContent = `渲染于 DSH ${data.dshVersion} · 构建日期 ${generatedDate} · 夹具与皮肤源码未改写`
     syncFilter()
   }
 
@@ -438,6 +475,12 @@
 
   syncDiffAvailability()
 
+  window.splatSiteI18n?.onChange(() => {
+    syncDiffAvailability()
+    syncLocalizedManifest()
+    syncFilter()
+  })
+
   fetch('generated/manifest.json')
     .then((res) => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
@@ -445,6 +488,8 @@
     })
     .then(renderManifest)
     .catch((err) => {
-      statusBar.textContent = `无法加载组件清单（${err.message}）。请确认已运行 pnpm run showcase 并通过 HTTP 服务访问。`
+      loadErrorMessage = err.message
+      statusBar.textContent =
+        t('showcase.loadError', { message: err.message }) || `无法加载组件清单（${err.message}）。请确认已运行 pnpm run showcase 并通过 HTTP 服务访问。`
     })
 })()

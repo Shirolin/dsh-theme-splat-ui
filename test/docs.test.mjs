@@ -75,7 +75,7 @@ test('screenshot metadata points at nonempty delivery images', async () => {
 })
 
 test('locale metadata is valid JSON with title and description', async () => {
-  for (const locale of ['locale/zh.json', 'locale/en.json']) {
+  for (const locale of ['locale/zh.json', 'locale/en.json', 'locale/ja.json', 'locale/ko.json']) {
     const meta = JSON.parse(await readFile(resolve(root, locale), 'utf8')).meta
     assert.ok(meta.title.length > 0, `${locale}: missing title`)
     assert.ok(meta.description.length > 0, `${locale}: missing description`)

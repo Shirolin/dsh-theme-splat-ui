@@ -1,6 +1,7 @@
 import type { ClientContextLike, ThemeRuntimeLike } from './context.ts'
 import { createAppearanceStore, type AppearanceStore } from './appearance.ts'
 import { createFontLayer } from './font-layer.ts'
+import { createClientLocaleStore, type ClientLocaleStore } from './i18n.ts'
 import { BUILD } from 'virtual:splat-ui-build'
 import { SKIN_CSS } from 'virtual:splat-ui-skin-css'
 
@@ -16,6 +17,7 @@ const DARK_THEME_ATTRIBUTE = 'data-ds-dark-theme'
 
 export interface InstalledSkin {
   readonly appearance: AppearanceStore
+  readonly locale: ClientLocaleStore
 }
 
 interface Installation {
@@ -113,6 +115,7 @@ function createInstallation(root: HTMLElement, ctx: ClientContextLike): Installa
   style.setAttribute('data-plugin-css', `${PLUGIN_ID}/skin`)
   style.textContent = SKIN_CSS
   const appearance = createAppearanceStore(root, createFontLayer(ctx.theme))
+  const locale = createClientLocaleStore(ctx, root)
   let windowsThemeSource: { dispose(): void } | undefined
 
   try {
@@ -123,6 +126,7 @@ function createInstallation(root: HTMLElement, ctx: ClientContextLike): Installa
   } catch (error) {
     windowsThemeSource?.dispose()
     style.remove()
+    locale.dispose()
     appearance.dispose()
     root.removeAttribute(BUILD_ATTRIBUTE)
     restoreRootAttribute(root, previousValue)
@@ -132,7 +136,7 @@ function createInstallation(root: HTMLElement, ctx: ClientContextLike): Installa
   let active = true
   return {
     root,
-    skin: { appearance },
+    skin: { appearance, locale },
     references: 0,
     dispose() {
       if (!active) return
@@ -140,6 +144,7 @@ function createInstallation(root: HTMLElement, ctx: ClientContextLike): Installa
       windowsThemeSource?.dispose()
       style.remove()
       root.removeAttribute(BUILD_ATTRIBUTE)
+      locale.dispose()
       appearance.dispose()
       restoreRootAttribute(root, previousValue)
     },

@@ -10,31 +10,36 @@ import {
   type AppearanceStore,
   type InkGreen,
 } from '../appearance.ts'
+import { getClientMessages, resolveFallbackLocale, type ClientLocaleStore } from '../i18n.ts'
 import { BUILD_LABEL } from '../install.ts'
 
 type NamedPreset = Exclude<AppearancePreset, 'custom'>
 
-const PRESET_LABELS: Record<NamedPreset, string> = {
-  paper: '纸白',
-  balanced: '均衡',
-  turf: '涂地',
-}
-
 const PRESET_ORDER: NamedPreset[] = ['paper', 'balanced', 'turf']
 
-const GREEN_OPTIONS: Record<InkGreen, { readonly label: string; readonly hint: string; readonly swatch: string }> = {
-  lime: { label: '黄绿', hint: '柠檬 Lime', swatch: '#d3f510' },
-  neon: { label: '荧光绿', hint: '霓虹 Neon', swatch: '#9ae528' },
-  joycon: { label: '官方绿', hint: 'Joy-Con', swatch: '#1edc00' },
+const GREEN_SWATCHES: Record<InkGreen, string> = {
+  lime: '#d3f510',
+  neon: '#9ae528',
+  joycon: '#1edc00',
 }
+
+const noopSubscribe = () => () => {}
+const fallbackLocaleSnapshot = () => resolveFallbackLocale(typeof document !== 'undefined' ? document.documentElement : undefined)
 
 export interface AppearanceTabProps {
   appearance: AppearanceStore
+  locale?: ClientLocaleStore
 }
 
-export function AppearanceTab({ appearance }: AppearanceTabProps): React.JSX.Element {
+export function AppearanceTab({ appearance, locale }: AppearanceTabProps): React.JSX.Element {
   const { getSnapshot, set, subscribe, reset } = appearance
   const state = useSyncExternalStore(subscribe, getSnapshot, getSnapshot)
+  const activeLocale = useSyncExternalStore(
+    locale ? locale.subscribe : noopSubscribe,
+    locale ? locale.getSnapshot : fallbackLocaleSnapshot,
+    locale ? locale.getSnapshot : fallbackLocaleSnapshot,
+  )
+  const copy = getClientMessages(activeLocale)
   const committedInk = veilToInk(state.veil)
   const [draftInk, setDraftInk] = useState(committedInk)
   const draftRef = useRef(committedInk)
@@ -120,22 +125,22 @@ export function AppearanceTab({ appearance }: AppearanceTabProps): React.JSX.Ele
 
   return (
     <section className="splat-ui-appearance" style={panelStyle}>
-      <h3>墨街外观</h3>
-      <p>墨度越高，画布纹样越浓；调低墨度，长内容更容易阅读。</p>
+      <h3>{copy.heading}</h3>
+      <p>{copy.subtitle}</p>
 
       {/* Settings itself is an opaque paper card, so the canvas behind it is hidden
           while this tab is open. This swatch mirrors the real canvas (lime/cream/
           pink bands, pink pour, halftone and squid watermarks) so the slider shows
           its effect instantly. */}
-      <div className="splat-ui-appearance__preview" role="img" aria-label={`画布浓度预览，当前 ${draftInk}%`}>
+      <div className="splat-ui-appearance__preview" role="img" aria-label={copy.previewAriaLabel(draftInk)}>
         <div className="splat-ui-appearance__preview-sheet">
           <strong>SPLAT-STREET</strong>
-          <span>把灵感，涂满全场。</span>
+          <span>{copy.previewTagline}</span>
         </div>
-        <small className="splat-ui-appearance__preview-tag">战场预览</small>
+        <small className="splat-ui-appearance__preview-tag">{copy.previewBadge}</small>
       </div>
 
-      <fieldset className="splat-ui-appearance__presets" aria-label="外观预设">
+      <fieldset className="splat-ui-appearance__presets" aria-label={copy.presetsAriaLabel}>
         {PRESET_ORDER.map((preset) => (
           <button
             key={preset}
@@ -144,7 +149,7 @@ export function AppearanceTab({ appearance }: AppearanceTabProps): React.JSX.Ele
             className="splat-ui-appearance__preset"
             onClick={() => applyPreset(preset)}
           >
-            {PRESET_LABELS[preset]}
+            {copy.presets[preset]}
             <small>{APPEARANCE_INK_PRESETS[preset]}%</small>
           </button>
         ))}
@@ -152,7 +157,7 @@ export function AppearanceTab({ appearance }: AppearanceTabProps): React.JSX.Ele
 
       <div className="splat-ui-appearance__custom">
         <label className="splat-ui-appearance__slider">
-          <span className="splat-ui-appearance__slider-title">自定义</span>
+          <span className="splat-ui-appearance__slider-title">{copy.sliderTitle}</span>
           <output className="splat-ui-appearance__slider-value">{draftInk}%</output>
           <input
             type="range"
@@ -160,7 +165,7 @@ export function AppearanceTab({ appearance }: AppearanceTabProps): React.JSX.Ele
             max={100}
             step={1}
             value={draftInk}
-            aria-label="画布墨度"
+            aria-label={copy.sliderAriaLabel}
             style={sliderStyle}
             onChange={(event) => updateInk(Number(event.target.value))}
             onPointerUp={scheduleCommit}
@@ -170,19 +175,19 @@ export function AppearanceTab({ appearance }: AppearanceTabProps): React.JSX.Ele
             onBlur={scheduleCommit}
           />
         </label>
-        <span className="splat-ui-appearance__custom-hint">拖动微调画布墨度</span>
+        <span className="splat-ui-appearance__custom-hint">{copy.sliderHint}</span>
       </div>
 
-      <fieldset className="splat-ui-appearance__green" aria-label="主墨色">
-        <span className="splat-ui-appearance__green-title">主墨色</span>
-        <p className="splat-ui-appearance__green-hint">切换全局绿色调，按钮、画布条纹与泼墨同步换色。</p>
-        <fieldset className="splat-ui-appearance__green-options" aria-label="绿色调选项">
+      <fieldset className="splat-ui-appearance__green" aria-label={copy.greenAriaLabel}>
+        <span className="splat-ui-appearance__green-title">{copy.greenTitle}</span>
+        <p className="splat-ui-appearance__green-hint">{copy.greenHint}</p>
+        <fieldset className="splat-ui-appearance__green-options" aria-label={copy.greenOptionsAriaLabel}>
           {INK_GREEN_ORDER.map((green) => {
-            const option = GREEN_OPTIONS[green]
+            const option = copy.greenOptions[green]
             return (
               <button key={green} type="button" className="splat-ui-appearance__preset" aria-pressed={state.green === green} onClick={() => set({ green })}>
                 <span className="splat-ui-appearance__green-head">
-                  <i className="splat-ui-appearance__swatch" style={{ background: option.swatch }} aria-hidden="true" />
+                  <i className="splat-ui-appearance__swatch" style={{ background: GREEN_SWATCHES[green] }} aria-hidden="true" />
                   {option.label}
                 </span>
                 <small>{option.hint}</small>
@@ -192,13 +197,13 @@ export function AppearanceTab({ appearance }: AppearanceTabProps): React.JSX.Ele
         </fieldset>
       </fieldset>
 
-      <fieldset className="splat-ui-appearance__diff" aria-label="diff 语法配色">
-        <span className="splat-ui-appearance__diff-title">diff 语法配色</span>
-        <p className="splat-ui-appearance__diff-hint">用于右侧纸面 diff；夜间继续使用深色代码配色。</p>
+      <fieldset className="splat-ui-appearance__diff" aria-label={copy.diffAriaLabel}>
+        <span className="splat-ui-appearance__diff-title">{copy.diffTitle}</span>
+        <p className="splat-ui-appearance__diff-hint">{copy.diffHint}</p>
         <div className="splat-ui-appearance__diff-options">
           <button type="button" className="splat-ui-appearance__preset" aria-pressed={state.diffSyntax === 'neon'} onClick={() => set({ diffSyntax: 'neon' })}>
-            霓虹
-            <small>跟随墨色</small>
+            {copy.diffNeonLabel}
+            <small>{copy.diffNeonHint}</small>
           </button>
           <button
             type="button"
@@ -206,65 +211,67 @@ export function AppearanceTab({ appearance }: AppearanceTabProps): React.JSX.Ele
             aria-pressed={state.diffSyntax === 'native'}
             onClick={() => set({ diffSyntax: 'native' })}
           >
-            中性
-            <small>DSH 原生</small>
+            {copy.diffNativeLabel}
+            <small>{copy.diffNativeHint}</small>
           </button>
         </div>
       </fieldset>
 
-      <fieldset className="splat-ui-appearance__details" aria-label="外观细节">
-        <span className="splat-ui-appearance__details-title">细节</span>
+      <fieldset className="splat-ui-appearance__details" aria-label={copy.detailsAriaLabel}>
+        <span className="splat-ui-appearance__details-title">{copy.detailsTitle}</span>
 
         <div className="splat-ui-appearance__details-row">
-          <span className="splat-ui-appearance__details-label">墨迹装饰</span>
-          <fieldset className="splat-ui-appearance__details-options" aria-label="墨迹装饰">
+          <span className="splat-ui-appearance__details-label">{copy.decorLabel}</span>
+          <fieldset className="splat-ui-appearance__details-options" aria-label={copy.decorLabel}>
             <button type="button" className="splat-ui-appearance__preset" aria-pressed={state.decor} onClick={() => set({ decor: true })}>
-              显示
-              <small>泼墨与鱿鱼</small>
+              {copy.decorShow}
+              <small>{copy.decorShowHint}</small>
             </button>
             <button type="button" className="splat-ui-appearance__preset" aria-pressed={!state.decor} onClick={() => set({ decor: false })}>
-              隐藏
-              <small>只留网点</small>
+              {copy.decorHide}
+              <small>{copy.decorHideHint}</small>
             </button>
           </fieldset>
         </div>
 
         <div className="splat-ui-appearance__details-row">
-          <span className="splat-ui-appearance__details-label">网点纹理</span>
-          <fieldset className="splat-ui-appearance__details-options" aria-label="网点纹理">
+          <span className="splat-ui-appearance__details-label">{copy.grainLabel}</span>
+          <fieldset className="splat-ui-appearance__details-options" aria-label={copy.grainLabel}>
             <button type="button" className="splat-ui-appearance__preset" aria-pressed={state.grain} onClick={() => set({ grain: true })}>
-              开<small>丝网印刷</small>
+              {copy.grainOn}
+              <small>{copy.grainOnHint}</small>
             </button>
             <button type="button" className="splat-ui-appearance__preset" aria-pressed={!state.grain} onClick={() => set({ grain: false })}>
-              关<small>纯色纸</small>
+              {copy.grainOff}
+              <small>{copy.grainOffHint}</small>
             </button>
           </fieldset>
         </div>
 
         <div className="splat-ui-appearance__details-row">
-          <span className="splat-ui-appearance__details-label">界面字体</span>
-          <fieldset className="splat-ui-appearance__details-options" aria-label="界面字体">
+          <span className="splat-ui-appearance__details-label">{copy.fontLabel}</span>
+          <fieldset className="splat-ui-appearance__details-options" aria-label={copy.fontLabel}>
             <button type="button" className="splat-ui-appearance__preset" aria-pressed={state.font === 'theme'} onClick={() => set({ font: 'theme' })}>
-              主题
-              <small>Nunito</small>
+              {copy.fontTheme}
+              <small>{copy.fontThemeHint}</small>
             </button>
             <button type="button" className="splat-ui-appearance__preset" aria-pressed={state.font === 'system'} onClick={() => set({ font: 'system' })}>
-              系统
-              <small>跟随平台</small>
+              {copy.fontSystem}
+              <small>{copy.fontSystemHint}</small>
             </button>
           </fieldset>
         </div>
 
-        <p className="splat-ui-appearance__details-hint">网点纹理用于输入框和对话框；字体只调整拉丁字形，中文仍跟随系统。</p>
+        <p className="splat-ui-appearance__details-hint">{copy.detailsHint}</p>
       </fieldset>
 
       <div className="splat-ui-appearance__actions">
         <div className="splat-ui-appearance__reset-card">
           <div className="splat-ui-appearance__reset-info">
-            <span className="splat-ui-appearance__reset-title">重置所有外观偏好</span>
-            <p className="splat-ui-appearance__note">偏好保存在本机；开启系统高对比后会自动降低墨度。</p>
+            <span className="splat-ui-appearance__reset-title">{copy.resetTitle}</span>
+            <p className="splat-ui-appearance__note">{copy.resetNote}</p>
           </div>
-          <button type="button" className="splat-ui-appearance__reset" aria-label="恢复全部外观设置" onClick={resetAll}>
+          <button type="button" className="splat-ui-appearance__reset" aria-label={copy.resetButtonAriaLabel} onClick={resetAll}>
             <span className="splat-ui-appearance__reset-icon" aria-hidden="true">
               <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M4.7 5.8A4.2 4.2 0 1 1 4.4 10" />
@@ -272,8 +279,8 @@ export function AppearanceTab({ appearance }: AppearanceTabProps): React.JSX.Ele
               </svg>
             </span>
             <span className="splat-ui-appearance__reset-copy">
-              <span>全部恢复默认</span>
-              <small>均衡 {APPEARANCE_INK_PRESETS.balanced}%</small>
+              <span>{copy.resetButtonLabel}</span>
+              <small>{copy.resetButtonDefaultHint(APPEARANCE_INK_PRESETS.balanced)}</small>
             </span>
           </button>
         </div>
@@ -283,12 +290,12 @@ export function AppearanceTab({ appearance }: AppearanceTabProps): React.JSX.Ele
         <div className="splat-ui-appearance__about-meta">
           <span className="splat-ui-appearance__about-title">SPLAT-STREET</span>
           <span className="splat-ui-appearance__about-author">
-            作者：
+            {copy.authorPrefix}
             <a href="https://github.com/Shirolin" target="_blank" rel="noreferrer">
               Shirolin
             </a>
           </span>
-          <span className="splat-ui-appearance__about-build" title="当前客户端加载的主题构建">
+          <span className="splat-ui-appearance__about-build" title={copy.buildTitle}>
             v{BUILD_LABEL}
           </span>
         </div>
@@ -316,7 +323,7 @@ export function AppearanceTab({ appearance }: AppearanceTabProps): React.JSX.Ele
             >
               <path d="M8 14s-5.5-3.3-5.5-7.5A3.5 3.5 0 0 1 8 3.8a3.5 3.5 0 0 1 5.5 2.7C13.5 10.7 8 14 8 14z" />
             </svg>
-            爱发电
+            {copy.afdian}
           </a>
           <span className="splat-ui-appearance__about-dot" aria-hidden="true">
             ·

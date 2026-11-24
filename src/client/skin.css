@@ -644,12 +644,24 @@ html[data-dsh-splat-ui-skin] [data-dsh-boot-spinner] + * {
 }
 
 html[data-dsh-splat-ui-skin] [data-dsh-boot-spinner] + *::after {
-  content: "正在涂满战场…";
+  content: var(--splat-boot-loading-text, "Painting the turf…");
   color: var(--splat-boot-muted);
   font-size: 13px;
   font-weight: 800;
   line-height: 1.4;
   letter-spacing: 0.06em;
+}
+
+html[data-dsh-splat-ui-skin]:lang(zh) [data-dsh-boot-spinner] + *::after {
+  content: var(--splat-boot-loading-text, "正在涂满战场…");
+}
+
+html[data-dsh-splat-ui-skin]:lang(ja) [data-dsh-boot-spinner] + *::after {
+  content: var(--splat-boot-loading-text, "バトルフィールドを塗り広げ中…");
+}
+
+html[data-dsh-splat-ui-skin]:lang(ko) [data-dsh-boot-spinner] + *::after {
+  content: var(--splat-boot-loading-text, "배틀필드를 칠하는 중…");
 }
 
 html[data-dsh-splat-ui-skin] body[data-ds-dark-theme] [data-dsh-boot] {
