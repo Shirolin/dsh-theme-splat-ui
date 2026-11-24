@@ -126,7 +126,7 @@
     <div class="showcase__panel reveal">
       <div class="showcase__copy">
         <h2 data-i18n="landing.showcase.heading">真实组件，实时调墨。</h2>
-        <p class="showcase__desc" data-i18n="landing.showcase.desc">左侧直接嵌入真实 DSH DOM 与官方 CSS 夹具。切换日/夜战场、画布墨度或三套主墨色时，样式直接注入真实组件视图。</p>
+        <p class="showcase__desc" data-i18n="landing.showcase.desc">预览窗口内直接嵌入真实 DSH DOM 与官方 CSS 夹具。切换日/夜战场、画布墨度或三套主墨色时，样式实时注入真实组件视图。</p>
       </div>
 
       <div class="showcase__control" data-ui>
@@ -269,13 +269,13 @@
           <span data-i18n="landing.install.cmdLabel">在 DSH profile 目录执行</span>
           <span>npm · dsh plugin add</span>
         </p>
-        <pre><code><span data-i18n="landing.install.cmdDir">cd &lt;DSH_Profile_目录&gt;</span>
-<span>pnpm add dsh-theme-splat-ui</span></code></pre>
+        <pre><code><span data-i18n="landing.install.cmdDir">cd &lt;DSH_Profile_目录&gt;</span><span>pnpm add dsh-theme-splat-ui</span></code></pre>
         <div class="command__foot">
           <button class="command__copy" type="button" data-copy data-i18n="landing.install.copyBtn">复制命令</button>
           <a class="command__compat" href="https://github.com/Shirolin/dsh-theme-splat-ui/blob/main/docs/compatibility.md" data-i18n="landing.install.compatLink">查看兼容性契约 →</a>
         </div>
       </div>
+      <p class="install__cli-tip" data-i18n-html="landing.install.cliTipHtml">或直接运行 DSH CLI：<code>dsh plugin add dsh-theme-splat-ui</code></p>
       <ul class="install__notes">
         <li data-i18n="landing.install.note1">同一 profile 建议只启用一个主题插件。</li>
         <li data-i18n-html="landing.install.note2Html">外观偏好保存在本机 <code>localStorage</code>，不写入 Host 设置。</li>

@@ -86,6 +86,7 @@ function syncFixtureFrame() {
   if (fixturePathCode) fixturePathCode.textContent = src
   if (fixtureOpenLink) fixtureOpenLink.setAttribute('href', src)
   if (iframe && iframe.getAttribute('src') !== src) {
+    if (stage) stage.classList.add('is-loading')
     iframe.setAttribute('src', src)
   }
   layoutStage()
@@ -93,6 +94,7 @@ function syncFixtureFrame() {
 
 if (iframe) {
   iframe.addEventListener('load', () => {
+    if (stage) stage.classList.remove('is-loading')
     layoutStage()
     postAppearance()
   })
@@ -164,6 +166,7 @@ function setGreen(green, markDirty = true) {
   if (!GREEN_HEX[green]) return
   state.green = green
   if (markDirty) state.dirty = true
+  if (showcase) showcase.style.setProperty('--stage-accent', GREEN_HEX[green])
   if (greenValue) greenValue.textContent = GREEN_HEX[green]
   for (const button of greenPresetButtons) {
     const active = button.dataset.greenPreset === green
