@@ -8,7 +8,7 @@
 
 [![check](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/check.yml)
 [![pages](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/pages.yml/badge.svg?branch=main)](https://shirolin.github.io/dsh-theme-splat-ui/)
-[![version](https://img.shields.io/badge/version-0.1.0-1edc00?labelColor=141413)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-0.2.0-1edc00?labelColor=141413)](CHANGELOG.md)
 [![npm](https://img.shields.io/npm/v/dsh-theme-splat-ui?color=1edc00&logo=npm&logoColor=white&labelColor=141413)](https://www.npmjs.com/package/dsh-theme-splat-ui)
 [![DSH Target](https://img.shields.io/badge/DSH_Web-0.2.2--rc.1_·_Desktop_0.2.2--rc.5-ff2d8a?labelColor=141413)](docs/compatibility.md)
 [![license: MIT](https://img.shields.io/badge/license-MIT-d3f510?labelColor=141413)](LICENSE)
@@ -85,7 +85,7 @@ pnpm add dsh-theme-splat-ui
 
 ### GitHub Release / 오프라인 `.tgz`
 
-[GitHub Releases](https://github.com/Shirolin/dsh-theme-splat-ui/releases)에서 `dsh-theme-splat-ui-<version>.tgz`를 내려받거나(또는 저장소에서 `pnpm run release 0.1.0` 실행) 설치합니다:
+[GitHub Releases](https://github.com/Shirolin/dsh-theme-splat-ui/releases)에서 `dsh-theme-splat-ui-<version>.tgz`를 내려받거나(또는 저장소에서 `pnpm run release 0.2.0` 실행) 설치합니다:
 
 ```sh
 cd <DSH_Profile_dir>
@@ -117,7 +117,7 @@ pnpm run lint           # Biome 정적 분석
 pnpm run check:fixtures -- --expect-dsh 0.2.2-rc.1
 pnpm run showcase       # site/showcase/generated/ 재생성
 pnpm run audit          # 커버리지 진단
-pnpm run release 0.1.0
+pnpm run release 0.2.0
 pnpm run install:local -- --dry-run
 ```
 

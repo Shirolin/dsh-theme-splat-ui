@@ -8,7 +8,7 @@
 
 [![check](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/check.yml)
 [![pages](https://github.com/Shirolin/dsh-theme-splat-ui/actions/workflows/pages.yml/badge.svg?branch=main)](https://shirolin.github.io/dsh-theme-splat-ui/)
-[![version](https://img.shields.io/badge/version-0.1.0-1edc00?labelColor=141413)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-0.2.0-1edc00?labelColor=141413)](CHANGELOG.md)
 [![npm](https://img.shields.io/npm/v/dsh-theme-splat-ui?color=1edc00&logo=npm&logoColor=white&labelColor=141413)](https://www.npmjs.com/package/dsh-theme-splat-ui)
 [![DSH Target](https://img.shields.io/badge/DSH_Web-0.2.2--rc.1_·_Desktop_0.2.2--rc.5-ff2d8a?labelColor=141413)](docs/compatibility.md)
 [![license: MIT](https://img.shields.io/badge/license-MIT-d3f510?labelColor=141413)](LICENSE)
@@ -85,7 +85,7 @@ Restart the DSH service completely (or restart DeepSeek Harness Desktop) and rel
 
 ### From GitHub Release / Offline `.tgz`
 
-Download `dsh-theme-splat-ui-<version>.tgz` from [GitHub Releases](https://github.com/Shirolin/dsh-theme-splat-ui/releases) (or build locally via `pnpm run release 0.1.0`):
+Download `dsh-theme-splat-ui-<version>.tgz` from [GitHub Releases](https://github.com/Shirolin/dsh-theme-splat-ui/releases) (or build locally via `pnpm run release 0.2.0`):
 
 ```sh
 cd <DSH_Profile_dir>
@@ -117,7 +117,7 @@ pnpm run lint           # Biome static lint
 pnpm run check:fixtures -- --expect-dsh 0.2.2-rc.1
 pnpm run showcase       # Rebuild site/showcase/generated/
 pnpm run audit          # Coverage diagnostics
-pnpm run release 0.1.0
+pnpm run release 0.2.0
 pnpm run install:local -- --dry-run
 ```
 

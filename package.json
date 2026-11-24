@@ -1,6 +1,6 @@
 {
   "name": "dsh-theme-splat-ui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "SPLAT-STREET, a Splatoon 2 inspired DSH Web skin with lime and magenta ink, halftone paper, and ThemeRuntime tokens",
   "icon": "./assets/icon-256.png",
   "repository": {
